@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 연습</title>
+    <link rel="stylesheet" href="./basic_attribute.css" type="text/css">
+</head>
+
+<body>
+    <h1>CSS 공부 시작</h1>
+    <h2 class="title1">font 속성</h2>
+    <p class="font-txt">폰트 속성을 적용한 텍스트</p>
+    <hr>
+
+    <h2>색상 속성</h2>
+    <p class="color-txt1">rgba로 색상 적용한 폰트</p>
+    <p class="color-txt2">16진수로 색상 적용한 폰트</p>
+    <hr>
+
+    <h2>텍스트 속성</h2>
+    <p class="letter-spacing">글자 간격 속성을 적용한 텍스트</p>
+    <p class="word-spacing">단어 간격 속성을 적용한 텍스트</p>
+    <p class="text-align">텍스트 정렬 속성을 적용한 텍스트</p>
+    <p class="text-indent">들여쓰기 속성을 적용한 텍스트</p>
+    <p class="line-height">줄 간격 속성을 적용한 텍스트</p>
+
+    <h3>text-decoration 속성</h3>
+    <p class="text-decoration-underline">밑줄 속성을 적용한 텍스트</p>
+    <p class="text-decoration-overline">윗줄 속성을 적용한 텍스트</p>
+    <p class="text-decoration-line-through">취소선 속성을 적용한 텍스트</p>
+    <a class="text-decoration-none" href="https://wwww.naver.com">밑줄 없애기 속성을 적용한 링크</a>
+
+    <br><br>
+
+    <h3>text-transform 속성 (오직 영문자에만 적용)</h3>
+    <p class="uppercase">uppercase 속성 값을 적용한 텍스트</p>
+    <p class="lowercase">LOWERCASE속성 값을 적용한 텍스트</p>
+    <p class="capitialize">capitialize 속성 값을 적용한 텍스트</p>
+
+    <p class="text-shadow">택스트 그림자 속성 적용한 텍스트</p>
+    <hr>
+
+    <h2>border 속성</h2>
+    <p class="border-style">border-style 속성 적용한 텍스트</p>
+    <p class="border-width">border-width 속성 적용한 텍스트</p>
+    <p class="border-color">border-color 속성 적용한 텍스트</p>
+    <p class="border">border 속성 적용한 텍스트</p>
+    <p class="border-radius">border-radius 속성 적용한 텍스트</p>
+    <hr>
+
+    <h3>width/height (너비/높이)</h3>
+    <div class="width-height">div 태그</div>
+    <span class="width-height2">span 태그</span>
+    <p>블록 요소는 width/height 속성이 적용되지만, 인라인 요소는 width/height 속성 적용이 불가함<br>
+        따라서 인라인 요소에 width/height를 적용하고 싶다면 display:inline-block;으로 설정</p>
+
+    <h2>margin, padding 속성</h2>
+    <div class="padding">padding 속성을 적용한 box</div>
+
+    <div class="margin">margin 속성을 적용한 box</div>
+
+    <h3>margin 중첩</h3>
+    <div class="box box1">box1</div>
+    <div class="box box2">box2</div>
+    <p>margin 중첩은 두 요소의 margin 값 중에서 더 큰 값으로 적용</p>
+    <hr>
+
+    <h2>box-sizing 속성</h2>
+    <p>border-box: 크기는 content + padding + border</p>
+    <p>content-box: 크기는 딱 content 크기이므로 실제 크기는 padding + border까지 더해야해서 예상이 어려우므로 사용을 지양</p>
+    <div class="box-sizing border-box">border-box 적용한 div</div>
+    <div class="box-sizing content-box">content-box 적용한 div</div>
+    <hr>
+
+    <h2>list-style 속성</h2>
+    <ul class="ul-list">
+        <li>ul list style 적용한 리스트</li>
+        <li>ul list style 적용한 리스트</li>
+    </ul>
+
+    <h2>list-style 속성</h2>
+    <ol class="ol-list">
+        <li>ol list style 적용한 리스트</li>
+        <li>ol list style 적용한 리스트</li>
+    </ol>
+</body>
+
+</html>

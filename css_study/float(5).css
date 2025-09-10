@@ -1,0 +1,232 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color:aqua;
+}
+
+header a {
+    text-decoration: none;
+    color: #000;
+}
+
+.container {
+    /* max-width: 1200px; */
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+button {
+    width: 100px;
+}
+
+.wrapper {
+    width: 100%;
+    /* max-width: 1920px; */
+}
+
+.sec01 {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    background-image: url("../images/dennis-yu-q5boW1rsgdI-unsplash.jpg");
+    background-size: cover;
+}
+
+.sec01-item{
+    color: #fff;
+}
+
+.sec02, .sec04-row {
+    width: 100%;
+    height: 300px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    gap: 2%;
+}
+
+.sec02-item {
+    width: 32%;
+    height:fit-content;
+    border: 1px solid #000;
+    text-align: center;
+    padding: 50px;
+}
+
+h3 {
+    margin-bottom: 20px; 
+}
+
+.sec03-row{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.sec03-row > div {
+    width : 50%;
+    height: 300px;
+}
+
+.sec03-row > .text {
+    height: fit-content;
+    padding: 20px;
+}
+.img {
+    background-image: url("../images/dennis-yu-q5boW1rsgdI-unsplash.jpg");
+    background-size: cover;
+}
+
+.reverse {
+    flex-direction: row-reverse;
+}
+
+.sec04-item1 {
+    width: 32%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sec04-item1 > .img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.sec04 {
+    height: 500px; 
+    background-color: aliceblue;
+    padding: 50px;
+}
+
+.sec04-row {
+    display: flex;
+}
+
+.sec04-item1 {
+    padding: 20px;
+}
+h4, .sec04-item1 > p, h2 {
+    text-align: center;
+}
+
+.sec04 > h3 {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.sec05 {
+    height: 100px;
+}
+
+.footer-parent-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 50px 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: center;
+    
+}
+
+ul {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: left;
+}
+
+
+ul > li {
+    list-style: none;
+    padding: 5px;
+}
+
+.footer-sec02 > p {
+    color: gray;
+}
+
+.footer-sec02 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.icon-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.icon-container > div {
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+    background-color: gray;
+}
+
+/* width나 height의 수치를 계산할 때 계산기보다는 calc() 함수를 사용할 것
+   ex) width: calc((100%-40)/3); */
+
+/* flex-direction: column;으로 설정하고, gap을 %로 주면 잘 적용되지 않음
+그 이유는 gap을 %로 주면 그건 width를 기준으로 하기 때문에 의도한 세로 간격이 잘 적용되지 않을 수 있음
+따라서 gap을 px단위나 em, rem, vh, calc()로 계산하여 지정해야 함 */
+
+/* <flex-direction: row-reverse/column-reverse;와 flex-wrap:wrap-reverse;의 차이>
+flex-direction의 row-reverse/column-reverse: 해당 아이템의 배치 순서를 주축을 기준으로 거꾸로 하는 것이고,
+flex-wrap: wrap-reverse;는 여러 줄로 배치된 아이템을 각 줄을 보조축을 기준으로 거꾸로 배치함
+           따라서 아이템이 배치되는 순서가 아니라 줄 순서가 바뀜 */
+@media(max-width: 1024px) {
+    .sec02, .sec03, .sec04-row {
+        height:fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .sec04 {
+        width: 100%;
+        padding: 0;
+        height: fit-content;
+    }
+
+    .sec02-item, .sec04-item1{
+        width: 100%;
+    }
+
+
+    .sec03-row > .img, .sec03-row > .text {
+        width: 100%;
+    }
+
+
+    .sec04-item1 {
+        border: 1px solid black;
+        height: fit-content;
+    }
+
+
+}
+
+

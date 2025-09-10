@@ -1,0 +1,184 @@
+* { margin: 0;
+    padding: 0;
+}
+
+.box-wrap {
+    width: 100px;
+    height: 100px;
+    border: 5px solid pink;
+    margin: 0 auto 20px;
+}
+
+.box {
+    width: 100%;
+    height: 100%;
+    background-color: blue;
+}
+
+/* translate는 애니메이션에서 현재 위치를 기준으로 이동시킬 때 사용하는 속성으로,
+position:relative와의 차이는 translate가 애니메이션에 사용하기에 더 적합하다는 점과
+둘 다 레이아웃상 초기 위치를 차지하고, 시각적으로만 위치가 변한 것처럼 보인다는 공통점이 있음
+하지만, relative는 기준점이 초기 위치이고 translate는 기준점이 현재 위치이므로
+만일 translate를 연속해서 주면 누적되어 이동함(ex) transform: translate(30px); transform: translate(20px);을 하면 총 50px 만큼 이동함
+하지만 relative는 left: 50px; left: 20px;을 주면 초기 위치를 기준으로 left: 20px; 적용한 결과가 최종결과임  */
+
+.box1 {
+    /* transform: translateX(-30px); */
+    /* transform: translateY(30px); */
+    transform: translate(30px, 20px);
+}
+
+.box1:hover {
+    width: 150px;
+    height: 150px;
+    /* transiton을 적용할 속성을 명시
+    all 값을 주면 모든 속성에 transition을 적용하겠다는 의미 */
+    transition-property: width, height;
+    /* 애니메이션 지속 시간 */
+    transition-duration: 1s;
+    transition-delay: 1s;
+    transition-timing-function: linear;
+    transition: all 2s 0.5s ease-out;
+}
+
+/*
+- 양수: 시계 방향으로 회전 / 음수: 반시계 방향으로 회전 
+- 그냥 rotate()는 rotateZ()와 동일한 결과 */
+.box2 {
+    /* transform: rotateX(45deg); */
+    /* transform: rotateY(45deg); */
+    /* transform: rotateZ(45deg); */
+    /* transform: rotate(45deg); */
+}
+
+/* .box-wrap2 {
+    perspective: 50px;
+} */
+
+/* scale() : 배율만큼 크기를 확대 또는 축소
+1 초과: 확대 / 1 미만 : 축소 */
+
+.box3 {
+    /* transform: scaleX(1.2);
+    transform: scaleY(2); */
+    /* transform: scale(2, 2);
+    transform: scale(2); */
+}
+
+/* skew(): 기울임
+엄밀히 말하면 기울어진 것처럼 보이는 효과이고, 각 지점이 x축 또는 y축으로 정해진만큼 이동함
+ex) skewX */
+.box4 {
+    /* transform: skewX(30deg); */
+    /* transform: skewY(20deg); */
+    transform: skew(30deg, 20deg);
+}
+
+.box5 {
+    border-top: 4px solid red;
+    border-right: 4px solid yellow;
+    border-bottom: 4px solid green;
+    border-left: 4px solid black;
+
+    transform: skewX(-50deg);
+}
+
+.animation {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    margin: 0 auto 20px;
+}
+
+.animation01 {
+    /* animation-name: animation01;
+    animation-duration: 5s;
+    animation-delay: 1s; */
+
+    /* 반복 횟수 */
+    /* animation-iteration-count: infinite; */
+    /* animation-iteration-count: 3; */
+
+    /* animation: animation01 5s 1s infinite; */
+}
+
+@keyframes animation01 {
+    0% {
+        background-color: red;
+    } 
+    35% {
+        background-color: blue;
+    }
+    70% {
+        background-color: yellow;
+    }
+}
+
+/* .animation02 {
+    animation: circle 3s infinite;
+} */
+
+@keyframes circle {
+    0% {
+        border-radius: 0;
+    }
+    50% {
+        border-radius: 50%;
+    }
+    100% {
+        border-radius: 0%;
+    }
+}
+
+.wrapper{
+    display: flex;
+    gap: 5%;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    animation: wave 2s infinite ease-in-out;
+}
+
+.circle02 {
+    animation-delay: 0.1s;
+}
+.circle03 {
+    animation-delay: 0.2s;
+}
+.circle03 {
+    animation-delay: 0.3s;
+}
+.circle04 {
+    animation-delay: 0.4s;
+}
+.circle05 {
+    animation-delay: 0.5s;
+}
+.circle06 {
+    animation-delay: 0.6s;
+}
+.circle07 {
+    animation-delay: 0.7s;
+}
+.circle08 {
+    animation-delay: 0.8s; 
+}
+
+@keyframes wave {
+    0% {
+        transform: translate(0,0) scale(1);
+        background-color: red;
+    }
+    50% {
+        transform: translate(0, 50px) scale(1.5);
+        background-color: blue;
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+        background-color: red;
+    }
+}

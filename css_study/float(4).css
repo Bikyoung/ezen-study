@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+
+}
+
+.column {
+    width: 100%;
+}
+
+.card {
+    width: 32%;
+    float: left;
+    border-radius: 20px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.margin-right {
+    margin-right: 2%;
+}
+
+img {
+    border-radius: 20px;
+}
+
+img, .text{
+    width: 100%;
+}
+
+.text {
+    background-color: rgba(255,255,255,0.3);
+    position: absolute;
+    bottom: 0;
+    padding: 20px;
+    opacity: 0;
+}
+
+.text:hover {
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.column2 > .card1 {
+    clear: both;
+}
+
+
+

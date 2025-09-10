@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.flex-wrap {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.flex-container {
+    width: 100%;
+    display: flex;
+    /* justify-content: space-between; */
+    margin-bottom: 2%;
+    gap : 2%
+}
+
+/* .flex-item {
+    border: 1px solid #000;
+    width: 32%;
+} */
+.column2 > .item1 {
+    width: 66%;
+}
+
+.flex-item {
+    border : 1px solid #000;
+}
+
+.column3 > div {
+    width: 32%;
+}
+
+/* .column2 > .item1 {
+    width: 66%;
+} */

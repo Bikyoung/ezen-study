@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 500px;
+    background-image: url(../images/dennis-yu-q5boW1rsgdI-unsplash.jpg);
+    background-size: cover;
+    position: relative;
+}
+.container > div, .container > button {
+    color : white;
+    position: absolute;
+    left: 200px;
+}
+
+.child1 {
+    font-size: 40px;
+    font-weight: 700;
+    top: 10%;
+}
+
+.child2 {
+    font-size: 25px;
+    font-weight: 300;
+    top: 45%;
+    
+}
+
+button {
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 50px;
+    bottom: 20%;
+    background-color: black;
+    border: 0;
+}

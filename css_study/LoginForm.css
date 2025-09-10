@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100vh;
+    /* background-color: aquamarine; */
+    background-image: url("../images/dennis-yu-q5boW1rsgdI-unsplash.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-blend-mode: multiply;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.login-container {
+    width: 450px;
+    border: 2px solid #c6c3c3;
+    padding: 50px 45px;
+    /* background-color: navy; */
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    color: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.login-title {
+    font-size: 36px;
+    text-align: center;
+}
+
+.input-box {
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    outline: none;
+    font-size: 17px;
+    padding : 10px 25px;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+.input-box input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.remember {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.remember input {
+    accent-color: #fff;
+    margin-right: 5px;
+}
+
+.forget-pass {
+    text-decoration: none;
+    color: #fff;
+}
+
+.forget-pass:hover{
+    text-decoration: underline;
+}
+
+button {
+    width: 100%;
+    padding: 13px 0;
+    font-size: 16px;
+    border-radius: 50px;
+    font-weight: 600;
+    background-color: #fff;
+    border: none;
+    margin: 15px 0 25px;
+    cursor: pointer;
+}
+
+.signup-link {
+    font-size: 14px;
+    text-align: center;
+}
+
+.signup-link a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #fff;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}

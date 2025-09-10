@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.flex-wrap {
+    width: 100%;
+    display: flex;
+    margin-bottom: 2%;
+}
+
+.item {
+    padding: 20px;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.column-2, .column-3, .column-4 {
+    gap: 2%;
+    /* justify-content: space-between; */
+}
+
+.column-2-item {
+    width: 49%;
+}
+
+.column-3-item {
+    width: 32%;
+}
+
+.column-4-item {
+    width: 23.5%;
+}

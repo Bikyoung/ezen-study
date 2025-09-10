@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.flex-container {
+    width: 100%;
+    height: 600px;
+    background-color: pink;
+
+    /* display:flex와 flex-inline의 차이는 flex-container가 블록 요소일지, 인라인 요소일지를 지정  */
+    display: flex;
+
+    /* row가 기본값 */
+    /* flex-direction: row;
+    flex-wrap: wrap; */
+
+    /* flex-flow: flex-direction과 flex-wrap을 한번에 설정 */
+    flex-flow: row wrap;
+
+    /* justify-content:는 주 축 방향으로 아이템을 정렬
+    주 축은 flex-direction으로 지정
+    1)flex-start : 주 축의 시작 지점부터 정렬
+    2)flex-end : 주 축의 끝 지점부터 정렬
+    3)center : 주 축의 가운데 정렬
+    4)space-between : 주 축의 양 끝에 양 끝 아이템을 붙이고 나머지 아이템 간의 간격을 동일하게 정렬
+    5)space-around : 한 아이템이 좌우로 동일한 여백을 갖음
+    즉, 아이템1의 왼쪽 여백 = 아이템 1과 2 사이의 간격* 2
+    왜냐하면 아이템 1의 우측 여백 + 아이템 2의 좌측 여백이 간격이 됨
+    6)space-evenly : 아이템의 모든 간격이 완전히 동일 
+    아이템 1의 왼쪽 여백 = 아이템 1과 2 사이의 간격
+    7)center*/
+    justify-content: center;
+
+    /* align-content:는 아이템 전체를 (만일 여러 줄이라면 여러 줄 전체를) 하나의 큰 묶음으로 보고, 교차 축 방향으로 아이템을 정렬
+    예를 들어 주 축이 column이면 align-content는 row 방향으로 어떻게 정렬할지를 지정
+    속성값은 justify-content와 동일 */
+    align-content : center;
+
+    /* align-items: item이라는 말에서 알 수 있듯이 아이템이 여러 줄일 때 아이템이 자기 줄 안에서 교차 축을 기준으로 어떻게 정렬할 것인지를 지정
+    따라서 아이템을 여러 줄로 만드는 flex-wrap: wrap;일 때만 동작
+    또한 각 줄보다 아이템의 교차 축 방향의 크기가 작아야만 의미가 있음
+    cf) align-content는 한 줄 안에 아이템을 어떻게 정렬할 것인지를 지정
+    1) stretch: 아이템이 각 줄의 교차 축 방향으로 최대 크기로 늘어남
+    2) baseline : 아이템들이 텍스트 기준선에 맞춰서 정렬 
+    3) center : 각 줄에서 교차 축 방향의 중앙으로 아이템 정렬
+    4) flex-start : 각 줄에서 교차 축의 시작점으로 아이템 정렬
+    5) flex-end : 각 줄에서 교차 축의 끝 점으로 아이템 정렬*/
+
+    align-items : center;
+    gap: 20px 10px;
+    /* row-gap: 20px;
+    column-gap: 5px; */
+}
+
+.flex-item {
+    width: 90px;
+    height: 90px;
+    background-color: blueviolet;
+    border: 1px solid black;
+}
+
+/* order 속성은 정렬 순서를 직접 지정함(오름차순 정렬 / 기본값 : 0) */
+
+/* flex-grow : item 증가 비율 설정, 
+공간 증가 시 얼마나 증가할지를 지정하는 속성, 
+같은 형제 item이라도 0인 아이템은 절대로 늘어나지 않음
+0보다 큰 아이템들끼리 나눠서 가짐
+만일 5개 중 2개 아이템의 flex-grow가 3하고 2라면 남는 공간을 5로 나누어서 그 중 3과 2만큼 차지
+기본값 0*/
+
+/* flex-shrink: 공간이 부족할 때 해당 아이템이 얼마나 줄어들지를 결정하는 속성, 비율만큼 줄어듦
+기본값은 1이며 1이상으로 지정시 공간 부족하면 줄어듦
+0이면 절대 줄어들지 않고, 부족하면 넘친다. 
+flex-grow의 반대 속성 */
+
+/* flex-basis: flex 아이템의 초기 크기를 지정하는 속성으로, 주 축의 방향에 따라 주 축이 row면, 너비 크기를 지정
+column이면, 높이를 지정함
+width/height와 비슷하지만 flexbox 전용 속성으로 width/height보다 우선순위가 더 높음, 기본값은 auto
+초기값이므로 만일 해당 아이템의 flex-grow가 0 이상이거나 flex-shrink가 1이상인 경우 부모 컨테이너의 너비가 더 넓거나 좁은 경우 렌더링 하자마자 초기값이 적용이 안된 것처럼 보임
+즉 flex-basis는 flex-grow나 flex-shrink의 직접적인 영향을 받으므로 더 유연하기 때문에
+현업에서는 width나 height를 %로 지정하는 대신, flex-basis를 사용 */
+
+/* flex: flex-grow, flex-shrink, flex-basis */
+
+/* align-self는 각 아이템마다 정렬방법을 제어하는 속성
+cf) align-items는 각 줄의 아이템에 동일하게 적용하는 속성이었음 */
+.item1 {
+    /* order: 1; */
+    flex-grow: 1;
+    flex-shrink: 2;
+    flex-basis: 100px;
+}
+
+.item2 {
+    /* order: 3;
+    flex-grow: 2; */
+    flex: 1 1 20%;
+}
+
+.item3 {
+    order: 5;
+}

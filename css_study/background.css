@@ -1,0 +1,106 @@
+.bg-class {
+    width: 200px;
+    height: 200px;
+    background-color: aqua;
+}
+
+.bg-img {
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    background-image: url("../images/person-resizing.jpg");
+    /* background-repeat:repeat-y; */
+    background: url("../images/person-resizing.jpg") no-repeat;
+    background-position: right bottom;
+    /* 배경이미지의 상대 위치 설정
+    background-position-x: 60%;
+    background-position-y: 10% */
+    /* background-size: contain; */
+}
+
+.bg-attachment {
+    width: 200px;
+    height: 300px;
+    border: 1px solid brown;
+    background-image: url("../images/person-resizing.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: scroll;
+}
+
+/* background-attachment: 배경 이미지가 스크롤에 어떻게 반응할지를 정의하는 속성
+1) scroll: default / 배경이 해당 요소에 고정되어 있어서, 요소를 스크롤 할 때도 배경이 안 움직임
+2) fixed : 뷰포트에 배경이 고정됨. 따라서 뷰포트를 스크롤 시, 배경이 같은 위치에 있어서 그 위에 요소가 혼자 움직이는 것처럼 보임
+패럴랙스 효과 적용시 사용됨
+뷰포트 스크롤에 영향을 받음
+배경 이미지가 큰 경우 적용
+3) local: 어디에도 배경이 고정되지 않아서, 요소가 스크롤되면 배경이 같이 움직임
+(단, 뷰포트가 스크롤될때는 움직이지 않음) */
+.scroll {
+    background-attachment: scroll;
+}
+
+/* 배경이 고정되고 스크롤되면, 스크롤되면서 배경이 고정되고 그 위의 요소가 움직이는 느낌이 든다 */
+.fixed {
+    background-attachment: fixed;
+}
+
+.local {
+    background-attachment: local;
+}
+
+.bg-size {
+    width: 300px;
+    height: 350px;
+    border: 1px solid red;
+    background-image: url("../images/person-resizing.jpg");
+    background-repeat: no-repeat;
+    background-position: left top;
+
+    /* background-size 속성 값:
+    1) cover : 영역을 전부 채움 (원본 비율 유지)
+    2) contain : 원본 비율에 맞게 영역의 너비 또는 높이 둘 중 하나에 크기를 맞춤
+    3) auto : 배경의 원본 크기
+    4) 사용자 지정값 */
+    background-size: auto;
+}
+
+/* background-origin: 배경 이미지의 시작 위치 기준을 지정
+padding-box가 기본값 */
+.bg-origin {
+    width: 300px;
+    height: 400px;
+    border: 5px dotted blue;
+    margin-bottom: 20px;
+    padding: 50px;
+    background-image: url("../images/person-resizing.jpg");
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
+}
+
+.padding-box {
+    background-origin: padding-box; 
+}
+.border-box {
+    background-origin: border-box;
+}
+
+.content-box {
+    background-origin: content-box; 
+}
+
+.gradient {
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+
+.linear {
+    background: linear-gradient(45deg, yellow 50%, pink 55%, red 60%, green 80%, blue)
+}
+
+.radial {
+    background: radial-gradient(circle at 10% 30%, pink, green, blue)
+}

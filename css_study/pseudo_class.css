@@ -1,0 +1,140 @@
+/* 참고 사이트 : https://tcpschool.com/css/css_selector_pseudoClass */
+.link {
+    font-size: 30px;
+}
+
+/* link는 한번도 링크를 클릭하지 않은 상태 */
+.link:link {
+    color: #000;
+    text-decoration: none;
+}
+
+.link:visited {
+    color: red;
+}
+
+.link:hover {
+    color: green;
+    font-weight: 800;
+}
+
+/* active는 마우스로 클릭을 하고 있는 상태 */
+.link:active {
+    color: blueviolet;
+}
+
+.name:focus {
+    background-color: yellow;
+    border: 3px solid red;
+    outline: none;
+}
+
+.list > li:nth-child(2n-1) {
+    color: red;
+}
+
+/* 마지막 자식 요소로부터 몇번째 위치하는 자식 요소인지 (거슬러서 계산) */
+.list li:nth-last-child(2) {
+    color:blue;
+}
+
+/* 홀수 자식 요소에만 적용 */
+.list > li:nth-child(odd) {
+    color: violet;
+}
+
+/* :first-child VS :first-of-child
+:first-child는 부모의 전체 자식 중에서 선택함
+ex)li:first-child라고 하면 부모의 첫번째 자식 요소가 li가 아니라면 선택되지 않음 
+li:first-of-type은 부모의 자식 요소 중에서 첫번째로 등장하는 li를 선택
+따라서 자식 요소 중에 두번째 요소가 li라고 하더라도 li중에 첫번째이므로 선택됨*/
+
+/* .child p:nth-child(3) {
+    color: blue;
+} */
+
+.child p:nth-of-type(3) {
+    color: blue;
+}
+
+.list li:not(:nth-child(2)) {
+    font-size: 40px;
+}
+
+/* :과 ::의 차이는
+ :은 요소의 상태나 위치 등을 선택할 때 사용
+ ::은 실제 HTML에 없는 가짜 요소를 추가하고 스타일링 할 때 사용
+ */
+
+/* ::before는 실제 HTML에는 없지만, CSS를 통해 현재 요소 앞에 내용과 스타일을 추가하는 기능
+반드시 content 속성이 있어야하고, 해당 content 속성 값에 적용될 CSS를 명시 */
+.required::before {
+    content: "*";
+    color: red;
+    margin-right: 5px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* ::after는 실제 HTML에는 없지만, CSS를 통해 현재 요쇼 뒤에 내용과 스타일을 추가하는 기능 */
+.btn:hover::after {
+    content: "이 버튼은 로그인 버튼입니다.";
+    position: absolute;
+    top: 0;
+    left: 110%;
+    width: 200px;
+    background-color: black;
+    color: #fff;
+}
+
+.btn {
+    position: relative;
+}
+
+.first-letter::first-letter {
+    color: blue;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.first-line::first-line {
+    color: red;
+}
+
+
+/* 드래그한 요소를 의미 */
+.first-letter::selection {
+    color: blue;
+    background-color: yellow;
+}
+
+.button {
+    padding: 18px 32px;
+    font-size: 20px;
+    background-color: #161a20;
+    color: #f0f0f0;
+    border-radius: 100px;
+    border: none;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    transition: 0.3s;
+}
+
+.button::after {
+    content:"";
+    position: absolute;
+    width: 105%;
+    height: 110%;
+    border-radius: 100px;
+    background-image: linear-gradient(to bottom right, #008cff, #e100ff);
+    z-index: -1;
+}
+
+.button:hover {
+    z-index: 0;
+    box-shadow:  40px 0 100px #008cff,
+    -40px 0 100px #e100ff;
+}

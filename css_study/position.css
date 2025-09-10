@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 1000px;
+    height: 2000px;
+    margin: 0 auto;
+    background-color: rgb(209, 209, 160);
+    position: relative;
+}
+
+.child{
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.static {
+    background-color: orange;
+    position: static;
+    
+}
+
+.relative {
+    background-color: mediumaquamarine;
+    position: relative;
+    left: 100px;
+    bottom: 30px;
+}
+
+/* absolute는 기본적으로 width와 height가 auto로 되어있어서 콘텐츠 크기만큼으로 자동 조절됨 
+모든 상위 요소의 position이 static인 경우 뷰포트를 기준으로 함 */
+.absolute {
+    background-color:seagreen;
+    position: absolute;
+    bottom: 50px;
+    left: 100px;
+    width: 100%;
+}
+
+/* fixed는 z-index를 설정하지 않아도 무조건 static보다 위에 그려짐 */
+.fixed {
+    background-color: blueviolet;
+    position: fixed;
+    left: 10px;
+    
+}
+
+/* %로 주면 부모 요소를 기준으로 하는 크기의 초기위치이자 고정 위치임
+   따라서 처음 렌더링 시에는 부모의 왼쪽 상단 모서리를 기준으로 top: 20%가 적용이 되었다가 부모 영역이 뷰포트에 들어오면 뷰포트를 기준으로 top:20%가 적용되어 고정됨
+   그 이후에 부모 영역이 뷰포트를 벗어나면 다시 부모의 왼쪽 상단 모서리를 기준으로 top: 20%가 적용된 위치로 돌아감
+   
+   단 px로 주면 초기 위치는 문서의 흐름대로 배치되다가 뷰포트를 기준으로 해당 px에 도달시   */
+.sticky {
+    background-color: palevioletred;
+    position: sticky;
+    top: 20px;
+}

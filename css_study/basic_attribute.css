@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+
+.font-txt{
+    font-size: 20px;
+    font-weight: 600;
+    font-style: italic;
+    font-family: "Nanum Pen Script", cursive;
+}
+
+.color-txt1 {
+    color: rgba(255, 0, 0, 0.247);
+}
+
+.color-txt2 {
+    color: #00ff00;
+}
+
+.letter-spacing {
+    letter-spacing: -2px;
+}
+
+.word-spacing {
+    word-spacing: 10px;
+}
+
+.text-align {
+    text-align: right;
+}
+
+.text-indent {
+    text-indent: 50px;
+}
+
+.line-height { 
+    /* 텍스트 자체 높이의 3배 
+        line-height: 3; 이나 line-height: 300%; 둘 다 같은 의미이지만 3처럼 배수로 적용하는 방법이 더 많이 사용됨*/
+    line-height: 3;
+}
+
+.text-decoration-underline {
+    text-decoration: underline;
+}
+
+.text-decoration-overline {
+    text-decoration: overline;
+}
+.text-decoration-line-through {
+    text-decoration: line-through;
+}
+
+.text-decoration-none {
+    text-decoration: none;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+.lowercase {
+    text-transform: lowercase;
+}
+.capitialize {
+    text-transform: capitalize;
+}
+
+.text-shadow {
+    /* 첫번째 값: 수평 (양수값: 우측)
+       두번째 값: 수직 (양수값: 아래쪽)
+       세번째 값: 블러 */
+    text-shadow: 2px -2px 3px red;
+}
+
+.border-style {
+    /* 시계 방향 */
+    /* border-style: dashed solid dotted double; */
+    border-top-style: dashed;
+    border-left-style: double;
+}
+
+.border-width {
+    border-style: solid;
+    /* border-width: 3px;
+    border-width: 1px 3px 5px 9px; */
+    border-width: 3px 0 0 0;
+}
+
+.border-color {
+    border-style: solid;
+    border-color:red green blue yellow;
+}
+
+.border {
+    /* border: 5px solid green; */
+    border-top: 2px dashed red;
+    border-right: 3px solid blue;
+    border-bottom: 5px double green;
+    border-left: 7px dotted yellow;
+}
+
+.border-radius {
+    border: 2px solid hotpink;
+    /* border-radius: 5px 10px 20px 40px; */
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.width-height2 {
+    display: inline-block;
+}
+
+.width-height, .width-height2 {
+    width: 200px;
+    height: 200px;
+    border: 2px solid black;
+}
+
+.padding {
+    padding: 20px 30px 40px 50px;
+    border: 1px solid black;
+
+    /* padding-top: 30px;
+    padding-left: 50px; */
+    /* padding: 30px 50px; */
+}
+
+.margin {
+    border: 1px solid blue;
+    /* margin: 30px; */
+    margin: 20px 40px;
+}
+
+.box {
+    width: 200px;
+    height: 100px;
+    border: 2px solid #000;
+    margin: 30px;
+}
+
+.box1 {
+    margin-bottom: 60px;
+}
+
+.box-sizing {
+    width: 300px;
+    height: 200px;
+    border: 2px solid black;
+    padding: 50px;
+}
+
+.border-box {
+    box-sizing: border-box;
+}
+
+.content-box {
+    box-sizing: content-box;
+}
+
+.ul-list {
+    /* list-style-type: disc; 기본값
+    list-style-type: circle;
+    list-style-type: square; */
+    list-style-type: none;
+}
+
+.ol-list {
+    /* list-style-type: decimal; 기본값
+     */
+     /* list-style-type: lower-alpha;
+     list-style-type: upper-alpha;
+     list-style-type: lower-roman;
+     list-style-type: upper-roman; */
+     list-style-type: none;
+}
+
+
+
+
+

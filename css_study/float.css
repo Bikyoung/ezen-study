@@ -1,0 +1,55 @@
+/* .container {
+    max-width: 800px;
+}
+
+.image {
+    width: 250px;
+    float: left;
+}
+
+float 속성이 계속 이어지지 않게 하기 위해서는 clear: both; 적용
+.clear {
+    clear: both;
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.layout-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: auto;
+    border: 1px solid blue;
+}
+
+.layout-item {
+    padding: 30px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+
+.column-2 {
+    float: left;
+    width: 49%;
+}
+
+.margin-right {
+    margin-right: 2%;
+}
+
+.clear {
+    clear: both;
+}
+
+.column-3 {
+    float: left;
+    width: 32%;
+}
+
+.column-4 {
+    float: left;
+    width: 23.5%;
+}

@@ -1,0 +1,236 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+
+.sec {
+    border : 1px solid black;
+    width: 100%;
+}
+
+.sec01 {
+    background: url("../images/bg1.jpg");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    height: 2142px;
+    position: relative;
+    /* background-attachment: local; */
+}
+
+.sec01 .wrapper {
+    position: absolute;
+    left: 300px;
+}
+
+.sec01 h3, .sec01 p {
+    margin: 20px 0px 10px;
+    font-size: 40px;
+}
+
+.sec01 p {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+
+.sec01 h1 {
+    font-size: 60px;
+    margin: 20px 0 10px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    border: 2px solid #fff;
+    padding: 7px 25px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* .sec01 a {
+    width: 123px;
+} */
+
+.sec01 a {
+    width: 150px;
+    height: 41px;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.sec02 {
+    padding: 120px 0;
+}
+.sec02 h2 {
+    color: rgb(51, 55, 67);
+    font-size: 30px;
+    margin: 20px 0 35px;
+    text-align: center;
+}
+
+.sec02 .wrapper {
+    width: 780px;
+    height: 285px;
+    padding: 0px 15px;
+}
+
+.sec02 p {
+    color: rgb(153, 153, 153);
+    position: relative;
+    margin: 60px 0 10px;
+    font-size: 15px;;
+}
+
+.sec02 p::first-letter {
+    color: rgb(46, 113, 240);
+    font-size: 35px;
+    font-weight: 300;
+    float: left;
+    margin: 5px 15px 0 0;
+    position: absolute;
+    line-height: 0.8;
+    top: 0;
+}
+
+.sec03 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.sec03-row {
+    display: flex; 
+    gap: 20px;   
+}
+
+.image, .sec03-row .text {
+    width: calc((100% - 20px) / 2);
+    border: 1px solid blue;
+    height: 300px;
+}
+
+.sec03-row-02 {
+    flex-direction: row-reverse;
+}
+
+.cost {
+    display: flex;
+    gap: 20px;
+}
+
+.sec03-row .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cost p:nth-child(2) {
+    color: blue;
+    font-size: 20px;
+}
+
+.sec03 a {
+    color: black;
+    padding: 10px;
+    border: 2px solid black;
+    width: 150px;
+}
+
+.sec03 a {
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.sec03 a:hover {
+    background-color: black;
+    color: white;
+}
+
+.sec04 {
+    background-image: url("../images/bg.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 100px;
+}
+
+.sec04 h3 {
+    color : white;
+    margin-bottom: 20px;
+}
+
+.sec04 .text{
+    color: gray;
+    margin-bottom: 20px;
+}
+
+.sec04 .amount {
+    display: flex;
+    color: gray
+}
+
+.sec04 .amount p:nth-child(1) {
+    color: white;
+}
+
+.sec05 {
+   padding : 100px 0;
+   display: flex;
+   gap: 30px;
+}
+
+.sec05 .item {
+    width: calc((100% - 40px) / 3);
+    position: relative;
+}
+
+.sec05 img {
+    width: 100%;
+}
+
+.sec05 .info {
+    width: 100%;
+    font-size: 14px;
+}
+
+.sec05 .no-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sec05 .icon {
+    background-color: blueviolet;
+    width: 15px;
+    height: 15px;
+}
+
+.sec05 .icon-container {
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+} 
+
+.sec05 .icons {
+    display: flex;
+}
+
+.sec05 a {
+    color: gray;
+    width:  130px;
+    border: 1px solid black;
+    position: absolute;
+    right: 0;
+} 
+
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="mediaquery.css" type="text/css">
+
+    <style>
+        * { margin: 0;
+            padding: 0;}
+
+        .box {
+            width: 100%;
+            height: 200px;
+            background-color: red;
+        }
+
+        /* 미디어 쿼리에서 width와 height는 뷰포트의 너비와 높이를 의미 */
+
+        /* 미디어쿼리를 적을 때는 동일한 속성이라도 순서를 아래에 더 작은 범위의 것을 적용하면 
+        min-width와 max-width를 둘 다 작성한 것과 동일한 효과 */
+        /* @media(max-width: 600px) {
+            .box {
+                background-color: green;
+            }
+        }
+
+        @media(max-width: 400px) {
+            .box {
+                background-color: blue;
+            }
+        } */
+
+        /* box-width 값을 PC에서는 100%, 400px~600px까지 50%, 400px 이하는 200px */
+
+        /* 1025px부터 pc, 769~1024px까지 tablet, 768px 이하부터는 mobile */
+        /* 모바일 두 버전 : 320~480px(s), 481~768px(L) */
+        /* pc 두 버전 : 1025~1200px, 1200이상~  */
+
+        @media(max-width: 600px) {
+            .box {
+                width: 50%;
+                background-color: blue;
+                
+            }
+        }
+        @media(max-width: 400px) {
+            .box {
+                width: 200px;
+                background-color: purple;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Hello</h1>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore neque impedit aspernatur eligendi facilis nesciunt alias dolores nam porro, quis explicabo quaerat quia. Nisi debitis, voluptates iste praesentium sint vitae.</p>
+
+    <div class="box"></div>
+
+    <h3>뷰포트 단위</h3>
+    <ul>
+        <li>vw : 뷰포트 너비. 1vw는 뷰포트 너비의 1%</li>
+        <li>vh : 뷰포트 높이. 1vh는 뷰포트 높이의 1%</li>
+        <li>vmin : 뷰포트의 너비와 높이 중 더 작은 값. 1vmin은 더 작은 값의 1%</li>
+        <li>vmax : 뷰포트의 너비와 높이 중 더 큰 값. 1vmax는 더 큰 값의 1%</li>
+    </ul>
+</body>
+</html>
