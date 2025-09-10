@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>폼은 웹에서 사용자의 정보를 입력받기 위한 태그, 또는 사용자가 입력한 데이터를 서버로 보낼 때 사용</p>
+    <p>label 태그는 입력받는 필드를 지정할 때 사용</p>
+    <p>input 태그는 데이터를 입력 받을 수 있음</p>
+    <p>input 태그는 type 속성을 통해 다양한 타입의 데이터를 입려 받을 수 있음. 입력된 데이터는 유효성 검사를 통해 해당 타입에 맞는 데이터인지 확인</p>
+    <p>fieldset 태그는 폼 요소 안에 있는 데이터를 그룹화할 때 사용. 웹 접근성 준수를 위해 구역을 나누어 줄 때 사용</p>
+    <p>legend 태그는 fieldset과 함께 사용되며, fieldset의 제목을 달아주는 태그</p>
+    <p>입력을 필수로 할 때, 해당 태그에 required 속성명만 주면 됨</p>
+    <p>비활성화하고 싶을 때, 해당 입력 태그에 disabled 속성명만 주면 됨, 또한 서버에 데이터가 전송되지 않음</p>
+    <p>읽기 전용으로 하고 싶을 때 해당 태그에 readonly 속성명만 주면 됨</p>
+    <p>첫 진입 시에 포커스를 주고 싶은 태그에 autofocus 속성명만 주면 됨, 사용자가 다른 입력 태그를 클릭하면 포커싱은 종료됨</p>
+    <p>placeholder : 입력 태그에 hint를 줄 때 사용하는 태그</p>
+    <p>input 태그의 value 속성 값은 서버에 전송됨</p>
+    <p>일반 입력 태그의 최대, 최소 글자 크기를 지정할 때는 maxlength와 minlength 속성을 사용</p>
+
+    <hr>
+    <p>form 태그 속성</p>
+    <ul>
+        <li>required : 필수 입력할 필드를 지정할 때 사용</li>
+        <li>readonly : 읽기 전용 필드를 지정할 때  사용. disabled와 달리 입력되어있는 값이 서버에 전송됨</li>
+        <li>disabled : 비활성화 필드를 지정할 때 사용. 서버에 전송 X</li>
+        <li>placeholder : 입력 필드에 hint를 줄 때 사용</li>
+        <li>autofocus : 페이지 로드 시 자동으로 포커스를 줄 필드에 사용</li>
+    </ul>
+
+    <form action="">
+        <fieldset>
+            <legend>기본 정보</legend>
+            <!-- label 태그와 input 태그를 연결하는 방식(CSS를 적용하기에는 1을 더 추천)
+                1. label 태그의 for 속성값과 input 태그의 id 속성 값을 일치시켜 연결하는 방식
+                2. label 태그 내부에 input 태그를 감싸는 방식 -->
+            <div>
+                <label for="name">이름</label>
+                <input id ="name" type="text" required>
+            </div>
+
+            <div>
+                <label>
+                    비밀번호
+                    <input type="password" placeholder="비밀번호를 입력하세요" maxlength="10" minlength="7" required>
+                </label>
+            </div>
+
+            <!-- type="tel" : 전화번호를 입력 받을 때 사용 (모바일에서 키패드 숫자로 나옴) -->
+            <div>
+                <label for="tel">전화번호</label>
+                <input id="tel" type="tel" disabled minlength="9" maxlength="15">
+            </div>
+
+            <!-- type="email" : 제출 시 이메일인지 유효성 검사를 자동으로 해줌 -->
+            <div>
+                <label for="email">이메일</label>
+                <input id="email" type="email" autofocus>
+            </div>
+
+            <div>
+                <label for="num">숫자</label>
+                <input id="num" type="number" min="20" max="100">
+            </div>
+
+            
+            <div>
+                <label for="range">범위</label>
+                <input type="range" min="5" max="10">
+            </div>
+
+            <div>
+                <label for="url">url 주소</label>
+                <input id="url" type="url">
+            </div>
+
+            <!-- button 태그의 type 속성 값 3종류 : submit, reset, button 
+                 submit : 폼 데이터를 서버로 제출할 때 사용 (button 태그의 default / input 태그에서도 사용 가능)
+                 reset : 작성된 폼 데이터를 전부 지울 때(초기화) 사용 (input 태그에서는 사용 불가)
+                 button : 일반 버튼. 주로 클릭 후 JS 이벤트를 발생시킬 때 사용 (input 태그에서도 사용 가능)  -->
+                 
+            <!-- <input type="submit" value="제출하기"> vs <button type="submit">제출하기</button>)
+                 : input 태그는 단일 태그라서 value 속성 값으로 텍스트만 존재할 수 있음
+                   button 태그는 쌍 태그라서 button 태그 내부에 다른 요소들(ex)img 라던지 여러 요소나 다양한 타입의 데이터)을 삽입 가능
+                   따라서 input 태그보다 button 태그의 사용이 더 유연하고 유리함-->
+
+            <!-- radio에서는 name 속성값이 같아야 다수 중 하나만 선택이 가능 (그래야 그룹핑이 가능) -->
+            <div>
+                <p>성별</p>
+                <div>
+                    <label for="man">남자</label>
+                    <input id="man" type="radio" value="man" name="gender"> 
+                    <label for="woman">여자</label>
+                    <input id="woman" type="radio" value="woman" name="gender">
+                </div>
+            </div>
+
+            <div>
+                <p>취미</p>
+                <div>
+                    <label for="hobby1">헬스</label>
+                    <input type="checkbox" id="hobby1" name="hobby" value="health">
+                </div>
+                <div>
+                    <label for="hobby2">요가</label>
+                    <input type="checkbox" id="hobby2" name="hobby" value="yoga">
+                </div>
+                <div>
+                    <label for="hobby3">필라테스</label>
+                    <input type="checkbox" id="hobby3" name="hobby" value="pila">
+                </div>
+                <div>
+                    <label for="hobby4">수영</label>
+                    <input type="checkbox" id="hobby4" name="hobby" value="swimming">
+                </div>
+            </div>
+
+            <!-- <select> 드롭다운 형식으로 리스트를 보여줌
+                 selected는 기본 선택 값을 지정할 때 사용 -->
+            <div>
+                <label for="select">과일</label>
+                <select id="select" name="fruit">
+                    <option value="apple">사과</option>
+                    <option value="banana">바나나</option>
+                    <option value="cherry" selected>체리</option>
+                </select>
+            </div>
+
+            <!-- input의 list 속성 : 어떤 datalist 태그와 연결될 지 지정함, datalist의 id값을 list 속성 값으로 지정
+                 select와 달리 사용자가 검색을 할 수도 있고,(따라서 option 태그에 값을 주지 않음) 목록 확인도 가능 -->
+            <div>
+                <label for="color">컬러</label>
+                <input list="color-list" id="color">
+                <datalist id="color-list">
+                    <option value="yellow"></option>
+                    <option value="red"></option>
+                    <option value="orange"></option>
+                    <option value="black"></option>
+                    <option value="blue"></option>
+                </datalist>
+            </div>
+
+            <div>
+                <label for="textarea">자기소개</label>
+                <textarea id="textarea" cols="30" rows="10"></textarea>
+            </div>
+
+            <!-- multiple : 여러 파일을 동시에 선택 가능해집니다 (Ctrl 또는 Shift 키를 누른 채 선택) -->
+            <div>
+                <label for="file">파일</label>
+                <input id="file" type="file" multiple>
+            </div>
+
+            <!-- 날짜 관련 속성은 mix/max 속성을 사용해서 최솟값과 최대값을 지정할 수 있음 -->
+            <fieldset>
+                <legend>날짜관련</legend>
+                <div>
+                    <label for="date">날짜</label>
+                    <input type="date" id="date" min="2025-01-01" max="2025-12-31">
+                </div>
+                
+                <div> 
+                    <label for="time">시간</label>
+                    <input type="time" id="time" min="16:00" max="20:00">
+                </div>
+
+                <div>
+                    <label for="week">주</label>
+                    <input type="week" id="week">
+                </div>
+
+                <div>
+                    <lable for="month">월</lable>
+                    <input type="month" id="month">
+                </div>
+            </fieldset>
+            <input type="submit" value="제출하기"><br>
+            <button type="submit">제출하기</button></br>
+            <button type="reset">취소하기</button><br>
+            <button type="button" onClick="alert('버튼이 클릭됨')">버튼</button> 
+            
+        </fieldset>
+    </form>
+
+        
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 오디오 태그 -->
+    <audio src="./source/audio(1).mp3" controls></audio>
+
+    <!-- <source> 태그 사용 시, 브라우저가 가장 적절한 소스를 선택함 -->
+    <audio controls>
+        <source src = "./source/audio(1).mp3" type="audio/mp3">
+    </audio>
+
+    <!-- 비디오 태그 -->
+    <video src = "./source/video(1).mp4" width="800" controls autoplay loop muted></video>
+
+    <video controls poster="./images/dennis-yu-q5boW1rsgdI-unsplash.jpg" width="800">
+        <source src = "./source/video(1).mp4" type="video/mp4">
+    </video>
+
+    <h2>오디오와 비디오 태그 속성</h2>
+    <ul>
+        <li>controls : 재생 컨트롤 패널 표시</li>
+        <li>autoplay : 자동 재생</li>
+        <li>loop : 무한 반복</li>
+        <li>muted : 음소거</li>
+        <li>preload : 재생 전에 미리 로드 여부</li>
+        <li>poster : 비디오 태그에만 있는 속성으로 동영상 재생 전 이미지 표시, 재생 시 사라짐</li>
+    </ul>
+</body>
+</html>
