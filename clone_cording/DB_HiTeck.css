@@ -1,0 +1,1335 @@
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* css는 구체적인 선택자가 나중에 선택한 것보다 우선순위가 더 높음
+   따라서 a > b로 b에 어떤 속성을 먼저 주고, b로 속성을 나중에 해제하려고 하면 해제가 안될 수도 있음  */
+
+:root {
+    --green-color: #00844a;
+    --white-color: #fff;
+    --black-color: #1c1c1c;
+    --gray-color: #666;
+    --light-gray-color: rgb(221, 221, 221);
+}
+
+/* common 영역 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pretendard';
+}
+
+.container-big {
+    width: 100%;
+    max-width: 1820px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.container-small {
+    width: 78.78%;
+    margin: 0 auto;
+}
+
+/* flex-item은 기본적으로 flex-container의 너비를 가득 채우는 align-self: stretch;가 적용되어 인라인 요소라도 content보다 더 너비가 커질 수 있음.
+따라서 align-self: flex-start;를 지정하여 stretch 되는 것을 막거나 width를 별도로 지정해야 함. */
+a {
+    text-decoration: none;
+    width: fit-content;
+    display: inline-block;
+    color: var(--white-color);
+}
+
+.link-btn {
+    border: 0.8px solid var(--white-color);
+    font-size: 20px;
+    padding: 11.25px 31.25px;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: -0.4px;
+    border-radius: 7.5px;
+}
+
+.big-title {
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 77.5px;
+    letter-spacing: -1.2px;
+}
+
+.small-title {
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: -0.8px;
+    line-height: 60px;
+}
+
+.bg {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/* background-size 속성을 0%에서 hover 시에 100%로 커지도록 지정하여 그라데이션 효과를 적용 */
+.more-btn {
+    width: 150px;
+    height: 54.1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, var(--green-color) 0%, var(--green-color) 100%);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    background-position: left;
+    transition: 0.3s background-size ease-in-out;
+}
+
+.more-btn:hover {
+    background-size: 100% 100%;
+    border-color: var(--green-color);
+}
+
+video {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+
+    /* object-fit: 미디어 콘텐츠가 부모 요소의 크기에 맞춰 어떻게 크기 조절을 하고, 잘릴지를 결정함.
+    cover는 backgroud-size: cover와 동일함 */
+    object-fit: cover;
+
+    /* 영상이 배경처럼 깔리고 그 위에 텍스트 등이 올라가야 하므로 텍스트에는 z-index를 1로 설정, 영상에는 -1을 설정 */
+    z-index: -1;
+}
+
+li {
+    list-style-type: none;
+}
+
+/* hero-sec 영역 */
+.hero-sec {
+    height: 978px;
+    padding: 0 50px;
+    margin-bottom: 100px;
+    color: var(--white-color);
+}
+
+.hero-sec-container {
+    position: relative;
+}
+
+.hero-sec-content {
+    margin-left: 100px;
+    z-index: 1;
+}
+
+.hero-sec-content-01 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-sec-h2 {
+    margin-bottom: 50px;
+    margin-top: 400px;
+}
+
+.hero-sec-btn {
+    cursor: pointer;
+}
+
+
+.hero-sec-btn-02 {
+    padding: 24px 30px;
+    display: flex;
+    align-items: center;
+    background-color: var(--green-color);
+    border: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    position: absolute;
+    bottom: 0;
+    transition: 0.3s all ease-in-out;
+}
+
+.hero-sec-btn-02 p {
+    margin-right: 7.5px;
+    font-weight: 500;
+}
+
+.hero-sec-btn-02 i {
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    transition: 1.1s all ease-in-out;
+}
+
+.hero-sec-btn-02:hover i {
+    animation-name: hero-sec-btn-02-i-animation;
+    animation-duration: 1.1s;
+    animation-iteration-count: infinite;
+}
+
+
+/* service-sec 영역*/
+.service-sec {
+    width: 100%;
+    height: fit-content;
+    padding: 0 50px;
+    display: flex;
+    gap: 25px;
+    position: relative;
+    color: var(--white-color);
+}
+
+.service-sec-container {
+    display: flex;
+    gap: 1.37%;
+    margin-bottom: 25px;
+}
+
+.service-card {
+    border-radius: 15px;
+}
+
+.service-card-01 {
+    width: 59.48%;
+    height: 100%;
+    padding: 100px;
+    background-image: url("https://www.dbhitek.com/resources/kr/images/main/bg_technology.jpg");
+}
+
+.service-card-01 .card-title a,
+.service-card-01 .card-tab {
+    display: flex;
+    align-items: center;
+}
+
+.service-card-01 .card-title i {
+    width: 42.5px;
+    height: 42.5px;
+    padding: 5px;
+    transition: 0.3s all ease-in-out;
+}
+
+.service-card-01 .card-title:hover i,
+.investment-info-bottom-container .item:hover i {
+    transform: translateX(10px);
+}
+
+.service-card-01 .card-desc {
+    margin-top: 25px;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 37.5px;
+    letter-spacing: -0.5px;
+}
+
+.service-sec .card-tab-container {
+    max-width: 782px;
+    display: flex;
+    /* flex-container에 flex-item이 다 들어가지 않으면, 자동으로 줄바꿈하여 flex-item을 아래로 떨어트림 */
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 25px;
+    margin-top: 125px;
+}
+
+.service-sec .card-tab {
+    padding: 1.04vw 1.3vw;
+    border-radius: 100px;
+}
+
+.service-sec .card-tab p {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    line-height: 30px;
+    padding-right: 1.82vw;
+}
+
+.service-sec .card-tab i {
+    width: 30px;
+    height: 30px;
+    padding-top: 3px;
+}
+
+.service-sec .card-container-row-02 {
+    width: calc(100% - (59.48% + 1.37%));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    /* 부모가 어떤 자식 요소의 높이를 따라가게 하고, 나머지 자식 요소는 부모 요소의 높이를 따라가게 하려면 absolute를 써서 top: 0; bottom: 0;으로 지정 */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.service-card-02 {
+    background-image: url("https://www.dbhitek.com/resources/kr/images/main/bg_network.jpg");
+}
+
+.card-container-row-02>.service-card {
+    padding: 50px;
+    height: 47%;
+}
+
+.card-container-row-02 p {
+    margin-top: 10px;
+    font-size: 22.5px;
+    font-weight: 500;
+    letter-spacing: -0.45px;
+    line-height: 33.75px;
+}
+
+.service-card-03 {
+    position: relative;
+}
+
+.service-card-03 .content {
+    z-index: 1;
+}
+
+
+/* loop-sec 영역 */
+.loop-sec {
+    width: 100%;
+    height: 187.5px;
+    overflow: hidden;
+    color: var(--white-color);
+}
+
+.loop-text p {
+    font-size: 125px;
+    font-weight: 700;
+    letter-spacing: -2.5px;
+    line-height: 187.5px;
+    color: rgb(232, 238, 244);
+}
+
+
+/* investment-sec 영역 */
+.investment-info-sec {
+    padding: 7.8vw 0;
+    color: var(--black-color);
+    position: relative;
+}
+
+.investment-info-sec video {
+    border-radius: 0;
+}
+
+.investment-info-sec-container {
+    z-index: 1;
+}
+
+.investment-info-sec a {
+    color: var(--black-color);
+    height: fit-content;
+}
+
+.investment-info-top-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.investment-info-top-container .link-btn {
+    border-color: var(--gray-color);
+}
+
+.investment-container-column-02 {
+    display: flex;
+    justify-content: space-between;
+    height: 525px;
+}
+
+.investment-contents-container {
+    background-color: var(--white-color);
+    border-radius: 15px;
+}
+
+.investment-info-middle-container {
+    display: flex;
+}
+
+.investment-info-middle-container .investment-card {
+    width: 25.88vw;
+    padding: 75px 50px;
+    position: relative;
+}
+
+.investment-info-middle-container a {
+    width: 100%;
+}
+
+.investment-info-middle-container .title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.investment-info-middle-container i {
+    width: 30px;
+    height: 30px;
+    padding-top: 15px;
+}
+
+.investment-info-middle-container p {
+    color: var(--gray-color);
+    font-size: 22.5px;
+    font-weight: 500;
+    letter-spacing: -0.32px;
+    line-height: 24px;
+}
+
+.investment-info-middle-container .investment-card-01 {
+    border-right: 0.8px solid var(--light-gray-color);
+}
+
+.investment-card .icon {
+    width: 7.81vw;
+    height: 7.81vw;
+    position: absolute;
+
+    /* position: absolute;는 기준 요소의 패딩을 고려하지 않고, 무조건 border를 기준으로 하기 때문에 콘텐츠 영역에 배치하고 싶다면 기준 요소의 padding 이상의 값을 지정해야 함. */
+    bottom: 50px;
+    right: 50px;
+}
+
+.investment-info-bottom-container {
+    padding: 75px 50px;
+    width: 24.74vw;
+}
+
+.investment-info-bottom-container .item {
+    height: 33.3%;
+}
+
+.investment-info-bottom-container .item a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.investment-info-bottom-container .item:not(:last-child) {
+    border-bottom: 0.8px solid var(--light-gray-color);
+}
+
+.investment-info-bottom-container .item p {
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    line-height: 37.5px;
+}
+
+.investment-info-bottom-container i {
+    color: var(--gray-color);
+    transition: 0.3s all ease-in-out
+}
+
+
+/* goal-sec 영역 */
+.goal-sec {
+    height: 1014px;
+    background-image: url("https://www.dbhitek.com/resources/kr/images/main/bg_esg_1.jpg");
+    color: var(--white-color);
+    display: flex;
+}
+
+.goal-sec-accordion {
+    height: 100%;
+}
+
+.goal-sec-accordion:not(:last-child) {
+    border-right: 0.8px solid var(--white-color);
+}
+
+.goal-sec-accordion-01 {
+    width: 84vw;
+    padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.goal-sec-accordion-02,
+.goal-sec-accordion-03 {
+    width: 8vw;
+    padding: 9.11vw 2.47vw;
+    position: relative;
+}
+
+.goal-sec-accordion-01-content {
+    width: 57.55vw;
+    margin: 0 auto;
+}
+
+.goal-sec-accordion .big-title {
+    margin-bottom: 50px;
+}
+
+.goal-sec-accordion-01 .goal-sec-card {
+    padding: 42.5px 50px;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(12.5px);
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 15px 15px 25px 0px;
+}
+
+
+.goal-sec-accordion-01 .goal-sec-card .card-row-01 {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 31.5px;
+    border-bottom: 0.8px solid var(--white-color);
+}
+
+.goal-sec-accordion-01 .goal-sec-card .card-row-01-text-wrap {
+    display: flex;
+    gap: 50px;
+}
+
+.goal-sec-accordion-01 .goal-sec-card .text {
+    font-size: 1.17vw;
+    font-weight: 600;
+    letter-spacing: -0.45px;
+    line-height: 33.75px;
+    display: flex;
+    align-items: center;
+}
+
+.goal-sec-card .card-row-02 {
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+.goal-sec-card .card-row-02 .item .text {
+    width: fit-content;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.goal-sec-card .card-row-02 .item {
+    width: 33.3%;
+}
+
+.goal-sec-card .card-row-02 .item:not(:last-child) {
+    border-right: 0.8px solid var(--white-color);
+}
+
+.goal-sec-card .card-row-02 .symbol {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16.25px;
+}
+
+.goal-sec-card .card-row-02 i {
+    width: 30px;
+    height: 112.5px;
+    padding-top: 15px;
+}
+
+.goal-sec-card .card-row-02 p {
+    font-size: 112.5px;
+    font-weight: 700;
+    letter-spacing: -2.25px;
+    line-height: 112.5px;
+    height: 112.5px;
+}
+
+.goal-sec-card .card-row-02 span {
+    font-size: 35px;
+}
+
+.goal-sec-card .card-row-02 .item-03 img {
+    width: 180px;
+    height: 150px;
+}
+
+.goal-sec-accordion .drop-text {
+    transform: rotate(180deg);
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.7);
+    writing-mode: vertical-lr;
+    position: absolute;
+    bottom: 9.11vw;
+}
+
+.goal-sec-accordion .card-row-01-text-wrap br {
+    display: none;
+}
+
+/* media-sec 영역 */
+.media-sec {
+    width: 100%;
+    padding: 150px 8.66vw;
+}
+
+.media-sec * {
+    color: var(--black-color);
+}
+
+.media-sec .more-btn {
+    border-color: rgb(28, 28, 28);
+}
+
+.media-sec-top-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.media-sec-bottom-container ul {
+    display: flex;
+    height: 26.88vw;
+    gap: 2%;
+}
+
+.media-sec-bottom-container li {
+    width: 32%;
+    height: fit-content;
+    background-color: #f2f2f2;
+    padding: 80px 50px 50px;
+}
+
+.media-sec-bottom-container li .title {
+    color: #1c1c1c;
+    width: 19.51vw;
+    height: 90px;
+    padding-right: 50px;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.6px;
+    line-height: 45px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 45px;
+}
+
+.media-sec-bottom-container li .desc {
+    width: 19.51vw;
+    height: 168.75px;
+    color: #434343;
+    font-size: 22.5px;
+    font-weight: 500;
+    letter-spacing: -0.45px;
+    line-height: 33.75px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 45px;
+}
+
+.media-sec-bottom-container li .date {
+    color: var(--gray-color);
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.4px;
+    line-height: 25px;
+}
+
+/* footer 영역 */
+footer {
+    background-color: rgb(28, 28, 28);
+}
+
+.footer-container-01 {
+    padding: 100px 50px;
+}
+
+.footer-container-01-contents{
+    padding: 0 12.5px;
+    margin: 0 153.734px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-depth {
+    width: fit-content;
+}
+
+/* 첫번째와 마지막 자식 요소를 제외하고 적용 */
+.footer-depth:not(:last-child) {
+    margin-right: auto;
+}
+
+.depth-list-title {
+    font-size: 22.5px;
+    font-weight: 500;
+    letter-spacing: -0.45px;
+    line-height: 33.75px;
+    margin-bottom: 60px;
+}
+
+.depth-list a {
+    width: fit-content;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: -0.4px;
+    padding: 7.5px 0;
+}
+
+/* a 태그에는 직접 스타일을 넣어줘야 함 */
+.depth-list a {
+    color: #888;
+}
+
+.small-depth li {
+    padding: 2.5px 0;
+}
+
+.small-depth a {
+    font-size: 17.5px;
+    letter-spacing: -0.35px;
+    line-height: 26.25px;
+}
+
+/* list-style-type에는 하이픈이 없기 때문에 ::befor를 통해서 삽입 */
+.small-depth li::before {
+    content:"-";
+    color: #888;
+    padding-right: 15px;
+
+}
+
+@keyframes hero-sec-btn-02-i-animation {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    20% {
+        transform: translateX(4px);
+        opacity: 0.2;
+    }
+
+    40% {
+        transform: translateX(4px);
+        opacity: 0.1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    60% {
+        transform: translateX(-16px);
+        opacity: 0.1;
+    }
+
+    80% {
+        transform: translateX(4px);
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: translateX(4px);
+        opacity: 1;
+    }
+}
+
+/* break point */
+@media (max-width: 1024px) {
+
+    /* common-sec 영역 */
+    .link-btn {
+        padding: 8px;
+        /* 보더의 굵기를 지정 */
+        border-width: 0.8px;
+        font-size: 12px;
+    }
+
+    .more-btn {
+        width: 80px;
+        height: 35.6px;
+    }
+
+    .big-title {
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 46px;
+        letter-spacing: -0.72px;
+    }
+
+    .small-title {
+        font-size: 26px;
+        font-weight: 600;
+        letter-spacing: -0.52px;
+        line-height: 39px;
+    }
+
+    /* hero-sec 영역 */
+    .hero-sec {
+        height: 644px;
+        padding: 0 40px;
+        margin-bottom: 64px;
+    }
+
+    .hero-sec-container {
+        border-radius: 15px;
+    }
+
+    .hero-sec-content {
+        margin-left: 40px;
+    }
+
+    .hero-sec h2 {
+        margin-bottom: 32px;
+    }
+
+    .hero-sec-btn-02 {
+        padding: 19px 16px;
+    }
+
+    .hero-sec-btn-02 p {
+        font-size: 18px;
+    }
+
+    .hero-sec-btn-02 i {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* service-sec 영역 */
+    .service-sec {
+        padding: 0 40px;
+        height: fit-content;
+    }
+
+    .service-sec-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 16px;
+    }
+
+    .service-card-01 {
+        width: 100%;
+        padding: 40px;
+
+    }
+
+    .service-card-01 .card-title i {
+        width: 34px;
+        height: 34px;
+    }
+
+    .service-card-01 .card-desc {
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: -0.36px;
+        line-height: 27px;
+    }
+
+    .service-sec .card-tab-container {
+        row-gap: 20px;
+        column-gap: 8px;
+        margin-top: 70px;
+    }
+
+    .service-card-01 .card-tab {
+        padding: 1.04vw 1.3vw;
+    }
+
+    .service-card-01 .card-tab p {
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: -0.32px;
+        line-height: 24px;
+        padding-right: 25px;
+    }
+
+    .service-card-01 .card-tab i {
+        width: 24px;
+        height: 24px;
+    }
+
+    .service-sec .card-container-row-02 {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 20px;
+        position: static;
+    }
+
+    .card-container-row-02 .service-card {
+        width: 49%;
+        height: 180px;
+        padding: 20px;
+    }
+
+    .card-container-row-02 p {
+        margin-top: 6px;
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: -0.32px;
+        line-height: 24px;
+    }
+
+    /* loop-sec 영역 */
+    .loop-sec {
+        height: 120px;
+    }
+
+    .loop-text p {
+        font-size: 80px;
+        font-weight: 700;
+        letter-spacing: -1.6px;
+        line-height: 120px;
+    }
+
+
+    /* investment-sec 영역 */
+    .investment-info-sec {
+        padding: 80px 40px;
+    }
+
+    .investment-container-column-02 {
+        height: 427.8px;
+        display: flex;
+        flex-direction: column;
+
+        /* 위에 적용된 space-between을 거 */
+        justify-content: flex-start;
+    }
+
+    .investment-info-middle-container {
+        width: 100%;
+        height: 320px;
+        margin-bottom: 32px;
+    }
+
+    .investment-info-middle-container .investment-card {
+        width: 50%;
+        height: 100%;
+        padding: 60px 40px;
+    }
+
+    .investment-info-middle-container .title {
+        margin-bottom: 12px;
+    }
+
+    .investment-info-middle-container i {
+        width: 24px;
+        height: 24px;
+    }
+
+    .investment-info-middle-container p {
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: -0.32px;
+        line-height: 24px;
+    }
+
+    .investment-info-middle-container .icon {
+        width: 80px;
+        height: 80px;
+        right: 40px;
+        bottom: 60px;
+    }
+
+    .investment-info-bottom-container {
+        width: 100%;
+        height: 67px;
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+    }
+
+    .investment-info-bottom-container .item {
+        width: 33.3%;
+        height: 100%;
+        padding: 20px 32px;
+    }
+
+    .investment-info-bottom-container .item:not(:last-child) {
+        border-bottom: 0;
+        border-right: 0.8px solid var(--light-gray-color)
+    }
+
+    .investment-info-bottom-container .item p {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: -0.36px;
+        line-height: 27px;
+    }
+
+    .investment-info-bottom-container .item i {
+        width: 24px;
+        height: 24px;
+        padding-top: 6px;
+    }
+
+
+    /* goal-sec 영역 */
+    .goal-sec {
+        height: 668px;
+        padding: 80px 40px 112px;
+    }
+
+    .goal-sec .big-title {
+        margin-bottom: 30px;
+    }
+
+    .goal-sec-accordion:not(:last-child) {
+        border: none;
+    }
+
+    .goal-sec-accordion-01 {
+        width: 100%;
+        padding: 0;
+    }
+
+    .goal-sec-accordion-02,
+    .goal-sec-accordion-03 {
+        display: none;
+    }
+
+    .goal-sec-accordion-01-content {
+        width: 100%;
+    }
+
+    .goal-sec-accordion-01 .goal-sec-card {
+        padding: 34px 40px;
+    }
+
+    .goal-sec-accordion-01-content {
+        margin: 0;
+    }
+
+    .goal-sec-accordion-01 .goal-sec-card .card-row-01 {
+        align-items: center;
+        padding-bottom: 24px;
+    }
+
+    .goal-sec-accordion-01 .goal-sec-card .card-row-01-text-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .goal-sec-card .card-row-01 .text {
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: -0.32px;
+        line-height: 24px;
+    }
+
+    .goal-sec-card .card-row-02 {
+        margin: 24px 0 48px;
+    }
+
+    .goal-sec-card .card-row-02 p {
+        font-size: 48px;
+        font-weight: 700;
+        letter-spacing: -0.96px;
+        line-height: 48px;
+        height: 48px;
+    }
+
+    .goal-sec-card .card-row-02 span {
+        font-size: 24px;
+    }
+
+
+    .goal-sec-card .card-row-02 i {
+        width: 10px;
+        height: 48px;
+        padding-top: 5px;
+        margin-right: 12px;
+    }
+
+    .goal-sec-card .card-row-02 .item-03 img {
+        width: 90px;
+        height: 75px;
+    }
+
+    .goal-sec-accordion-01 .goal-sec-card .text {
+        font-size: 16px;
+        letter-spacing: -0.32px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+    }
+
+    .goal-sec-card .card-row-02 .symbol {
+        height: 75px;
+        margin-bottom: 16px;
+    }
+
+    /* media-sec 영역 */
+
+    /* 자식 요소의 높이가 명확히 설정이 되어있어야 부모 요소의 높이를 지정하지 않아도 부모 요소의 높이가 자식 요소를 포함하게 자동으로 조절됨
+    (단, 자식 요소가 absolute나 float로 설정된 경우는 자동 조절이 불가함) */
+    .media-sec {
+        padding: 80px 40px 160px;
+    }
+
+    .media-sec-bottom-container ul {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        height: fit-content;
+    }
+
+    .media-sec-bottom-container li {
+        width: 100%;
+        padding: 48px 32px;
+    }
+
+    .media-sec-bottom-container li .title {
+        width: 100%;
+        height: 30px;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: -0.4px;
+        line-height: 30px;
+        margin-bottom: 10px;
+    }
+
+    .media-sec-bottom-container li .desc {
+        width: 100%;
+        height: 48px;
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: -0.32px;
+        line-height: 24px;
+        margin-bottom: 12px;
+    }
+
+    .media-sec-bottom-container li .date {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 14px;
+        letter-spacing: -0.28px;
+    }
+
+}
+
+/* 모바일 */
+@media (max-width: 766px) {
+
+    /* common-sec 영역*/
+    .container-small {
+        width: 100%;
+        height: fit-content;
+    }
+
+    /* hero-sec 영역*/
+    .hero-sec {
+        padding: 0 12px;
+        height: 702px;
+    }
+
+    .hero-sec-content {
+        margin-left: 20px;
+    }
+
+    .hero-sec-btn-02 p {
+        font-size: 16px;
+    }
+
+    /* service-sec 영역 */
+    .service-sec {
+        padding: 0 12px;
+        height: fit-content;
+    }
+
+    .service-sec-container {
+        column-gap: 0;
+        row-gap: 0;
+    }
+
+    /* 강제 줄바꿈 없애기 */
+    .service-card br {
+        display: none;
+    }
+
+    .service-card-01 {
+        padding: 40px 20px;
+        height: fit-content;
+    }
+
+    .service-card-01 .card-desc {
+        margin-top: 16px;
+    }
+
+    .service-card-01 .card-tab-container {
+        row-gap: 8px;
+    }
+
+    .service-sec .card-container-row-02 {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+    }
+
+    .card-container-row-02 .service-card {
+        width: 100%;
+        margin-top: 8px;
+        padding: 20px;
+    }
+
+    .card-container-row-02 a {
+        height: 180px;
+    }
+
+
+    /* loop-sec 영역 */
+    .loop-sec {
+        height: 80px;
+        margin-bottom: 16px;
+    }
+
+    .loop-text,
+    .loop-text p {
+        height: 100%;
+    }
+
+
+    /* investmemt-info-sec 영역 */
+    .investment-info-sec {
+        padding: 80px 12px
+    }
+
+    .investment-container-column-02 {
+        height: fit-content;
+    }
+
+    .investment-info-middle-container,
+    .investment-info-bottom-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .investment-info-middle-container {
+        margin-bottom: 20px;
+    }
+
+    .investment-info-middle-container .investment-card {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .investment-info-middle-container .investment-card p {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: -0.32px;
+        margin-top: 12px
+    }
+
+    .investment-info-middle-container .icon {
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .investment-info-middle-container .investment-card-01 {
+        border-right: none;
+        border-bottom: 0.8px solid var(--light-gray-color);
+    }
+
+    .investment-info-bottom-container {
+        height: fit-content;
+    }
+
+    .investment-info-bottom-container .item {
+        width: 100%;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: -0.36px;
+        line-height: 27px;
+        padding: 20px;
+    }
+
+    .investment-info-bottom-container i {
+        width: 24px;
+        height: 24px;
+
+    }
+
+    /* goal-sec 영역 */
+    .goal-sec {
+        height: fit-content;
+        padding: 80px 12px 112px;
+    }
+
+    .goal-sec-accordion-01 .goal-sec-card {
+        padding: 20px;
+    }
+
+    .goal-sec-accordion-01 .goal-sec-card .card-row-01 {
+        display: flex;
+        flex-direction: column;
+
+        /* flex-start는 align-items나 align-self에서 많이 사용되는 속성 값으로 교차축 방향으로 아이템을 컨테이너 시작선에 맞춰 정렬할 때 사용 */
+        align-items: flex-start;
+        gap: 12px;
+        padding-bottom: 24px;
+    }
+
+    .goal-sec-card .card-row-02 {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .goal-sec-card .card-row-02 .item:not(:last-child) {
+        border-right: none;
+        border-bottom: 0.8px solid var(--white-color);
+    }
+
+    .goal-sec-card .card-row-02 .item {
+        width: 100%;
+        display: flex;
+        padding: 20px 0;
+    }
+
+    .goal-sec-card .card-row-02 .symbol {
+        width: 280px;
+        margin-bottom: 0;
+        margin-right: 28.075px;
+    }
+
+    .goal-sec-accordion-01 .goal-sec-card .item .text {
+        padding-left: 14.037px;
+        line-height: 24px;
+        text-align: left;
+        margin-left: 0;
+    }
+
+    /* 인라인 요소를 숨겼다가 다시 등장시키기 위해서는 display: inline;으로 설정 */
+    .goal-sec-accordion .card-row-01-text-wrap br {
+        display: inline;
+    }
+}

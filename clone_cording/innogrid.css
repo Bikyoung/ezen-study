@@ -1,0 +1,415 @@
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Black.woff') format('woff');
+    font-weight: 900;
+    font-display: swap;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pretendard';
+}
+
+a {
+    text-decoration: none;
+    color: rgb(42, 42, 42);
+}
+
+.btn {
+    width: fit-content;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 36px;
+    padding: 10px 22px;
+    border: 1px solid rgb(238, 238, 238);
+    margin-top: 40px;
+}
+
+.btn p{
+    font-size: 16px;
+}
+
+.btn i {
+    width: 24px; 
+    height: 24px;
+    padding-top: 3.5px;
+}
+
+.card {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    height: 100%;
+    padding: 40px;
+}
+
+.card-total-container {
+    margin: 100px 95px;
+    height: 900px;
+    display: flex;
+    gap: 20px;
+}
+
+.card .top-content p {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.gray-text {
+    color: #2a2a2a;
+}
+
+/* transition이 반드시 transform과 쓰이는 것은 아님.
+   단지 css 속성 값이 변할 때 부드럽게 변하게 해주는 효과 
+   transition: [속성] [지속시간] [타이밍함수] [지연시간];*/
+
+/* :not()안에서는 복잡한 선택자를 사용할 수 없음 */
+
+/* position: absolute와 transform: translate()는 서로 독립적이라서 함께 사용 가능함
+absolute로 초기 위치를 잡고, 해당 위치를 기준으로 translate()를 통해 추가 이동 */
+
+.card .bottom-content {
+    position: absolute;
+    bottom: 40px;
+    margin-top: 145px;
+}
+
+.card .bottom-content .desc{
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 30.8px;
+}
+
+/* css는 cascade이므로 자식->부모 즉 역방향으로 스타일을 바꿀 수 없음
+ex) 자식 요소가 hover시, 부모 요소에 변화를 줄 수 없음 */
+
+/* 해당 요소에 하위 bottom-content를 의미함 */
+.card:not(.card-03) .bottom-content {
+    transform: translateY(86px);
+    transition: 0.3s transform ease-in-out;
+}
+
+/* transform: translate(0); : 원 위치로 이동 */
+.card:not(.card-03):hover .bottom-content {
+    transform: translateY(0);
+}
+
+.card-left-container {
+    width: calc((100% - 20px) / 4);
+    transition: width 0.3s ease-in-out;
+}
+
+/* calc()에서 모든 연산은 소괄호 내에서만 가능 */
+.card-left-container:hover {
+    width: calc(((100% - 20px) / 4) + 100px);
+}
+
+.card-01 {
+    width: 100%;
+    color: #fff;
+    background-image: url("https://www.innogrid.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fbg_info.902b389d.png&w=3840&q=100");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.card-01 .top-content .title {
+    font-size: 70px;
+    font-weight: 500;
+    line-height: 77px;
+}
+
+.card-01 .top-content .desc {
+    width: 100%;
+}
+
+.card-right-container {
+    width: calc((100% - 20px) * 3 / 4 );
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card-right-container .card {
+    height: calc((100% - 20px) / 2);
+}
+
+.wide-card {
+    width: calc((100% - 20px) * 2 / 3);
+}
+
+.card-right-container .top-content .title {
+    font-size: 52px;
+    font-weight: 500;
+    line-height: 110px;
+}
+
+.card-right-container .title{
+    font-size: 100px;
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+.card-right-container .card {
+    position: relative;
+}
+
+.card-02 {
+    background-color: #0042ff;
+    color: #fff;
+    transition: 0.3s flex ease-in-out
+}
+
+/* 어떤 요소에 hover 효과로 다양한 요소들에 다른 속성들을 변하게 하고 싶다면 하나로 묶을 수 없음
+만이 다양한 요소이지만 공통의 속성을 변하게 한다면 하나로 묶기 가능 */
+
+.card-02:hover {
+    background-color: #003be2;
+}
+
+.card-02 img {
+    position: absolute;
+    top: 0;
+    right: 70px;
+    width: 384px;
+    height: 326px;
+    transition: 0.3s right ease-in-out;
+}
+
+.card-02:hover img {
+    right: 40px;
+}
+
+.card-03 img {
+    position: absolute;
+    width: 250px;
+    height: 288px;
+    bottom: -30px;
+    right: 0; 
+    transition: 0.3s all ease-in-out;
+}
+
+.card-03:hover img {
+    transform: translateY(-30px);
+}
+
+.card-03 .bottom-content .desc {
+    margin-bottom: 0;
+}
+
+.small-card {
+    background-color: #f1f3f8;
+    width: calc((100% - 20px) / 3);
+    transition: width 0.3s ease-in-out;
+}
+
+.wide-card {
+    flex: 1 1 calc((100% - 20px) * 2 / 3);
+}
+
+/* css로 형제 요소를 선택할 시, 
++ (인접 형제) → 바로 뒤쪽 형제만 선택 가능
+~ (일반 형제) → 뒤쪽 모든 형제 선택 가능 
+단, CSS에서 이전 형제 요소는 절대 선택 불가
+*/
+/* .card-03:hover {
+    width: calc(((100% - 20px) / 3) + 100px);
+}
+
+.card-04:hover {
+    width: calc(((100% - 20px) / 3) + 100px);
+} */
+
+.card-05 {
+    background-color: #c9e7ff;
+    position: relative;
+    transition: 0.3s flex ease-in-out;
+}
+
+.card-05 img {
+    position: absolute;
+    bottom: -30px;
+    right: 60px;
+    width: 384px;
+    height: 326px;
+    transition: all 0.3s ease-in-out;
+}
+
+.card-05:hover {
+    background-color: #a6d7ff;
+}
+
+.card-05:hover img {
+    transform: translateY(-30px);
+    
+}
+
+
+/* break-point */
+@media (max-width: 1680px) {
+    .card-total-container {
+        height: 800px;
+    }
+
+    .card-02 img {
+        width: 336px;
+        height: 285px;
+    }
+
+    .card-03 img {
+        width: 218px;
+        height: 252px;
+    }
+
+    .card-05 img {
+        width: 336px;
+        height: 285px;
+    }
+
+    .card .bottom-content {
+        margin-top: 95px;
+    }
+    
+}
+
+@media (max-width: 1024px) {
+    .card-total-container {
+        margin: 56px 20px;
+    }
+
+    .card .top-content p {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .card-01 .top-content .title{
+        font-size: 40px;
+        font-weight: 500;
+        line-height: 44px;
+    }
+
+    .card-right-container .top-content .title {
+        font-size: 52px;
+        font-weight: 500;
+        line-height: 57.2px;
+    }
+
+    .card-right-container .top-content .title {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 16.8px;
+    }
+
+    .card-total-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-left-container {
+        width: 100%;
+    }
+
+    .card-right-container {
+        width: 100%;
+    }
+
+    .card {
+        width: 100%;
+        padding: 26px 20px;
+    }
+
+    .card .btn {
+        display: none;
+    }
+
+    .card {
+        position: relative;
+    }
+
+    /* 구체적인 선택자는 나중에 명시된 선택자보다 우선순위가 더 높음 */
+    .card:not(.card-03) .bottom-content {
+        margin-top: 0;
+        transform: translateY(0);
+        bottom: 26px;        
+    }
+
+    .card-01 {
+        height: 310px;
+    }
+
+    .card:not(.card-01) {
+        height: 180px;
+    }
+
+    .card .bottom-content .desc {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .card-02 img, .card-05 img {
+        width: 150px;
+        height: 128px;
+        right: 40px;
+    }
+
+    .card-03, .card-04 {
+        width: calc((100% - 20px) / 2);
+    }
+
+    .card-03 img {
+        display: none;
+    }
+
+    .card-05 img {
+        bottom: 0px;
+    }
+
+    .card-right-container .top-content .title {
+        font-size: 52px;
+        line-height: 57.2px;
+    }
+}
+
