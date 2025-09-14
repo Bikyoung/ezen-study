@@ -135,31 +135,29 @@ a {
     align-items: center;
 }
 
-.recommend-tab-container {
+.tab-container {
     display: flex;
     gap: 2.625rem;
     margin-top: 3.75rem;
 }
 
-.recommend-tab-container * {
+.tab-container .btn {
     font-size: 1.625rem;
     font-weight: 500;
     color: var(--gray-color);
-}
-
-.recommend-tab-container button {
     background-color: transparent;
     border: 0;
+    /* 의사 요소는 본래 요소의 자식처럼 동작 */
     position: relative;
 }
 
 /* 탭 ui 안에 구분자 삽입 */
-.recommend-tab-container button:not(:last-child)::after {
+.tab-container .btn:not(:last-child)::after {
     content: "";
     /* 의사 요소는 기본적으로 display: inlne;이므로 높이나 너비, 여백들이 잘 적용되지 않기 때문에 inline-block;으로 지정  */
     display: inline-block;
     width: 0.125rem;
-    height: 2.0625rem;
+    height: 100%;
     background-color: var(--gray-color);
     position: absolute;
     right: -1.375rem;
