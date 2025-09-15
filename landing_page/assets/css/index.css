@@ -110,10 +110,11 @@ html {
 * {
     box-sizing: border-box;
     font-family: 'Pretendard';
+    outline: 1px solid red;
 }
 
 section {
-    width: 100vw;
+    width: 100%;
 }
 
 .container {
@@ -147,7 +148,9 @@ a {
 .hero-container {
     display: flex;
     justify-content: space-between;
-    padding: 120px 80px;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    /* padding: 120px 80px; */
 }
 
 .text-container {
@@ -233,6 +236,10 @@ a {
     right: -2.1rem;
 }
 
+.card-container {
+    display: flex;
+}
+
 .recommend-card {
     display: flex;
     flex-direction: column;
@@ -266,14 +273,14 @@ a {
 
 /* option-container */
 .recommend-card .option-container {
-    width: 250px;
+    width: 220px;
     display: flex;
     flex-direction: column;
     margin-top: 3rem;
 }
 
 .recommend-card .option {
-    height: 40px;
+    height: 45px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -290,6 +297,12 @@ a {
     width: 130px;
     display: flex;
     gap: calc((130px - (2rem * 4)) / 3);
+}
+
+/* iphone 16은 색상 원이 5개이므로 gap을 별도로 조절 */
+.card-4 .color-circle-container {
+    width: fit-content;
+    gap: calc((140px - (2rem * 5)) / 4);
 }
 
 .color-circle {
@@ -335,6 +348,7 @@ a {
     font-size: 1.4rem;
     text-align: right;
     color: var(--light-gray-color);
+    text-decoration-color: var(--primary-color);
 }
 
 .after-cost {
@@ -344,7 +358,7 @@ a {
 }
 
 .recommend-card-cta {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 500;
     text-align: center;
     padding: 1rem 2rem;
