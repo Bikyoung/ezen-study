@@ -10,7 +10,7 @@ colorCircleArr.forEach((colorCircle) => {
 
         /* 클릭된 버튼의 카드를 선택하기 위해 closest()를 사용
            closest() : 조건에 부합하는 가장 가까운 상위 요소를 찾음 */
-        let cardElement = this.closest(".card");
+        let cardElement = this.closest(".recommend-card");
 
         // querySelector나 querySelectorAll() : 하위 요소를 선택
         let phoneImageArea = cardElement.querySelector(".phone-image-area");

@@ -1,29 +1,97 @@
 @font-face {
-    font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
     font-weight: 400;
-    font-display: swap;
+    font-style: normal;
 }
 
 @font-face {
     font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
-    font-weight: 500;
-    font-display: swap;
+    font-style: normal;
+    font-weight: 900;
+    src: local('Pretendard-Black'),
+        url("../font/Pretendard-Black.ttf") format('truetype'),
+        url("../font/Pretendard-Black.woff2") format('woff2'),
+        url("../font/Pretendard-Black.woff") format('woff');
 }
 
 @font-face {
     font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
-    font-weight: 600;
-    font-display: swap;
+    font-style: normal;
+    font-weight: 800;
+    src: local('Pretendard-ExtraBold'),
+        url("../font/Pretendard-ExtraBold.ttf") format('truetype'),
+        url("../font/Pretendard-ExtraBold.woff2") format('woff2'),
+        url("../font/Pretendard-ExtraBold.woff") format('woff');
 }
 
 @font-face {
     font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+    font-style: normal;
     font-weight: 700;
-    font-display: swap;
+    src: local('Pretendard-Bold'),
+        url("../font/Pretendard-Bold.ttf") format('truetype'),
+        url("../font/Pretendard-Bold.woff2") format('woff2') url("../font/Pretendard-Bold.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Pretendard-SemiBold'),
+        url("../font/Pretendard-SemiBold.ttf") format('truetype'),
+        url("../font/Pretendard-SemiBold.woff2") format('woff2'),
+        url("../font/Pretendard-SemiBold.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 500;
+    src: local('Pretendard-Medium'),
+        url("../font/Pretendard-Medium.ttf") format('truetype'),
+        url("../font/Pretendard-Medium.woff2") format("woff2"),
+        url("../font/Pretendard-Medium.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Pretendard-Regular'),
+        url("../font/Pretendard-Regular.ttf") format('truetype'),
+        url("../font/Pretendard-Regular.woff2") format('woff2'),
+        url("../font/Pretendard-Regular.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Pretendard-Light'),
+        url("../font/Pretendard-Light.ttf") format('truetype'),
+        url("../font/Pretendard-Light.woff2") format('woff2'),
+        url("../font/Pretendard-Light.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 200;
+    src: local('Pretendard-ExtraLight'),
+        url("../font/Pretendard-ExtraLight.ttf") format('truetype'),
+        url("../font/Pretendard-ExtraLight.woff2") format('woff2'),
+        url("../font/Pretendard-ExtraLight.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 100;
+    src: local('Pretendard-Thin'),
+        url("../font/Pretendard-Thin.ttf") format('truetype'),
+        url("../font/Pretendard-Thin.woff2") format('woff2'),
+        url("../font/Pretendard-Thin.woff") format('woff');
 }
 
 :root {
@@ -33,6 +101,11 @@
 }
 
 /* common-sec */
+html {
+    /* 16px * 62.5% = 10px이므로 아래처럼 선언하면 1rem = 10px이 됨 */
+    font-size: 62.5%;
+}
+
 * {
     box-sizing: border-box;
     font-family: 'Pretendard';
@@ -64,9 +137,9 @@ a {
 }
 
 .sec-title {
-    font-size: 2.8125rem;
+    font-size: 4.5rem;
     font-weight: 700;
-    letter-spacing: 0.09375rem;
+    letter-spacing: 0.15rem;
 }
 
 /* hero-sec */
@@ -85,35 +158,32 @@ a {
 .hero-main-title {
     color: var(--white-color);
     /* clamp()에서 중앙값을 calc((본래 px) / 화면 해상도) * 100vw)로 정하면 서로 다른 크기로 줄어들더라도 줄어드는 속도가 유사해져서 이질감이 감소함 */
-    font-size: clamp(3rem, calc((54 / 1920) * 100vw), 3.375rem);
+    font-size: 5rem;
     font-weight: 500;
     line-height: 1.2;
-    letter-spacing: 0.0125rem;
 }
 
 .hero-main-title .key-word {
-    font-size: clamp(3.625rem, calc((64 / 1920) * 100vw), 4rem);
+    font-size: 6rem;
     font-weight: 700;
 }
 
 .hero-sub-title {
     color: #E0E0E0;
-    font-size: 30px;
-    font-weight: 500;
-    letter-spacing: 0.05rem;
-    margin-top: 1.5rem;
+    font-size: 3rem;
+    font-weight: 400;
+    margin-top: 3rem;
 }
 
 .hero-cta {
     width: fit-content;
     color: var(--white-color);
-    font-size: 24px;
+    font-size: 2.4rem;
     font-weight: 700;
-    letter-spacing: 0.03125;
-    padding: 1.125rem 2.1875rem;
+    padding: 1.5rem 3rem;
     background-color: #FF5F00;
     border-radius: 50px;
-    margin-top: 5.625rem;
+    margin-top: 10rem;
 }
 
 .no-pc {
@@ -121,15 +191,14 @@ a {
 }
 
 .only-pc-robot {
-    /* width: 25rem; */
-    width: clamp(18.75rem, calc((400 / 1920) * 100vw), 25rem);
+    width: 40rem;
 }
 
 
 /* recommend-sec */
-
 .recommend-container {
-    padding-bottom: 7.5rem;
+    padding-top: 12rem;
+    padding-bottom: 12rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -137,13 +206,13 @@ a {
 
 .tab-container {
     display: flex;
-    gap: 2.625rem;
-    margin-top: 3.75rem;
+    gap: 4rem;
+    margin-top: 6rem;
 }
 
 .tab-container .btn {
-    font-size: 1.625rem;
-    font-weight: 500;
+    font-size: 3rem;
+    font-weight: 400;
     color: var(--gray-color);
     background-color: transparent;
     border: 0;
@@ -156,18 +225,113 @@ a {
     content: "";
     /* 의사 요소는 기본적으로 display: inlne;이므로 높이나 너비, 여백들이 잘 적용되지 않기 때문에 inline-block;으로 지정  */
     display: inline-block;
-    width: 0.125rem;
+    width: 2px;
     height: 100%;
     background-color: var(--gray-color);
     position: absolute;
-    right: -1.375rem;
-
+    right: -2.1rem;
 }
 
+.recommend-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 3rem;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 238, 154, 0.2));
+    /* background blur 적용 */
+    backdrop-filter: blur(10px);
+    /* inner shadow 적용 
+       box-shadow: inset(선택) 그림자 x좌표 그림자 y좌표 흐림정도(blur) 크기(spread) 색상;
+       내부 그림자에서만 inset 속성 값 사용 */
+    box-shadow: inset 0 0 4px 1px rgba(255, 255, 255, 0.25);
+}
 
+.recommend-card img {
+    width: 200px;
+}
 
+.recommend-card * {
+    color: var(--white-color);
+}
 
+.recommend-card .phone-name {
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin-top: 3rem;
+    text-align: center;
+    letter-spacing: 1px;
+}
 
+/* option-container */
+.recommend-card .option-container {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+}
+
+.recommend-card .option {
+    height: 39px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recommend-card .option-title {
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.color-circle-container {
+    display: flex;
+    gap: 15px;
+}
+
+.color-circle {
+    width: 2rem;
+    height: 2rem;
+    border: 0;
+    border-radius: 50px;
+}
+
+.radio-btn-container label {
+    font-size: 1.6rem;
+}
+
+.before-cost del {
+    width: 100%;
+    display: inline-block;
+    font-size: 1.4rem;
+    text-align: right;
+    color: #989898;
+}
+
+.after-cost {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-top: 0.7rem;
+}
+
+.sub-cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.sub-cta .text {
+    font-size: 2rem;
+    font-weight: 500;
+    width: fit-content;
+    margin-right: 1rem;
+}
+
+.sub-cta .arrow-img {
+    width: 25px;
+    height: auto;
+}
 
 
 /* break-point */
@@ -269,6 +433,6 @@ a {
 
     .hero-cta {
         font-size: 1.125rem;
-        padding: 0.5rem 1.5rem;
+        padding: 0.75rem 1.5rem;
     }
 }
