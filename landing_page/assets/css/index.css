@@ -98,6 +98,7 @@
     --primary-color: #FC8A46;
     --white-color: #FFFFFF;
     --gray-color: #A0A0A0;
+    --light-gray-color: #989898;
 }
 
 /* common-sec */
@@ -272,7 +273,7 @@ a {
 }
 
 .recommend-card .option {
-    height: 39px;
+    height: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -280,24 +281,52 @@ a {
 
 .recommend-card .option-title {
     font-size: 2rem;
-    font-weight: 400;
+    font-weight: 500;
+    color: var(--light-gray-color);
     letter-spacing: 1px;
 }
 
 .color-circle-container {
+    width: 130px;
     display: flex;
-    gap: 15px;
+    gap: calc((130px - (2rem * 4)) / 3);
 }
 
 .color-circle {
     width: 2rem;
     height: 2rem;
-    border: 0;
+    border: 0.3px solid var(--light-gray-color);
     border-radius: 50px;
+    cursor: pointer;
+}
+
+/* color-circle 클래스 소속인 요소 중에 selected 클래스 소속인 요소를 선택 */
+.color-circle.selected {
+    border: 2px solid var(--white-color);
+}
+
+.radio-btn {
+    display: none;
 }
 
 .radio-btn-container label {
-    font-size: 1.6rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 1.4rem;
+    border: 0.3px solid var(--light-gray-color);
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.radio-btn-container label:not(:last-child) {
+    margin-right: 0.8rem;
+}
+
+/* 형제 요소 선택자
+    + : 바로 뒤에 형제 요소를 선택. 
+        따라서 바로 뒤 형제 요소가 조건을 불만족할 시, 스타일 적용X
+    ~ : 뒤에 나오는 모든 형제 요소를 선택. 다중 선택이 가능 */
+.radio-btn:checked+label {
+    border: 2px solid var(--white-color);
 }
 
 .before-cost del {
@@ -305,34 +334,24 @@ a {
     display: inline-block;
     font-size: 1.4rem;
     text-align: right;
-    color: #989898;
+    color: var(--light-gray-color);
 }
 
 .after-cost {
     font-size: 1.8rem;
-    font-weight: 400;
+    font-weight: 500;
     margin-top: 0.7rem;
 }
 
-.sub-cta {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 4rem;
-}
-
-.sub-cta .text {
+.recommend-card-cta {
     font-size: 2rem;
     font-weight: 500;
-    width: fit-content;
-    margin-right: 1rem;
+    text-align: center;
+    padding: 1rem 2rem;
+    margin-top: 4rem;
+    border-radius: 50px;
+    border: 1px solid var(--light-gray-color);
 }
-
-.sub-cta .arrow-img {
-    width: 25px;
-    height: auto;
-}
-
 
 /* break-point */
 @media (max-width: 1024px) {

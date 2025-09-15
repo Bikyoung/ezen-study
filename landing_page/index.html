@@ -79,7 +79,7 @@
                                 </p>
                                 <!-- 색상이 디자인이 아니라 정보라면 html 태그에 style 속성으로 지정해야 함 -->
                                 <div class="color-circle-container">
-                                    <button class="color-circle z-flip-red" style="background-color: #EE6779"
+                                    <button class="color-circle z-flip-red selected" style="background-color: #EE6779"
                                         data-src="./assets/images/phone-image/galaxy-z-flip/red.png"></button>
                                     <button class="color-circle z-flip-blue" style="background-color: #3B5B8A"
                                         data-src="./assets/images/phone-image/galaxy-z-flip/blue.png"></button>
@@ -97,14 +97,12 @@
                                 </p>
                                 <div class="radio-btn-container">
                                     <!-- label 태그로 radio 버튼을 감싸서 클릭 영역을 확대 -->
-                                    <label>
-                                        <input type="radio" name="storage" value="256GB" checked>
-                                        256GB
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="storage" value="512GB">
-                                        512GB
-                                    </label>
+                                    <input type="radio" name="storage" id="radio-256GB" class="radio-btn" data-before-cost="1,485,000원" data-after-cost="485,000원" checked>
+                                    <label for="radio-256GB">256GB</label>
+
+                                    <!-- data-*속성은 반드시 소문자 + 하이픈의 조합으로만 가능하며, js에서 호출시에는 *에 해당하는 부분을 camelCase방식으로 호출해야 함 -->
+                                    <input type="radio" name="storage" id="radio-512GB" class="radio-btn" data-before-cost="1,643,400원" data-after-cost=" 1,479,300원">
+                                    <label for="radio-512GB">512GB</label>
                                 </div>
                             </div>
 
@@ -115,7 +113,7 @@
                                 </p>
                                 <div class="cost-container">
                                     <p class="before-cost">
-                                        <del>
+                                        <del class="before-cost-del">
                                             1,485,000원
                                         </del>
                                     </p>
@@ -126,13 +124,10 @@
                             </div>
                         </div>
 
-                        <!-- sub-cta -->
-                        <a href="http://assatel.cafe24.com/ONLINE/online_ppom/view.asp?board_idx=308" class="sub-cta"
+                        <!-- recommend-card-cta -->
+                        <a href="http://assatel.cafe24.com/ONLINE/online_ppom/view.asp?board_idx=308" class="recommend-card-cta"
                             target="_blank">
-                            <p class="text">
-                                자세히 보기
-                            </p>
-                            <img src="./assets/images/detail_arrow.png" class="arrow-img">
+                            자세히 보기
                         </a>
 
                     </div>
