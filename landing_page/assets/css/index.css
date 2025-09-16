@@ -110,19 +110,17 @@ html {
 * {
     box-sizing: border-box;
     font-family: 'Pretendard';
-    outline: 1px solid red;
 }
 
 section {
-    width: 100%;
+    width: 100vw;
 }
 
 .container {
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
-    padding-left: 80px;
-    padding-right: 80px;
+    padding: 120px 80px;
 }
 
 .dark-sec {
@@ -148,9 +146,6 @@ a {
 .hero-container {
     display: flex;
     justify-content: space-between;
-    padding-top: 120px;
-    padding-bottom: 120px;
-    /* padding: 120px 80px; */
 }
 
 .text-container {
@@ -161,10 +156,10 @@ a {
 
 .hero-main-title {
     color: var(--white-color);
-    /* clamp()에서 중앙값을 calc((본래 px) / 화면 해상도) * 100vw)로 정하면 서로 다른 크기로 줄어들더라도 줄어드는 속도가 유사해져서 이질감이 감소함 */
     font-size: 5rem;
     font-weight: 500;
     line-height: 1.2;
+    letter-spacing: -0.05rem;
 }
 
 .hero-main-title .key-word {
@@ -188,6 +183,7 @@ a {
     background-color: #FF5F00;
     border-radius: 50px;
     margin-top: 10rem;
+    letter-spacing: 0.05rem;
 }
 
 .no-pc {
@@ -195,7 +191,8 @@ a {
 }
 
 .only-pc-robot {
-    width: 40rem;
+    /* https://clamp.font-size.app/?config=eyJyb290IjoiMTYiLCJtaW5XaWR0aCI6IjEwMjVweCIsIm1heFdpZHRoIjoiMTkyMHB4IiwibWluRm9udFNpemUiOiIzNTBweCIsIm1heEZvbnRTaXplIjoiNDAwcHgifQ%3D%3D 활용 */
+    width: clamp(35rem, 29.2738rem + 5.5866vw, 40rem);
 }
 
 
@@ -222,6 +219,7 @@ a {
     border: 0;
     /* 의사 요소는 본래 요소의 자식처럼 동작 */
     position: relative;
+    letter-spacing: 0.1rem;
 }
 
 /* 탭 ui 안에 구분자 삽입 */
@@ -373,18 +371,21 @@ a {
     /* common-sec */
     .container {
         max-width: 960px;
-        padding-left: 32px;
-        padding-right: 32px;
+        padding: 80px 32px;
     }
 
     .no-pc {
         display: inline-block;
     }
 
+    .sec-title {
+        font-size: 3.6rem;
+    }
+
     /* hero-sec */
     .hero-container {
+        /* 1920px에서 display: flex;를 해지 */
         display: block;
-        padding: 80px 32px;
     }
 
     .text-container {
@@ -396,18 +397,18 @@ a {
     }
 
     .hero-main-title {
-        letter-spacing: -0.01875rem;
-        font-size: clamp(1.75rem, calc((48 / 1024) * 100vw), 3rem);
+        font-size: 4.2rem;
+        line-height: 1.1;
     }
 
     .hero-main-title .key-word {
-        font-size: clamp(2rem, calc((58 / 1024) * 100vw), 3.625rem);
+        font-size: 5rem;
     }
 
     .hero-sub-title {
-        font-size: clamp(1.375rem, calc((30 / 1024) * 100vw), 1.875rem);
-        line-height: 1.3;
-        margin-top: 2.375;
+        font-size: 2.4rem;
+        line-height: 1.2;
+        margin-top: 2rem;
     }
 
     .only-pc-robot {
@@ -415,15 +416,29 @@ a {
     }
 
     .hero-front-robot {
-        width: clamp(13.75rem, calc((301 / 1024) * 100vw), 18.8125rem);
-        margin-top: 3.75rem;
-        /* 이미지를 가운데 정렬하였으나, 이미지 특성상 시각적으로 이미지가 가운데 정렬한 것처럼 보이지 않기 때문에 30px을 더 좌측으로 이동 */
+        width: 250px;
+        margin-top: 8rem;
+        /* 이미지를 가운데 정렬하였으나, 이미지 특성상 시각적으로 이미지가 가운데 정렬한 것처럼 보이지 않기 때문에 25px을 더 좌측으로 이동 */
         position: relative;
-        right: 30px;
+        right: 25px;
     }
 
     .hero-cta {
-        margin-top: 5.625rem;
+        font-size: 2rem;
+    }
+
+    /* recommend-sec */
+
+    .tab-container .btn {
+        font-size: 2.4rem;
+        padding-top: 0.2px;
+        padding-bottom: 0.2px;
+        letter-spacing: 0.05;
+    }
+
+    .recommend-card {
+        width: 50px;
+        overflow: hidden;
     }
 }
 
