@@ -112,8 +112,11 @@ html {
     font-family: 'Pretendard';
 }
 
+/* 100vw : 스크롤바는 포함하는 브라우저 창 전체 너비
+   따라서 각 섹션의 width: 100vw;로 설정 시, 가로 스크롤이 발생할 수 있음
+   100%로 설정하는 것을 추천  */
 section {
-    width: 100vw;
+    width: 100%;
 }
 
 .container {
@@ -158,7 +161,7 @@ a {
     color: var(--white-color);
     font-size: 5rem;
     font-weight: 500;
-    line-height: 1.2;
+    line-height: 1.1;
     letter-spacing: -0.05rem;
 }
 
@@ -172,6 +175,7 @@ a {
     font-size: 3rem;
     font-weight: 400;
     margin-top: 3rem;
+    letter-spacing: 0.05rem;
 }
 
 .hero-cta {
@@ -182,8 +186,9 @@ a {
     padding: 1.5rem 3rem;
     background-color: #FF5F00;
     border-radius: 50px;
-    margin-top: 10rem;
+    margin-top: 12rem;
     letter-spacing: 0.05rem;
+    cursor: pointer;
 }
 
 .no-pc {
@@ -234,8 +239,51 @@ a {
     right: -2.1rem;
 }
 
-.card-container {
+/* .swiper {
+    width: 100%;
     display: flex;
+}
+
+.swiper-pre-btn,
+.swiper-next-btn {
+    width: 40px;
+    height: 40px;
+    background-color: aqua;
+}
+
+.swiper-wrapper {
+    width: 80%;
+    display: flex;
+    overflow: hidden;
+} */
+
+.swiper {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    align-items: center;
+    /* 버튼과 슬라이드 수직 중앙 정렬 */
+}
+
+.swiper-pre-btn,
+.swiper-next-btn {
+    width: 40px;
+    height: 40px;
+    background-color: aqua;
+    flex-shrink: 0;
+    /* 줄어들지 않게 */
+}
+
+.swiper-wrapper {
+    flex-grow: 1;
+    /* 버튼 제외 나머지 공간 모두 차지 */
+    overflow: hidden;
+    /* 슬라이드 넘치는 부분 숨기기 */
+    display: flex;
+}
+
+.swiper-slide {
+    flex-shrink: 0;
 }
 
 .recommend-card {
@@ -365,6 +413,11 @@ a {
     border: 1px solid var(--light-gray-color);
 }
 
+/* border의 크기가 커서 카드까지 커지므로 내부 그림자로 border를 대신함 */
+/* .recommend-card-cta:hover {
+    box-shadow: inset 0 0 0 1.5px var(--white-color);
+} */
+
 /* break-point */
 @media (max-width: 1024px) {
 
@@ -407,8 +460,8 @@ a {
 
     .hero-sub-title {
         font-size: 2.4rem;
-        line-height: 1.2;
-        margin-top: 2rem;
+        line-height: 1.4;
+        margin-top: 4rem;
     }
 
     .only-pc-robot {
@@ -425,14 +478,16 @@ a {
 
     .hero-cta {
         font-size: 2rem;
+        margin-top: 10rem;
     }
 
     /* recommend-sec */
+    .tab-container {
+        margin-top: 4rem;
+    }
 
     .tab-container .btn {
         font-size: 2.4rem;
-        padding-top: 0.2px;
-        padding-bottom: 0.2px;
         letter-spacing: 0.05;
     }
 
@@ -448,39 +503,54 @@ a {
     /* common-sec */
     .container {
         max-width: 720px;
-        padding-left: 24px;
-        padding-right: 24px;
+        padding: 56px 20px;
+    }
+
+    .sec-title {
+        font-size: 3rem;
     }
 
     /* hero-sec */
-    .hero-container {
-        padding: 56px 24px;
-    }
-
     .hero-main-title {
-        font-size: 1.75rem;
-        font-weight: 400;
+        font-size: 3.2rem;
+        font-weight: 600;
         letter-spacing: 0;
     }
 
     .hero-main-title .key-word {
-        font-size: 2rem;
+        font-size: 4rem;
         font-weight: 700;
     }
 
     .hero-sub-title {
-        font-size: 1.375rem;
+        font-size: 2rem;
         font-weight: 400;
-        margin-top: 1.75rem;
+        margin-top: 2.8rem;
     }
 
     .hero-front-robot {
-        width: 224px;
-        margin-top: 3.5rem;
+        width: 200px;
+        margin-top: 5.6rem;
     }
 
     .hero-cta {
-        font-size: 1.125rem;
-        padding: 0.75rem 1.5rem;
+        font-size: 1.8rem;
+        padding: 1rem 2rem;
+        margin-top: 8rem;
+    }
+
+    /* recommend-sec */
+    .tab-container {
+        margin-top: 2.8rem;
+        gap: 2rem;
+    }
+
+    .tab-container .btn {
+        font-size: 2rem;
+    }
+
+    .tab-container .btn:not(:last-child)::after {
+        width: 2px;
+        right: -0.9rem;
     }
 }
