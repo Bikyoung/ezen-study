@@ -94,6 +94,7 @@
         url("../font/Pretendard-Thin.woff") format('woff');
 }
 
+
 :root {
     --primary-color: #FC8A46;
     --white-color: #FFFFFF;
@@ -200,6 +201,13 @@ a {
     width: clamp(35rem, 29.2738rem + 5.5866vw, 40rem);
 }
 
+/* Swiper는 슬라이드가 처음이거나 마지막일 때 버튼에 자동으로 .swiper-button-disabled를 추가하기 때문에 이를 활용하여 비활성 상태를 스타일링 */
+.swiper-button-disabled {
+    opacity: 0.3;
+    cursor: default;
+    /* pointer-events: none; 마우스의 이벤트가 발생해도 무시함 */
+    pointer-events: none;
+}
 
 /* recommend-sec */
 .recommend-container {
@@ -239,54 +247,92 @@ a {
     right: -2.1rem;
 }
 
-/* .swiper {
-    width: 100%;
-    display: flex;
+/* swiper */
+.swiper-wrap {
+    width: calc(100% - 8rem);
+    position: relative;
 }
-
-.swiper-pre-btn,
-.swiper-next-btn {
-    width: 40px;
-    height: 40px;
-    background-color: aqua;
-}
-
-.swiper-wrapper {
-    width: 80%;
-    display: flex;
-    overflow: hidden;
-} */
 
 .swiper {
-    display: flex;
-    width: 100%;
+    /* swiper-wrapper에 overflow: hidden;을 주면 슬라이드가 끝까지 안보이거나, 
+    마지막 카드가 잘리는 문제 발생하므로 swiper에만 overflow: hidden;을 줄 것 */
     overflow: hidden;
-    align-items: center;
-    /* 버튼과 슬라이드 수직 중앙 정렬 */
 }
 
 .swiper-pre-btn,
 .swiper-next-btn {
-    width: 40px;
-    height: 40px;
-    background-color: aqua;
-    flex-shrink: 0;
-    /* 줄어들지 않게 */
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-10px);
+    background-color: transparent;
+    border: 0;
+}
+
+.swiper-pre-btn i,
+.swiper-next-btn i {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+}
+
+.swiper-pre-btn {
+    left: -40px;
+    background-image: url("../images/left_arrow.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.swiper-next-btn {
+    right: -40px;
+    background-image: url("../images/right_arrow.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .swiper-wrapper {
-    flex-grow: 1;
-    /* 버튼 제외 나머지 공간 모두 차지 */
-    overflow: hidden;
-    /* 슬라이드 넘치는 부분 숨기기 */
     display: flex;
 }
 
 .swiper-slide {
-    flex-shrink: 0;
+    width: fit-content;
+}
+
+.swiper-pagination-bullet {
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: var(--gray-color);
+}
+
+.recommend-sec .swiper-wrap {
+    margin-top: 3rem;
+    height: 575px;
+}
+
+.recommend-sec .swiper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.recommend-sec .swiper-wrapper {
+    width: calc(100% - 8rem);
+}
+
+.recommend-sec .swiper-indicator {
+    width: fit-content;
+    position: absolute;
+    left: calc(50% - 35px);
+    /* 위의 카드 때문에 가운데 정렬이어도 가운데 정렬 같지 않아 보이는 문제 때문에 15px 좌측으로 더 이동  */
+    transform: translateX(-15px);
+    bottom: 0;
 }
 
 .recommend-card {
+    width: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -413,10 +459,19 @@ a {
     border: 1px solid var(--light-gray-color);
 }
 
-/* border의 크기가 커서 카드까지 커지므로 내부 그림자로 border를 대신함 */
-/* .recommend-card-cta:hover {
-    box-shadow: inset 0 0 0 1.5px var(--white-color);
-} */
+.recommend-card-cta:hover {
+    background-color: #1d1d1d;
+    border-color: #1d1d1d;
+}
+
+.recommend-desc {
+    font-size: 1.4rem;
+    text-align: center;
+    line-height: 1.4;
+    letter-spacing: 0.03rem;
+    color: var(--light-gray-color);
+    margin-top: 12rem;
+}
 
 /* break-point */
 @media (max-width: 1024px) {
@@ -491,9 +546,68 @@ a {
         letter-spacing: 0.05;
     }
 
+    .recommend-sec .swiper-wrap {
+        width: calc(100% - 6rem);
+        margin-top: 2rem;
+        height: 515px;
+    }
+
+    .swiper-pre-btn,
+    .swiper-next-btn {
+        width: 3rem;
+        height: 3rem;
+        transform: translateY(-10px);
+    }
+
     .recommend-card {
-        width: 50px;
-        overflow: hidden;
+        padding: 3.5rem 2.5rem;
+
+    }
+
+    .recommend-card img {
+        width: 180px;
+    }
+
+    .recommend-card .phone-name {
+        font-size: 2.2rem;
+    }
+
+    .recommend-card .option-container {
+        width: 200px;
+        margin-top: 2rem;
+    }
+
+    .recommend-card .option {
+        height: 43px;
+    }
+
+    .recommend-card .option-title {
+        font-size: 1.8rem;
+    }
+
+    .color-circle-container {
+        width: 122px;
+        gap: calc((122px - (2rem * 4)) / 3);
+    }
+
+    .radio-btn-container label {
+        padding: 0.3rem 0.6rem;
+        font-weight: 300;
+    }
+
+    .after-cost {
+        margin-top: 0.4rem;
+    }
+
+    .recommend-card-cta {
+        font-size: 1.6rem;
+        font-weight: 400;
+        padding: 0.6rem 1.6rem;
+        margin-top: 3rem;
+    }
+
+    .recommend-desc {
+        margin-top: 10rem;
     }
 }
 
@@ -552,5 +666,70 @@ a {
     .tab-container .btn:not(:last-child)::after {
         width: 2px;
         right: -0.9rem;
+    }
+
+    .recommend-sec .swiper-wrap {
+        width: calc(100% - 10rem);
+        height: 470px;
+        margin-top: 1.4rem;
+    }
+
+    .swiper-pre-btn,
+    .swiper-next-btn {
+        width: 2rem;
+        height: 2rem;
+        transform: translateY(-30px);
+    }
+
+    .recommend-card {
+        padding: 3rem 2rem;
+    }
+
+    .recommend-card .phone-name {
+        font-size: 2rem;
+        margin-top: 2.4rem;
+    }
+
+    .recommend-card .option-container {
+        width: 23rem;
+        margin-top: 1.4rem;
+    }
+
+    .recommend-card .option {
+        height: 40px;
+    }
+
+    .recommend-card .option-title {
+        font-size: 1.6rem;
+    }
+
+    .color-circle {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+
+    /* 모바일에서 보조정보의 폰트 사이즈를 13px로 많이 사용 */
+    .radio-btn-container label,
+    .before-cost del {
+        font-size: 1.3rem;
+    }
+
+    .after-cost {
+        font-size: 1.6rem;
+    }
+
+    .recommend-card-cta {
+        font-size: 1.6rem;
+        margin-top: 2.5rem;
+
+    }
+
+    .recommend-sec .swiper-indicator {
+        transform: translateX(-30px);
+    }
+
+    .recommend-desc {
+        font-size: 1.2rem;
+        margin-top: 8rem;
     }
 }
