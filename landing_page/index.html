@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>휴대폰 랜딩페이지</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> cdn 방식-->
+    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css" type="text/css">
     <link rel="stylesheet" href="./assets/css/reset.css" type="text/css">
     <link rel="stylesheet" href="./assets/css/index.css" type="text/css">
 </head>
@@ -44,7 +45,7 @@
 
         <!-- recommend-sec -->
         <section class="recommend-sec dark-sec">
-            <div class="container recommend-container">
+            <div class="container center-container recommend-container">
                 <h3 class="sec-title orange-text">
                     추천 상품
                 </h3>
@@ -637,14 +638,14 @@
                                                 용량
                                             </p>
                                             <div class="radio-btn-container">
-                                                <input type="radio" name="iphone-16-storage4" id="iphone-16-radio-128GB4"
-                                                    class="radio-btn" data-before-cost="1,155,000원"
-                                                    data-after-cost="467,000원" checked>
+                                                <input type="radio" name="iphone-16-storage4"
+                                                    id="iphone-16-radio-128GB4" class="radio-btn"
+                                                    data-before-cost="1,155,000원" data-after-cost="467,000원" checked>
                                                 <label for="iphone-16-radio-128GB4">128GB</label>
 
-                                                <input type="radio" name="iphone-16-storage4" id="iphone-16-radio-256GB4"
-                                                    class="radio-btn" data-before-cost="1,400,000원"
-                                                    data-after-cost="947,000원">
+                                                <input type="radio" name="iphone-16-storage4"
+                                                    id="iphone-16-radio-256GB4" class="radio-btn"
+                                                    data-before-cost="1,400,000원" data-after-cost="947,000원">
                                                 <label for="iphone-16-radio-256GB4">256GB</label>
                                             </div>
                                         </div>
@@ -688,6 +689,70 @@
                 </div>
             </div>
         </section>
+
+        <!-- process-sec -->
+        <section class="process-sec dark-sec">
+            <div class="container center-container process-container">
+                <h3 class="sec-title orange-text">
+                    구매 절차
+                </h3>
+                <div class="step-wrapper">
+                    <div class="step step-1">
+                        <p class="step-title">
+                            STEP 1
+                        </p>
+                        <div class="icon-area"></div>
+                        <p class="step-desc">
+                            통신사 / 모델<br class="only-mobile">
+                            상세조건 확인
+                        </p>
+                    </div>
+                    <div class="step step-2">
+                        <p class="step-title">
+                            STEP 2
+                        </p>
+                        <div class="icon-area"></div>
+                        <p class="step-desc">
+                            가입유형별 <br class="only-mobile">
+                            공식 신청서 작성
+                        </p>
+                    </div>
+                    <div class="step step-3">
+                        <p class="step-title">
+                            STEP 3
+                        </p>
+                        <div class="icon-area"></div>
+                        <p class="step-desc">
+                            접수 확인 및<br class="only-mobile">
+                            배송 안내
+                        </p>
+                    </div>
+                    <div class="step step-4">
+                        <p class="step-title">
+                            STEP 4
+                        </p>
+                        <div class="icon-area"></div>
+                        <p class="step-desc">
+                            무료배송<br class="only-mobile">
+                            (수도권 퀵 발송 가능)
+                        </p>
+                    </div>
+                    <div class="step step-5">
+                        <p class="step-title">
+                            STEP 5
+                        </p>
+                        <div class="icon-area"></div>
+                        <p class="step-desc">
+                            제품 수령 후<br class="only-mobile">
+                            개통
+                        </p>
+                    </div>
+                </div>
+                <div class="process-desc">
+                    미성년자의 경우 법정대리인의 서류 첨부가 필요합니다.
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- footer-sec -->
@@ -697,7 +762,8 @@
 
     <!-- Swiper.js로 브라우저에 의해 전역변수이자 클래스인 Swiper가 생성되고,
     현 HTML 파일 전체에서 사용가능하므로, HTML 파일에 삽입된 다른 js 파일에서도 생성된 Swiper를 사용할 수 있음 -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./assets/js/swiper-bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> cdn 방식 -->
     <script src="./assets/js/index.js"></script>
 
     </script>
