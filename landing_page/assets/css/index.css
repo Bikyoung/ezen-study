@@ -102,6 +102,7 @@
     --gradient-yellow: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 238, 154, 0.2));
 }
 
+
 /* common-sec */
 html {
     /* 16px * 62.5% = 10px이므로 아래처럼 선언하면 1rem = 10px이 됨 */
@@ -150,6 +151,14 @@ a {
     font-size: 4.5rem;
     font-weight: 700;
     letter-spacing: 0.15rem;
+}
+
+.small-desc {
+    font-size: 1.4rem;
+    text-align: center;
+    line-height: 1.4;
+    letter-spacing: 0.03rem;
+    color: var(--light-gray-color);
 }
 
 /* hero-sec */
@@ -214,6 +223,7 @@ a {
     /* pointer-events: none; 마우스의 이벤트가 발생해도 무시함 */
     pointer-events: none;
 }
+
 
 /* recommend-sec */
 .tab-container {
@@ -457,13 +467,9 @@ a {
 }
 
 .recommend-desc {
-    font-size: 1.4rem;
-    text-align: center;
-    line-height: 1.4;
-    letter-spacing: 0.03rem;
-    color: var(--light-gray-color);
     margin-top: 12rem;
 }
+
 
 /* process-sec */
 .step-wrapper {
@@ -479,41 +485,91 @@ a {
 .step {
     width: 100%;
     height: 30rem;
+    position: relative;
     background: var(--gradient-yellow);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     padding: 3rem 2rem;
     border-radius: 1rem;
     backdrop-filter: blur(10px);
     box-shadow: inset 0 0 4px 1px rgba(255, 255, 255, 0.25);
 }
 
-.step * {
-    color: var(--white-color);
+.icon-area {
+    height: 9rem;
+    position: absolute;
+    /* absolute 요소를 기준 요소의 정중앙에 위치시키는 방법 
+    : 부모 요소로부터 50%씩 이동한 뒤, 자신의 절반 크기만큼 다시 이동 */
+    left: 50%;
+    top: 50%;
+    /* transform: translate(-50%, -50%); */
+    /* 중앙 정렬을 하더라도 step-desc에 의해 더 아래쪽에 위치한 것처럼 보이므로 15% 더 위로 이동 */
+    transform: translate(-50%, -65%);
+
+}
+
+.step-text {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .step-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 600;
+    color: var(--gray-color);
 }
 
-.icon-area {
-    height: 100px;
-}
 
 .step-desc {
-    font-size: 1.6rem;
-    text-align: center;
+    font-size: 1.8rem;
+    color: var(--white-color);
     line-height: 1.4;
     letter-spacing: 0.03rem;
 }
 
+.process-desc {
+    margin-top: 12rem;
+}
 
 
 /* break-point */
-@media (max-width: 1024px) {
+@media (max-width: 1439px) {
+
+    /* process-sec */
+    .step-wrapper {
+        width: 100%;
+        /* 최대 column-gap을 40px로 지정 */
+        max-width: 755px;
+        height: calc(60rem + 2.78vw);
+        grid-template-columns: repeat(3, 22.5rem);
+        row-gap: 8%;
+        position: relative;
+    }
+
+    .step-4,
+    .step-5 {
+        width: 22.5rem;
+        position: absolute;
+        bottom: 0;
+    }
+
+    .step-4 {
+        left: 17%;
+    }
+
+    .step-5 {
+        right: 17%;
+    }
+
+    .process-desc {
+        margin-top: 8rem;
+    }
+}
+
+@media (max-width: 1023px) {
 
     /* common-sec */
     .container {
@@ -528,6 +584,7 @@ a {
     .sec-title {
         font-size: 3.6rem;
     }
+
 
     /* hero-sec */
     .hero-container {
@@ -574,6 +631,7 @@ a {
         font-size: 2rem;
         margin-top: 10rem;
     }
+
 
     /* recommend-sec */
     .tab-container {
@@ -651,7 +709,7 @@ a {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 
     /* common-sec */
     .container {
@@ -662,6 +720,11 @@ a {
     .sec-title {
         font-size: 3rem;
     }
+
+    .no-mobile {
+        display: none;
+    }
+
 
     /* hero-sec */
     .hero-main-title {
@@ -691,6 +754,7 @@ a {
         padding: 1rem 2rem;
         margin-top: 8rem;
     }
+
 
     /* recommend-sec */
     .tab-container {
@@ -770,5 +834,63 @@ a {
     .recommend-desc {
         font-size: 1.2rem;
         margin-top: 8rem;
+    }
+
+
+    /* process-sec */
+    .step-wrapper {
+        width: 38rem;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+        margin-top: 2.8rem;
+    }
+
+    .icon-area {
+        height: 5rem;
+        position: static;
+        /* position에 static을 설정하여 적용된 left, top이 해제되더라도 transform은 여전히 적용되기 때문에 이를 해제 */
+        transform: translate(0);
+    }
+
+    .step {
+        width: 100%;
+        height: 11rem;
+        /* step-4와 step-5의 position: absolute; 해제하고, 
+        다른 step 카드에 relative를 적용 */
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        padding: 3rem;
+    }
+
+    /* position: absolute;에 의해 적용된 left와 right가 relative 시에는 자신의 위치를 기준으로 적용되기 때문에 이를 해제 */
+    .step-4 {
+        left: 0;
+    }
+
+    .step-5 {
+        left: 0;
+    }
+
+    .step-text {
+        width: 20rem;
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+    }
+
+    .step-title {
+        font-size: 2rem;
+    }
+
+    .step-desc {
+        font-size: 1.6rem;
+    }
+
+    .process-desc {
+        font-size: 1.2rem;
+        margin-top: 5.6rem;
     }
 }
