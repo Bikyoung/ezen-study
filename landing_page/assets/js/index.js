@@ -89,3 +89,8 @@ const recommendSecSwiper = new Swiper(".recommend-sec .swiper", {
         }
     }
 });
+
+// benefit-sec
+// 카드가 뷰포트에 진입할 시, 회전하며 등장
+
+
