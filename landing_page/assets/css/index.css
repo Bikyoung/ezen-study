@@ -476,59 +476,52 @@ a {
     width: 100%;
     /* 수정할 것 */
     height: 900px;
-
+    perspective: 1000px;
     position: relative;
 }
 
 .benefit-card {
     position: absolute;
     border-radius: 10px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     /* 지울 것 */
     width: 406px;
     height: 550px;
 
-
-    left: 50%;
-    top: 50%;
-    /* transform: translate(-50%, -50%); */
 
 
 }
 
 .benefit-card:not(.front-card) {
     backdrop-filter: blur(10px);
+    transition: transform 0.35s ease-in-out;
 }
 
 .benefit-card.card-2 {
     background-color: rgba(250, 215, 160, 0.3);
-
-
-    transform: translate(-50%, -50%) rotate(-15deg);
     /* 지울 것 */
     z-index: 9;
 }
 
 .benefit-card.card-3 {
     background-color: rgba(249, 161, 78, 0.3);
-    transform: translate(-50%, -50%) rotate(-30deg);
     z-index: 8;
 }
 
 .benefit-card.card-4 {
     background-color: rgba(252, 138, 70, 0.3);
-    transform: translate(-50%, -50%) rotate(-45deg);
     z-index: 7;
 }
 
 .benefit-card.card-5 {
     background-color: rgba(209, 111, 42, 0.3);
-    transform: translate(-50%, -50%) rotate(-60deg);
     z-index: 6;
 }
 
 .benefit-card.card-6 {
     background-color: rgba(168, 90, 29, 0.3);
-    transform: translate(-50%, -50%) rotate(-75deg);
     z-index: 5;
 }
 

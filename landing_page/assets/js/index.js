@@ -92,5 +92,76 @@ const recommendSecSwiper = new Swiper(".recommend-sec .swiper", {
 
 // benefit-sec
 // 카드가 뷰포트에 진입할 시, 회전하며 등장
+let benefitFrontCard = document.querySelector(".front-card");
+let benefitCardArr = document.querySelectorAll(".benefit-card");
+
+/* IntersectionObserver(callback, options)
+   : 특정 요소가 뷰포트 또는 다른 요소와 교차하는지 여부를 비동기적으로 관찰해주는 JS API
+     만일, 뷰포트가 아닌 다른 요소를 기준 요소로 지정하고 싶다면, options 객체의 root 속성으로 지정할 것 (기본값은 뷰포트임)
+     entries : 관찰 중인 여러 요소들의 교차 상태 정보를 담은 객체 배열
+               만일 한 요소만 관찰하더라도 배열 상태를 유지하고, 원소의 갯수는 1개 뿐임
+     entry : entries의 원소 
+     isIntersecting : 해당 요소가 임계값으로 설정한만큼 겹치면 true를 반환하는 속성
+     threshold : 해당 요소가 얼마나 겹쳐야 콜백을 실행할지를 설정 (0.0 ~ 1.0)*/
+const observerObj = new IntersectionObserver((entries) => {
+    entries.forEach(
+        (entry) => {
+            if (entry.isIntersecting) {
+                for (let i = 1; i < benefitCardArr.length; i++) {
+                    let degree = -15 * i;
+                    /* css 속성 값으로 JS 변수를 사용하려면 ${변수명}으로 입력해야 하며, 
+                       JS에서 문자열 안에 변수값을 넣고 싶다면 백틱으로 문자열을 조합해야 함 */
+                    // css에서 지정한 translate가 무효화되므로 다시 지정
+                    benefitCardArr[i].style.transform = `translate(-50%, -50%) rotate(${degree}deg)`;
+                }
+            }
+        }
+    );
+}, { threshold: 1.0 });
+
+// benefitFrontCard를 IntersectionObserver의 관찰 대상으로 등록함
+observerObj.observe(benefitFrontCard);
+
+// gsap 사용
+// 이전 버튼 및 다음 버튼 클릭 시, 카드들이 기존 회전 값에 += 15deg 되어 회전됨
+
+const nextBtn = document.querySelector(".benefit-next-btn");
+let currentBenefitArr = Array.from(benefitCardArr);
+
+if (currentBenefitArr.length === 1) {
+    console.log("현재 카드 갯수 " + currentBenefitArr.length);
+    nextBtn.disabled = true;
+}
+
+nextBtn.addEventListener("click", () => {
+    /* 이전에 준 transition 속성으로 첫번째 카드와 나머지 카드의 회전 속도가 다르므로 transition 속성을 해제
+    단, 배열에는 style 속성이 없기 때문에 하나씩 해제 
+    */
+
+    // nextBtn.disabled = true;
+    benefitCardArr.forEach(benefitCard => {
+        benefitCard.style.transition = "none";
+    })
+
+    gsap.to(currentBenefitArr, {
+        duration: 1, rotation: "+=15", ease: "power1.inOut", stagger: 0
+
+    });
+
+    currentBenefitArr[0].style.opacity = "0";
+    currentBenefitArr[0].style.transition = "opacity 0.5s ease-in-out";
+
+    // benefitCardArr은 nodelist이지 배열이 아니므로 첫번째 원소를 삭제하기 위해 배열로 변환
+
+    currentBenefitArr.shift();
+    currentBenefitArr[0].style.cssText += "background-color: #FFF3E0; box-shadow: 8px 12px 24px rgba(0, 0, 0, 0.5); delay: 1s";
+    console.log("리스너 내부 " + currentBenefitArr.length);
+
+});
+
+if (currentBenefitArr.length === 1) {
+    nextBtn.disabled = true;
+}
+
 
 
