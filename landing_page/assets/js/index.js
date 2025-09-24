@@ -93,7 +93,7 @@ const recommendSecSwiper = new Swiper(".recommend-sec .swiper", {
 // benefit-sec
 // 카드가 뷰포트에 진입할 시, 회전하며 등장
 let benefitFrontCard = document.querySelector(".front-card");
-let benefitCardArr = document.querySelectorAll(".benefit-card");
+let benefitCardNodeList = document.querySelectorAll(".benefit-card");
 
 /* IntersectionObserver(callback, options)
    : 특정 요소가 뷰포트 또는 다른 요소와 교차하는지 여부를 비동기적으로 관찰해주는 JS API
@@ -107,12 +107,15 @@ const observerObj = new IntersectionObserver((entries) => {
     entries.forEach(
         (entry) => {
             if (entry.isIntersecting) {
-                for (let i = 1; i < benefitCardArr.length; i++) {
+                for (let i = 1; i < benefitCardNodeList.length; i++) {
                     let degree = -15 * i;
                     /* css 속성 값으로 JS 변수를 사용하려면 ${변수명}으로 입력해야 하며, 
                        JS에서 문자열 안에 변수값을 넣고 싶다면 백틱으로 문자열을 조합해야 함 */
                     // css에서 지정한 translate가 무효화되므로 다시 지정
-                    benefitCardArr[i].style.transform = `translate(-50%, -50%) rotate(${degree}deg)`;
+                    benefitCardNodeList[i].style.transform = `translate(-50%, -50%) rotate(${degree}deg)`;
+
+                    /* 페이지 첫 로딩시에만 실행될 수 있도록, 동작 종료 후에 관찰 대상을 해제함 */
+                    observerObj.unobserve(entry.target);
                 }
             }
         }
@@ -122,46 +125,81 @@ const observerObj = new IntersectionObserver((entries) => {
 // benefitFrontCard를 IntersectionObserver의 관찰 대상으로 등록함
 observerObj.observe(benefitFrontCard);
 
-// gsap 사용
-// 이전 버튼 및 다음 버튼 클릭 시, 카드들이 기존 회전 값에 += 15deg 되어 회전됨
 
 const nextBtn = document.querySelector(".benefit-next-btn");
-let currentBenefitArr = Array.from(benefitCardArr);
+const prevBtn = document.querySelector(".benefit-prev-btn");
 
-if (currentBenefitArr.length === 1) {
-    console.log("현재 카드 갯수 " + currentBenefitArr.length);
-    nextBtn.disabled = true;
-}
+
+let originArr = Array.from(benefitCardNodeList);
+let benefitCurrentArr = originArr.slice(0);
 
 nextBtn.addEventListener("click", () => {
-    /* 이전에 준 transition 속성으로 첫번째 카드와 나머지 카드의 회전 속도가 다르므로 transition 속성을 해제
-    단, 배열에는 style 속성이 없기 때문에 하나씩 해제 
-    */
+    nextBtn.disabled = true;
 
-    // nextBtn.disabled = true;
-    benefitCardArr.forEach(benefitCard => {
-        benefitCard.style.transition = "none";
-    })
+    benefitCardNodeList.forEach(benefit => {
+        benefit.style.transition = "none";
+    });
 
-    gsap.to(currentBenefitArr, {
-        duration: 1, rotation: "+=15", ease: "power1.inOut", stagger: 0
+    let firstCard = benefitCurrentArr[0];
+    firstCard.classList.remove("front-card");
+    // slice()는 원본 배열을 수정X, 명시된 인덱스부터 잘라서 새로운 배열로 반환
+    let otherCard = benefitCurrentArr.slice(1);
+    otherCard[0].classList.add("front-card")
+
+    gsap.to(firstCard, {
+        rotation: "+=15", duration: 0.8, ease: "power1.inOut", stagger: 0, opacity: 0,
+        onComplete: () => {
+            benefitCurrentArr.shift();
+            prevBtn.disabled = false;
+
+            // benefitCurrentArr[0].style.cssText += "background-color: #FFF3E0; box-shadow: 8px 12px 24px rgba(0, 0, 0, 0.5); delay: 1s";
+
+            if (benefitCurrentArr.length !== 1) {
+                nextBtn.disabled = false;
+            }
+
+        }
+    });
+
+    gsap.to(otherCard, {
+        rotation: "+=15", duration: 0.8, ease: "power1.inOut", stagger: 0
+
+    });
+});
+
+
+
+
+
+
+// gsap 사용
+
+prevBtn.addEventListener("click", () => {
+    prevBtn.disabled = true;
+
+    let prevIndex = 5 - benefitCurrentArr.length;
+    console.log(prevIndex);
+    benefitCurrentArr[0].classList.remove("front-card");
+    benefitCurrentArr.unshift(originArr[prevIndex]);
+    console.log(originArr[prevIndex]);
+    benefitCurrentArr[0].classList.add("front-card");
+    let frontCard = benefitCurrentArr[0];
+    let otherCard = benefitCurrentArr.slice(1);
+
+    gsap.to(frontCard, {
+        opacity: 1, rotation: "-=15", duration: 0.8, ease: "power1.inOut", stagger: 0,
+        onComplete: () => {
+            if (benefitCurrentArr.length !== 6) {
+                prevBtn.disabled = false;
+            }
+        }
+
 
     });
 
-    currentBenefitArr[0].style.opacity = "0";
-    currentBenefitArr[0].style.transition = "opacity 0.5s ease-in-out";
-
-    // benefitCardArr은 nodelist이지 배열이 아니므로 첫번째 원소를 삭제하기 위해 배열로 변환
-
-    currentBenefitArr.shift();
-    currentBenefitArr[0].style.cssText += "background-color: #FFF3E0; box-shadow: 8px 12px 24px rgba(0, 0, 0, 0.5); delay: 1s";
-    console.log("리스너 내부 " + currentBenefitArr.length);
+    gsap.to(otherCard, { rotation: "-=15", duration: 0.8, ease: "power1.inOut", stagger: 0 });
 
 });
-
-if (currentBenefitArr.length === 1) {
-    nextBtn.disabled = true;
-}
 
 
 
