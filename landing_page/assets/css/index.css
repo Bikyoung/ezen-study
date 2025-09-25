@@ -472,12 +472,35 @@ a {
 
 
 /* benefit-sec */
+.benefit-index-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 6rem;
+}
+
+.benefit-index-wrapper button {
+    padding: 0;
+    height: 4rem;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.benefit-index-wrapper p {
+    color: var(--primary-color);
+    font-size: 3rem;
+    letter-spacing: 0.5rem;
+
+}
+
 .benefit-card-container {
     width: 100%;
-    /* 수정할 것 */
-    height: 900px;
-    perspective: 1000px;
     position: relative;
+    margin-top: 3rem;
+    /* 수정할 것 */
+    height: 700px;
+    perspective: 1000px;
 }
 
 .benefit-card {
@@ -489,9 +512,6 @@ a {
     /* 지울 것 */
     width: 406px;
     height: 550px;
-
-
-
 }
 
 .benefit-card:not(.front-card) {

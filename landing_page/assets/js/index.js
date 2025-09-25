@@ -126,80 +126,124 @@ const observerObj = new IntersectionObserver((entries) => {
 observerObj.observe(benefitFrontCard);
 
 
-const nextBtn = document.querySelector(".benefit-next-btn");
-const prevBtn = document.querySelector(".benefit-prev-btn");
+// 화살표 버튼 클릭 시, 카드가 회전하며 등장함 - gsap 사용
+const BenefitPrevBtn = document.querySelector(".benefit-prev-btn");
+const BenefitNextBtn = document.querySelector(".benefit-next-btn");
+let benefitIndex = document.querySelector(".benefit-index");
 
+BenefitPrevBtn.disabled = true;
 
-let originArr = Array.from(benefitCardNodeList);
-let benefitCurrentArr = originArr.slice(0);
+/*  NodeList 
+    : document.querySelectorAll() 등이 반환하는 객체로, DOM 요소들을 담고 있는 브라우저가 제공하는 API
+      유사 배열일 뿐 배열은 아니라서 반복문 및 인덱스는 사용이 가능하지만 그 외의 배열 전용 메서드는 사용이 불가함
+      따라서 Array.from(노드 리스트);를 통해 노드 리스트의 복사본을 배열로 변환함 
+      노드 리스트가 정적인지 동적인지 여부와 관계없이 DOM 요소에 영향을 줌
+     
+    정적 노드 리스트
+    : querySelectorAll()이 반환하는 노드 리스트로, DOM 요소가 변경되어도 정적 노드 리스트는 변경되지 않음
+    
+    동적 노드 리스트
+    : getElementsBy*()가 반환하는 DOM과 실시간 연결된 노드 리스트로, DOM 요소가 변경되면 동적 노드 리스트는 자동 업데이트됨  */
+/* 노드 리스트로 만든 배열은 생성이 된 순간, 노드 리스트와는 독립적이므로 
+   동적 노드 리스트로 생성된 배열은 DOM이 변경되더라도 업데이트되지 않음 */
+let benefitOriginArr = Array.from(benefitCardNodeList);
+// 배열 자체를 할당하면 동일한 배열 주소를 참조하여, 하나를 수정하더라도 다른 한쪽 또한 수정되므로 slice()를 사용함
+let benefitCopyArr = benefitOriginArr.slice(0);
 
-nextBtn.addEventListener("click", () => {
-    nextBtn.disabled = true;
+// 버튼의 빠른 연속 클릭으로 인해 애니메이션에 비동기 타이밍 꼬임 문제가 발생할 수 있으므로 이를 방지하기 위해 애니메이션의 현재 진행 여부를 저장함
+let isAnimating = false;
 
-    benefitCardNodeList.forEach(benefit => {
-        benefit.style.transition = "none";
-    });
+// 다음 화살표 누를 시 동작할 이벤트 등록
+BenefitNextBtn.addEventListener("click", () => {
+    if (isAnimating) {
+        return; // 함수 실행을 즉시 종료
+    } else {
+        isAnimating = true;
 
-    let firstCard = benefitCurrentArr[0];
-    firstCard.classList.remove("front-card");
-    // slice()는 원본 배열을 수정X, 명시된 인덱스부터 잘라서 새로운 배열로 반환
-    let otherCard = benefitCurrentArr.slice(1);
-    otherCard[0].classList.add("front-card")
+        BenefitNextBtn.disabled = true;
+        BenefitPrevBtn.disabled = true;
 
-    gsap.to(firstCard, {
-        rotation: "+=15", duration: 0.8, ease: "power1.inOut", stagger: 0, opacity: 0,
-        onComplete: () => {
-            benefitCurrentArr.shift();
-            prevBtn.disabled = false;
+        let frontCard = benefitCopyArr[0];
+        let otherCard = benefitCopyArr.slice(1);    // 1번 인덱스 요소부터 마지막 요소까지를 복사한 새로운 배열 생성
 
-            // benefitCurrentArr[0].style.cssText += "background-color: #FFF3E0; box-shadow: 8px 12px 24px rgba(0, 0, 0, 0.5); delay: 1s";
-
-            if (benefitCurrentArr.length !== 1) {
-                nextBtn.disabled = false;
+        /* gsap.to()
+           : 첫번째 인수로 명시된 요소의 현재 상태를 시작점으로 잡고, 두번째 인수의 명시된 속성 값을 끝점으로 잡아 애니메이션을 실행하는 함수
+             즉, 특정 요소에 현 상태에 누적하여 어떤 속성 값으로 변화시키기에 편리함 
+             GSAP은 비동기 애니메이션 프레임을 사용하므로, 여러 gsap.to()는 병행 실행됨
+           stagger : 여러 요소가 일정한 시간 간격으로 애니메이션을 순차적 실행하기 위한 속성
+                     0으로 설정하면, 여러 요소의 애니메이션이 동시에 실행됨
+           ease : 가속 / 감속 효과로 선형보다 더 부드럽고 자연스럽게 애니메이션을 실행하기 위한 속성
+                  power1.in : 느리다가 빨라짐
+                  power1.out: 빠르다가 느려짐
+                  power1.inOut : 시작과 끝은 느리고 중간이 빠름
+                  power1, power2처럼 뒤의 숫자가 클수록 가속 / 감속의 정도가 큼 */
+        const FrontGsap = gsap.to(frontCard, {
+            // frontCard의 gsap이 otherCard의 gsap보다 더 빨리 실행 완료되어 이질감이 느껴지므로, frontCard의 gsap에 delay 속성 값을 지정함
+            opacity: 0, rotation: "+=15", duration: 0.3, stagger: 0, ease: "power1.inOut", delay: 0.25, onComplete: () => {
+                frontCard.classList.remove("front-card");
+                benefitCopyArr.shift(); // 배열의 첫번째 요소를 삭제
+                benefitCopyArr[0].classList.add("front-card");
             }
+        });
 
-        }
-    });
+        const OtherGsap = gsap.to(otherCard, {
+            rotation: "+=15", duration: 0.4, stagger: 0, ease: "power1.inOut"
+        });
 
-    gsap.to(otherCard, {
-        rotation: "+=15", duration: 0.8, ease: "power1.inOut", stagger: 0
+        // Promise : 비동기 작업의 완료를 감지하는 객체 
+        // Promise.all() : 명시한 여러 비동기 작업이 종료될 때까지 기다린 후 완료 시 .then()을 수행하고, 실패 시 .catch()를 수행함
+        Promise.all([FrontGsap, OtherGsap]).then(() => {
+            if (benefitCopyArr.length !== 1) {
+                BenefitNextBtn.disabled = false;
+            }
+            benefitIndex.textContent = benefitCopyArr[0].dataset.num;
+            BenefitPrevBtn.disabled = false;
+            isAnimating = false;
+        });
 
-    });
+    }
+});
+
+// 이전 화살표 누를 시 동작할 이벤트 등록
+BenefitPrevBtn.addEventListener("click", () => {
+    if (isAnimating) {
+        return;
+    } else {
+        isAnimating = true;
+
+        BenefitNextBtn.disabled = true;
+        BenefitPrevBtn.disabled = true;
+
+        let prevIndex = benefitOriginArr.length - benefitCopyArr.length - 1;
+
+        benefitCopyArr[0].classList.remove("front-card");
+        benefitCopyArr.unshift(benefitOriginArr[prevIndex]); // 배열에 첫번째 요소를 추가
+        benefitCopyArr[0].classList.add("front-card");
+        let otherCard = benefitCopyArr.slice(1);
+
+        const FrontGsap = gsap.to(benefitCopyArr[0], {
+            opacity: 1, rotation: "-=15", duration: 0.25, stagger: 0, ease: "power1.out", delay: 0.2
+        });
+
+        const OtherGsap = gsap.to(otherCard, {
+            rotation: "-=15", duration: 0.25, stagger: 0, ease: "power1.inOut"
+        });
+
+        Promise.all([FrontGsap, OtherGsap]).then(() => {
+            if (benefitCopyArr.length !== 6) {
+                BenefitPrevBtn.disabled = false;
+            }
+            benefitIndex.textContent = benefitCopyArr[0].dataset.num;
+            BenefitNextBtn.disabled = false;
+            isAnimating = false;
+        });
+    }
 });
 
 
 
 
 
-
-// gsap 사용
-
-prevBtn.addEventListener("click", () => {
-    prevBtn.disabled = true;
-
-    let prevIndex = 5 - benefitCurrentArr.length;
-    console.log(prevIndex);
-    benefitCurrentArr[0].classList.remove("front-card");
-    benefitCurrentArr.unshift(originArr[prevIndex]);
-    console.log(originArr[prevIndex]);
-    benefitCurrentArr[0].classList.add("front-card");
-    let frontCard = benefitCurrentArr[0];
-    let otherCard = benefitCurrentArr.slice(1);
-
-    gsap.to(frontCard, {
-        opacity: 1, rotation: "-=15", duration: 0.8, ease: "power1.inOut", stagger: 0,
-        onComplete: () => {
-            if (benefitCurrentArr.length !== 6) {
-                prevBtn.disabled = false;
-            }
-        }
-
-
-    });
-
-    gsap.to(otherCard, { rotation: "-=15", duration: 0.8, ease: "power1.inOut", stagger: 0 });
-
-});
 
 
 
