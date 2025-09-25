@@ -161,6 +161,7 @@ a {
     color: var(--light-gray-color);
 }
 
+
 /* hero-sec */
 .hero-container {
     display: flex;
@@ -448,7 +449,7 @@ a {
 .after-cost {
     font-size: 1.8rem;
     font-weight: 500;
-    margin-top: 0.7rem;
+    margin-top: 0.6rem;
 }
 
 .recommend-card-cta {
@@ -475,7 +476,7 @@ a {
 .benefit-index-wrapper {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
     margin-top: 6rem;
 }
 
@@ -488,20 +489,17 @@ a {
 }
 
 .benefit-index-wrapper button:disabled {
-    opacity: 0.4;
+    opacity: 0.3;
 }
 
 .benefit-index-wrapper p {
-    width: 56px;
     color: var(--primary-color);
     font-size: 3rem;
-    letter-spacing: 0.8rem;
-
 }
 
 .benefit-card-container {
     width: 100%;
-    height: 650px;
+    height: 686px;
     position: relative;
     margin-top: 3rem;
 }
@@ -588,10 +586,10 @@ a {
     font-size: 1.8rem;
     font-weight: 500;
     color: var(--white-color);
-    padding: 1.4rem 3.8rem;
+    padding: 1.5rem 3rem;
     border-radius: 50px;
     background-color: #000;
-    margin-top: 3rem;
+    margin-top: 4rem;
 }
 
 .sub-cta:hover {
@@ -713,7 +711,6 @@ a {
         font-size: 3.6rem;
     }
 
-
     /* hero-sec */
     .hero-container {
         /* 1920px에서 display: flex;를 해지 */
@@ -786,15 +783,14 @@ a {
 
     .recommend-card {
         padding: 3.5rem 2.5rem;
-
-    }
-
-    .recommend-card img {
-        width: 180px;
     }
 
     .recommend-card .phone-name {
         font-size: 2.2rem;
+    }
+
+    .recommend-card img {
+        width: 180px;
     }
 
     .recommend-card .option-container {
@@ -843,26 +839,34 @@ a {
     }
 
     .benefit-index-wrapper p {
-        width: 42px;
         font-size: 2.4rem;
-        letter-spacing: 0.5rem;
     }
 
     .benefit-prev-btn img,
     .benefit-next-btn img {
         width: 3rem;
-
     }
 
     .benefit-card-container {
-        height: 640px;
+        height: 638px;
         margin-top: 2rem;
     }
 
     .benefit-card {
         width: 360px;
         padding: 5rem 0;
-        top: 51%;
+    }
+
+    .benefit-icon {
+        height: 15rem;
+    }
+
+    .benefit-desc {
+        line-height: 1.3;
+    }
+
+    .sub-cta {
+        font-size: 1.6rem;
     }
 }
 
@@ -996,16 +1000,13 @@ a {
 
 
     /* benefit-sec */
-
     .benefit-index-wrapper {
         margin-top: 2.8rem;
         gap: 0.8rem;
     }
 
     .benefit-index-wrapper p {
-        width: 42px;
         font-size: 2rem;
-        letter-spacing: 0.5rem;
     }
 
     .benefit-prev-btn img,
@@ -1015,14 +1016,30 @@ a {
 
 
     .benefit-card-container {
-        height: 620px;
+        height: 594px;
         margin-top: 1.4rem;
     }
 
     .benefit-card {
-        width: 360px;
+        width: 300px;
         padding: 4rem 0;
         top: 50%;
+    }
+
+    .benefit-title {
+        font-size: 2rem;
+    }
+
+    .benefit-sub-title {
+        font-size: 1.6rem;
+    }
+
+    .benefit-icon {
+        height: 14rem;
+    }
+
+    .benefit-desc {
+        font-size: 1.4rem;
     }
 
     /* process-sec */
