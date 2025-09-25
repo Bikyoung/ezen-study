@@ -99,7 +99,7 @@
     --white-color: #FFFFFF;
     --gray-color: #A0A0A0;
     --light-gray-color: #989898;
-    --gradient-yellow: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 238, 154, 0.2));
+    --gradient-yellow: linear-gradient(to bottom, rgba(255, 255, 255, 0.25), rgba(255, 238, 154, 0.35));
 }
 
 
@@ -487,31 +487,37 @@ a {
     cursor: pointer;
 }
 
+.benefit-index-wrapper button:disabled {
+    opacity: 0.4;
+}
+
 .benefit-index-wrapper p {
+    width: 56px;
     color: var(--primary-color);
     font-size: 3rem;
-    letter-spacing: 0.5rem;
+    letter-spacing: 0.8rem;
 
 }
 
 .benefit-card-container {
     width: 100%;
+    height: 650px;
     position: relative;
     margin-top: 3rem;
-    /* 수정할 것 */
-    height: 700px;
-    perspective: 1000px;
 }
 
 .benefit-card {
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: absolute;
     border-radius: 10px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    /* 지울 것 */
-    width: 406px;
-    height: 550px;
+    padding: 6rem 0;
+    color: #5D4037;
 }
 
 .benefit-card:not(.front-card) {
@@ -521,7 +527,6 @@ a {
 
 .benefit-card.card-2 {
     background-color: rgba(250, 215, 160, 0.3);
-    /* 지울 것 */
     z-index: 9;
 }
 
@@ -554,6 +559,45 @@ a {
     /* 지울 것 */
     transform: translate(-50%, -50%);
 }
+
+.benefit-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.benefit-sub-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-top: 0.6rem;
+}
+
+.benefit-icon {
+    display: block;
+    height: 17rem;
+    margin: 4rem 0;
+}
+
+.benefit-desc {
+    font-size: 1.6rem;
+    line-height: 1.4;
+    letter-spacing: 0.03rem;
+    text-align: center;
+}
+
+.sub-cta {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--white-color);
+    padding: 1.4rem 3.8rem;
+    border-radius: 50px;
+    background-color: #000;
+    margin-top: 3rem;
+}
+
+.sub-cta:hover {
+    background-color: rgb(98, 71, 51);
+}
+
 
 /* process-sec */
 .step-wrapper {
@@ -790,6 +834,36 @@ a {
     .recommend-desc {
         margin-top: 10rem;
     }
+
+
+    /* benefit-sec */
+    .benefit-index-wrapper {
+        margin-top: 4rem;
+        gap: 1rem;
+    }
+
+    .benefit-index-wrapper p {
+        width: 42px;
+        font-size: 2.4rem;
+        letter-spacing: 0.5rem;
+    }
+
+    .benefit-prev-btn img,
+    .benefit-next-btn img {
+        width: 3rem;
+
+    }
+
+    .benefit-card-container {
+        height: 640px;
+        margin-top: 2rem;
+    }
+
+    .benefit-card {
+        width: 360px;
+        padding: 5rem 0;
+        top: 51%;
+    }
 }
 
 
@@ -920,6 +994,36 @@ a {
         margin-top: 8rem;
     }
 
+
+    /* benefit-sec */
+
+    .benefit-index-wrapper {
+        margin-top: 2.8rem;
+        gap: 0.8rem;
+    }
+
+    .benefit-index-wrapper p {
+        width: 42px;
+        font-size: 2rem;
+        letter-spacing: 0.5rem;
+    }
+
+    .benefit-prev-btn img,
+    .benefit-next-btn img {
+        width: 2.5rem;
+    }
+
+
+    .benefit-card-container {
+        height: 620px;
+        margin-top: 1.4rem;
+    }
+
+    .benefit-card {
+        width: 360px;
+        padding: 4rem 0;
+        top: 50%;
+    }
 
     /* process-sec */
     .step-wrapper {

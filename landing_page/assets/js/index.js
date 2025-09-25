@@ -179,7 +179,7 @@ BenefitNextBtn.addEventListener("click", () => {
                   power1, power2처럼 뒤의 숫자가 클수록 가속 / 감속의 정도가 큼 */
         const FrontGsap = gsap.to(frontCard, {
             // frontCard의 gsap이 otherCard의 gsap보다 더 빨리 실행 완료되어 이질감이 느껴지므로, frontCard의 gsap에 delay 속성 값을 지정함
-            opacity: 0, rotation: "+=15", duration: 0.3, stagger: 0, ease: "power1.inOut", delay: 0.25, onComplete: () => {
+            opacity: 0, rotation: "+=15", duration: 0.2, stagger: 0, ease: "power1.inOut", delay: 0.2, onComplete: () => {
                 frontCard.classList.remove("front-card");
                 benefitCopyArr.shift(); // 배열의 첫번째 요소를 삭제
                 benefitCopyArr[0].classList.add("front-card");
@@ -187,7 +187,7 @@ BenefitNextBtn.addEventListener("click", () => {
         });
 
         const OtherGsap = gsap.to(otherCard, {
-            rotation: "+=15", duration: 0.4, stagger: 0, ease: "power1.inOut"
+            rotation: "+=15", duration: 0.2, stagger: 0, ease: "power1.inOut"
         });
 
         // Promise : 비동기 작업의 완료를 감지하는 객체 
@@ -222,11 +222,11 @@ BenefitPrevBtn.addEventListener("click", () => {
         let otherCard = benefitCopyArr.slice(1);
 
         const FrontGsap = gsap.to(benefitCopyArr[0], {
-            opacity: 1, rotation: "-=15", duration: 0.25, stagger: 0, ease: "power1.out", delay: 0.2
+            opacity: 1, rotation: "-=15", duration: 0.15, stagger: 0, ease: "power1.out", delay: 0.2
         });
 
         const OtherGsap = gsap.to(otherCard, {
-            rotation: "-=15", duration: 0.25, stagger: 0, ease: "power1.inOut"
+            rotation: "-=15", duration: 0.15, stagger: 0, ease: "power1.inOut"
         });
 
         Promise.all([FrontGsap, OtherGsap]).then(() => {
