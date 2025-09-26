@@ -661,6 +661,41 @@ a {
 }
 
 
+/* contact-sec */
+.contact-desc {
+    margin-top: 6rem;
+}
+
+.contact-form {
+    width: 100%;
+    background-color: var(--gradient-yellow);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0 0 4px 1px rgba(255, 255, 255, 0.25);
+    margin-top: 3rem;
+}
+
+input {
+    border-radius: 10px;
+}
+
+.input-box-group-1,
+.input-box-group-2 {
+    display: flex;
+}
+
+.input-box-group-1 input,
+.input-box-group-2 input {
+    height: 70px;
+
+}
+
+.input-content {
+    width: 100%;
+    height: 300px;
+}
+
+
 /* break-point */
 @media (max-width: 1439px) {
 
