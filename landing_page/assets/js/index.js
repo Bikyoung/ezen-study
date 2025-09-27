@@ -241,6 +241,89 @@ BenefitPrevBtn.addEventListener("click", () => {
 });
 
 
+// contact-sec
+// 개인정보 수집 및 이용 동의 팝업 등장 및 퇴장  
+const PopUpOverlay = document.querySelector(".popup-overlay");
+const PrivacyCheckDesc = document.querySelector(".privacy-check-desc");
+const PrivacyPopUp = document.querySelector(".privacy-popup");
+const PrivacyPopUpCloseBtn = document.querySelector(".privacy-popup-close-btn");
+
+// 자세히 보기 버튼 클릭 시 팝업창 등장
+PrivacyCheckDesc.addEventListener("click", () => {
+    PopUpOverlay.style.display = "block";
+    PrivacyPopUp.style.display = "block";
+});
+
+// X 버튼 클릭 시 팝업창 퇴장
+PrivacyPopUpCloseBtn.addEventListener("click", () => {
+    PrivacyPopUp.style.display = "none";
+    PopUpOverlay.style.display = "none";
+});
+
+// 유효성 메시지 팝업 등장 및 퇴장
+const Form = document.querySelector(".contact-form");
+const InputUserName = document.querySelector("#user-name");
+const InputPhoneNumber = document.querySelector("#phone-number");
+const InputContent = document.querySelector("#content-input");
+const InputPrivacyCheck = document.querySelector("#privacy-check");
+const ErrorMessageElement = document.querySelector(".error-message");
+const InputInvalidPopup = document.querySelector(".input-invalid-popup");
+
+/* addEventListener() 
+   : 항상 콜백 함수에 event 객체를 전달함
+     하지만 해당 콜백 함수가 event 객체(발생한 event에 관한 정보를 담고 있는 객체 ex) 이벤트 발생 시점, 종류 등)를 
+     사용할 필요가 없다면 event 객체를 담을 매개변수가 없어도 됨
+     JS는 함수의 매개변수 개수와 인수의 개수가 달라도 문제 X */
+
+// 유효성 메시지 팝업 등장
+Form.addEventListener("submit", (event) => {
+    /* preventDefault() 
+       : 해당 이벤트의 기본 동작을 막는 함수
+         submit의 기본 동작은 1.유효성 검사 2.유효성 에러 메시지 3. 제출(페이지 새로고침)인데,
+         form 태그에 명시된 novalidate로 인해 1,2이 생략되어 바로 form 제출을 하게 됨
+         하지만 JS에서 유효성 검사를 하려면 바로 제출되는 것을 방지해야 하므로 preventDefault()를 호출함 */
+    event.preventDefault();
+
+    if (!InputUserName.validity.valid) {
+        showPopUp("이름은 필수 항목입니다.");
+    } else if (!InputPhoneNumber.validity.valid) {
+        // 연락처를 입력하지 않은 경우
+        if (InputPhoneNumber.validity.valueMissing) {
+            showPopUp("연락처는 필수 항목입니다.");
+        }
+        // 입력 형식이 맞지 않은 경우
+        else if (InputPhoneNumber.validity.patternMismatch) {
+            showPopUp("연락처는 '-' 없이 숫자 11자리만 입력해야 합니다.\n(예: 01012345678)");
+        }
+    } else if (!InputContent.validity.valid) {
+        showPopUp("문의 내용은 필수 항목입니다.");
+    } else if (!InputPrivacyCheck.validity.valid) {
+        showPopUp("본 동의는 서비스 이용을 위해 필수입니다.");
+    } else {
+        showPopUp("문의가 접수되었습니다.\n담당자가 확인 후 순차적으로 답변드릴 예정입니다.");
+    }
+});
+
+function showPopUp(str) {
+    ErrorMessageElement.textContent = str;
+    PopUpOverlay.style.display = "block";
+    InputInvalidPopup.style.display = "block";
+}
+
+// 확인 버튼 클릭 시 팝업창 퇴장
+const InvalidPopupCloseBtn = document.querySelector(".invalid-popup-close-btn");
+
+InvalidPopupCloseBtn.addEventListener("click", () => {
+    InputInvalidPopup.style.display = "none";
+    PopUpOverlay.style.display = "none";
+});
+
+
+
+
+
+
+
 
 
 
