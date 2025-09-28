@@ -53,7 +53,7 @@ radioBtnArr.forEach((radioBtn) => {
 
 // recommend-sec에 슬라이드 구현
 // new Swiper(슬라이드가 적용될 요소, 옵션 객체)
-const recommendSecSwiper = new Swiper(".recommend-sec .swiper", {
+const RecommendSecSwiper = new Swiper(".recommend-sec .swiper", {
     /* 한번에 보여줄 슬라이드 갯수를 지정
        단, 이로 인해 슬라이드의 너비가 swiper에 의해 자동 조절될 수 있음
        자동 조절이 싫으면 속성 값을 "auto"로 정하고, 슬라이드의 너비를 직접 지정 
@@ -103,7 +103,7 @@ let benefitCardNodeList = document.querySelectorAll(".benefit-card");
      entry : entries의 원소 
      isIntersecting : 해당 요소가 임계값으로 설정한만큼 겹치면 true를 반환하는 속성
      threshold : 해당 요소가 얼마나 겹쳐야 콜백을 실행할지를 설정 (0.0 ~ 1.0)*/
-const observerObj = new IntersectionObserver((entries) => {
+const ObserverObj = new IntersectionObserver((entries) => {
     entries.forEach(
         (entry) => {
             if (entry.isIntersecting) {
@@ -115,7 +115,7 @@ const observerObj = new IntersectionObserver((entries) => {
                     benefitCardNodeList[i].style.transform = `translate(-50%, -50%) rotate(${degree}deg)`;
 
                     /* 페이지 첫 로딩시에만 실행될 수 있도록, 동작 종료 후에 관찰 대상을 해제함 */
-                    observerObj.unobserve(entry.target);
+                    ObserverObj.unobserve(entry.target);
                 }
             }
         }
@@ -123,7 +123,7 @@ const observerObj = new IntersectionObserver((entries) => {
 }, { threshold: 1.0 });
 
 // benefitFrontCard를 IntersectionObserver의 관찰 대상으로 등록함
-observerObj.observe(benefitFrontCard);
+ObserverObj.observe(benefitFrontCard);
 
 
 // 화살표 버튼 클릭 시, 카드가 회전하며 등장함 - gsap 사용
@@ -239,6 +239,21 @@ BenefitPrevBtn.addEventListener("click", () => {
         });
     }
 });
+
+
+// review-sec
+const ReviewSecSwiper = new Swiper(".review-sec .swiper", {
+    slidesPerView: "auto",
+    spaceBetween: 30,
+    autoplay: {
+        delay: 2000,
+        disableOnInteraction: false
+    },
+    loop: true
+});
+
+
+
 
 
 // contact-sec
