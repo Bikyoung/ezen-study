@@ -14,14 +14,51 @@
 <body>
     <!-- header-sec -->
     <header>
-
+        <div class="container header-container">
+            <div class="logo">
+                <a href="#">
+                    Any1 Telecom
+                </a>
+            </div>
+            <nav>
+                <ul class="menu-list no-mobile">
+                    <li class="menu">
+                        <a href="#recommend-sec">
+                            추천 상품
+                        </a>
+                    </li>
+                    <li class="menu">
+                        <a href="#benefit-sec">
+                            고객 혜택
+                        </a>
+                    </li>
+                    <li class="menu">
+                        <a href="#review-sec">
+                            구매 후기
+                        </a>
+                    </li>
+                    <li class="menu">
+                        <a href="#process-sec">
+                            구매 절차
+                        </a>
+                    </li>
+                    <li class="menu">
+                        <a href="#contact-sec">
+                            1:1 문의
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="hamburger-btn only-mobile">
+                <img src="./assets/images/hamburger-btn.png" alt="햄버거 버튼">    
+            </div>
+        </div>
     </header>
 
     <!-- main-sec -->
     <main>
-
         <!-- hero-sec -->
-        <section class="hero-sec">
+        <section id="hero-sec" class="hero-sec">
             <div class="container hero-container">
                 <!-- text-container -->
                 <div class="text-container">
@@ -44,7 +81,7 @@
         </section>
 
         <!-- recommend-sec -->
-        <section class="recommend-sec">
+        <section id="recommend-sec" class="recommend-sec">
             <div class="container center-container recommend-container">
                 <h3 class="sec-title orange-text">
                     추천 상품
@@ -691,7 +728,7 @@
         </section>
 
         <!-- benefit-sec -->
-        <section class="benefit-sec">
+        <section id="benefit-sec" class="benefit-sec">
             <div class="container center-container benefit-container">
                 <h3 class="sec-title orange-text">
                     고객 혜택
@@ -801,7 +838,7 @@
         </section>
 
         <!-- review-sec -->
-        <section class="review-sec">
+        <section id="review-sec" class="review-sec">
             <div class="container center-container review-container">
                 <h3 class="sec-title orange-text">
                     구매 후기
@@ -927,7 +964,7 @@
 
 
         <!-- process-sec -->
-        <section class="process-sec">
+        <section id="process-sec" class="process-sec">
             <div class="container center-container process-container">
                 <h3 class="sec-title orange-text">
                     구매 절차
@@ -1005,7 +1042,7 @@
         </section>
 
         <!-- contact-sec -->
-        <section class="contact-sec">
+        <section id="contact-sec" class="contact-sec">
             <div class="container center-container contact-container">
                 <h3 class="sec-title orange-text">
                     1:1 문의
@@ -1065,6 +1102,51 @@
 
     </footer>
 
+    <!-- slide-menu-area -->
+    <div class="slide-menu-area">
+        <div class="container slide-container">
+            <div class="slide-menu-header">
+                <div class="logo">
+                    <a href="#" >
+                        Any1 Telecom
+                    </a>
+                </div>
+                <button type="button" class="slide-menu-close-btn close-btn">
+                    <img src="./assets/images/close.png" alt="닫힘 버튼">    
+                </button>
+            </div>
+            <nav>
+                <ul class="menu-list">
+                    <li class="menu">
+                        <a href="#recommend-sec">
+                            추천 상품
+                        </a>
+                    </li>
+                    <li class="menu">
+                        <a href="#benefit-sec">
+                            고객 혜택
+                        </a>
+                    </li>
+                    <li class="menu">
+                        <a href="#review-sec">
+                            구매 후기
+                        </a>
+                    </li>
+                    <li class="menu">
+                        <a href="#process-sec">
+                            구매 절차
+                        </a>
+                    </li>
+                    <li class="menu">
+                        <a href="#contact-sec">
+                            1:1 문의
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
     <!-- popup -->
     <div class="popup-overlay"></div>
     
@@ -1072,7 +1154,7 @@
     <div class="popup privacy-popup">
         <div class="popup-title">
             <h3>개인정보 수집 및 이용 동의</h3>
-            <button type="button" class="privacy-popup-close-btn">
+            <button type="button" class="privacy-popup-close-btn close-btn">
                 <img src="./assets/images/close.png" alt="닫힘 버튼">
             </button>
         </div>

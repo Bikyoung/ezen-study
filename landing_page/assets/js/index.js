@@ -1,3 +1,44 @@
+const Body = document.querySelector("body");
+const SlideMenuArea = document.querySelector(".slide-menu-area");
+const HamburgerBtn = document.querySelector(".hamburger-btn");
+
+// 햄버거 버튼 클릭 시, 슬라이드 메뉴가 등장
+HamburgerBtn.addEventListener("click", () => {
+    SlideMenuArea.style.zIndex = "100";
+
+    // 웹 페이지의 스크롤을 방지
+    Body.style.overflow = "hidden";
+
+    // 요소의 X축 위치를 원래 위치로 되돌림 
+    SlideMenuArea.style.transform = "translateX(0)";
+});
+
+
+// 슬라이드 메뉴 퇴장
+function closeSlideMenuArea() {
+    SlideMenuArea.style.transform = "translateX(100%)";
+
+    // 슬라이드 메뉴가 닫힐 때 main이 보이면서 중첩되는 현상을 해결
+    SlideMenuArea.style.zIndex = "-1";
+    Body.style.overflow = "auto";
+
+}
+
+SlideMenuArea.addEventListener("click", (event) => {
+    let target = event.target;
+
+    /* closest(selector) 
+       : 현재 요소를 포함하여 가장 가까운 상위 요소에서 selector를 찾는 함수 */
+    /* SlideMenuArea 내부 어디를 눌러도 무조건 닫히는 게 아니라, 
+       버튼 또는 링크 클릭 시에만 닫히도록 closet()을 사용 */
+    if (target.closest(".logo")
+        || target.closest(".slide-menu-close-btn")
+        || target.closest(".menu")) {
+        closeSlideMenuArea();
+    }
+});
+
+
 let colorCircleArr = document.querySelectorAll(".color-circle");
 let radioBtnArr = document.querySelectorAll(".radio-btn");
 
@@ -332,8 +373,6 @@ InvalidPopupCloseBtn.addEventListener("click", () => {
     InputInvalidPopup.style.display = "none";
     PopUpOverlay.style.display = "none";
 });
-
-
 
 
 

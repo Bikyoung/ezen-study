@@ -167,6 +167,46 @@ button {
     color: var(--light-gray-color);
 }
 
+.only-mobile {
+    display: none;
+}
+
+.close-btn {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+}
+
+.close-btn img {
+    display: block;
+}
+
+/* header-sec */
+header {
+    height: 100px;
+    background-color: var(--black-color);
+}
+
+.header-container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 80px;
+}
+
+.menu-list {
+    display: flex;
+    gap: 4rem;
+}
+
+.menu-list a {
+    font-size: 1.8rem;
+    color: var(--white-color);
+}
+
 
 /* hero-sec */
 .hero-container {
@@ -815,7 +855,7 @@ button {
     text-decoration: underline;
     /* 밑줄과 텍스트 사이의 간격 조절 */
     text-underline-offset: 0.5rem;
-    transition: 0.2s color ease-in-out;
+    transition: color 0.2s ease-in-out;
 }
 
 .privacy-check-desc:hover {
@@ -830,6 +870,33 @@ button {
     background-color: var(--primary-color);
     color: var(--white-color);
     font-size: 1.6rem;
+}
+
+
+/* slide-menu-area */
+.slide-menu-area {
+    /* fixed와 absolute는 문서의 흐름에서 완전히 빠져나와 공간을 차지하지 않음*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(240, 240, 240);
+    transform: translateX(100%);
+    transition: all 0.3s ease-in-out;
+}
+
+.slide-menu-header {
+    height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--gray-color);
+    margin-bottom: 2.8rem;
+}
+
+.slide-menu-close-btn img {
+    width: 30px;
 }
 
 
@@ -872,16 +939,7 @@ button {
     color: var(--black-color);
 }
 
-.popup-title button {
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    background-color: transparent;
-    border: 0;
-}
-
-.popup-title button img {
-    display: block;
+.privacy-popup-close-btn img {
     width: 90%;
 }
 
@@ -977,6 +1035,25 @@ button {
         font-size: 3.6rem;
         margin-bottom: 4rem;
     }
+
+
+    /* header-sec */
+    header {
+        height: 76px;
+    }
+
+    .header-container {
+        padding: 0 32px;
+    }
+
+    .menu-list {
+        gap: 3rem;
+    }
+
+    .menu-list a {
+        font-size: 1.6rem;
+    }
+
 
     /* hero-sec */
     .hero-container {
@@ -1168,6 +1245,20 @@ button {
 
     .no-mobile {
         display: none;
+    }
+
+    .only-mobile {
+        display: block;
+    }
+
+
+    /* header-sec */
+    header {
+        height: 56px;
+    }
+
+    .header-container {
+        padding: 0 20px;
     }
 
 
@@ -1454,6 +1545,23 @@ button {
     .form-btn {
         height: 50px;
         font-size: 1.4rem;
+    }
+
+
+    /* slide-menu-area */
+    .slide-container {
+        padding: 0 20px;
+    }
+
+    .slide-menu-area .menu-list {
+        flex-direction: column;
+        gap: 2.8rem;
+    }
+
+    .slide-menu-area .menu a {
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: var(--black-color);
     }
 
 
