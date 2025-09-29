@@ -13,7 +13,6 @@ HamburgerBtn.addEventListener("click", () => {
     SlideMenuArea.style.transform = "translateX(0)";
 });
 
-
 // 슬라이드 메뉴 퇴장
 function closeSlideMenuArea() {
     SlideMenuArea.style.transform = "translateX(100%)";
@@ -90,8 +89,6 @@ radioBtnArr.forEach((radioBtn) => {
 });
 
 
-
-
 // recommend-sec에 슬라이드 구현
 // new Swiper(슬라이드가 적용될 요소, 옵션 객체)
 const RecommendSecSwiper = new Swiper(".recommend-sec .swiper", {
@@ -130,6 +127,26 @@ const RecommendSecSwiper = new Swiper(".recommend-sec .swiper", {
         }
     }
 });
+
+// 선택된 탭에 따라 보여지는 추천 상품이 달라짐
+const TabNodeList = document.querySelectorAll(".tab-container .tab");
+const TabArr = Array.from(TabNodeList);
+const SwiperWrapNodeList = document.querySelectorAll(".swiper-wrap");
+
+TabArr.forEach((tab) => {
+    tab.addEventListener("click", function (event) {
+        TabArr.forEach((t) => { t.classList.remove("selected") });
+        // this가 tab을 가리키기 위해선, 콜백 함수 선언 시 function을 사용해야 함
+        this.classList.add("selected");
+
+        let index = TabArr.indexOf(this);
+        SwiperWrapNodeList.forEach((swiperWrap) => {
+            swiperWrap.classList.remove("selected");
+        });
+        SwiperWrapNodeList[index].classList.add("selected");
+    });
+});
+
 
 // benefit-sec
 // 카드가 뷰포트에 진입할 시, 회전하며 등장
@@ -292,9 +309,6 @@ const ReviewSecSwiper = new Swiper(".review-sec .swiper", {
     },
     loop: true
 });
-
-
-
 
 
 // contact-sec
