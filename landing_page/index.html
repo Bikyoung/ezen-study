@@ -100,8 +100,9 @@
                     </button>
                 </div>
 
-                <!-- swiper는 너비를 지정해도 그걸 깨트릴 수 있고, 이에 의해 swiper-wrapper가 버튼이나 인디케이터를 덮을 수 있으므로 이를 방지하기 위해 swiper와 버튼 및 인디케이터를 분리하고 (버튼이나 인디케이터가 반드시 swiper 내부에 있을 필요X 해당 요소가 어디있든 DOM에서 찾아서 기능을 연결하기 때문), 버튼과 인디케이터를 absolute로 위치 지정하며, swiper-wrap의 너비를 수동으로 지정함 -->
-                <div class="swiper-wrap selected">
+                <!-- Swiper는 너비를 지정해도 그걸 깨트릴 수 있고, 이에 의해 swiper-wrapper가 버튼이나 인디케이터를 덮을 수 있으므로 이를 방지하기 위해 Swiper와 버튼 및 인디케이터를 분리하고 (버튼이나 인디케이터가 반드시 Swiper 내부에 있을 필요X 해당 요소가 어디있든 DOM에서 찾아서 기능을 연결하기 때문), 버튼과 인디케이터를 absolute로 위치 지정하며, swiper-wrap의 너비를 수동으로 지정함 -->
+                <!-- 탭 ui에서 Swiper를 안정적으로 사용하려면 각각의 탭 별로 별도의 Swiper 인스턴스를 생성해야 정확하게 작동함 -->
+                <div class="swiper-wrap swiper-wrap-01 selected">
                     <!-- swiper -->
                     <div class="swiper mySwiper">
                         <!-- swiper-wrapper : swiper-slide를 감싸는 요소-->
@@ -122,7 +123,7 @@
                                             <p class="option-title">
                                                 색상
                                             </p>
-                                            <div class="color-circle-container">
+                                            <div class="color-circle-container color-5">
                                                 <button class="color-circle iphone-17-purple selected"
                                                     style="background-color: #e6d5f1"
                                                     data-src="./assets/images/phone-image/iphone-17/purple.png"></button>
@@ -276,7 +277,7 @@
                                             <p class="option-title">
                                                 색상
                                             </p>
-                                            <div class="color-circle-container">
+                                            <div class="color-circle-container color-3">
                                                 <button class="color-circle iphone-17-pro-white selected"
                                                     style="background-color: #e8e8e8"
                                                     data-src="./assets/images/phone-image/iphone-17-pro/white.png"></button>
@@ -570,7 +571,7 @@
                                             <p class="option-title">
                                                 색상
                                             </p>
-                                            <div class="color-circle-container">
+                                            <div class="color-circle-container color-5">
                                                 <button class="color-circle iphone-16-white selected"
                                                     style="background-color: #E0E0E0"
                                                     data-src="./assets/images/phone-image/iphone-16/white.png"></button>
@@ -632,13 +633,23 @@
                                     </a>
                                 </div>
                             </div>
+                            <div class="swiper-slide last-slide">
+                                <div class="recommend-card last-card">
+                                    <!-- recommend-card-cta -->
+                                    <a href="http://assatel.cafe24.com/ONLINE/online_ppom/view.asp?board_idx=301"
+                                        class="recommend-card-cta last-card-cta" target="_blank">
+                                        추천 상품 더 보기
+                                    </a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <button type="button" class="swiper-pre-btn"></button>
                     <button type="button" class="swiper-next-btn"></button>
                     <div class="swiper-indicator"></div>
                 </div>
-                <div class="swiper-wrap">
+                <div class="swiper-wrap swiper-wrap-02">
                     <!-- swiper -->
                     <div class="swiper mySwiper">
                         <!-- swiper-wrapper : swiper-slide를 감싸는 요소-->
@@ -1256,7 +1267,7 @@
                     <button type="button" class="swiper-next-btn"></button>
                     <div class="swiper-indicator"></div>
                 </div>
-                <div class="swiper-wrap">
+                <div class="swiper-wrap swiper-wrap-03">
                     <!-- swiper -->
                     <div class="swiper mySwiper">
                         <!-- swiper-wrapper : swiper-slide를 감싸는 요소-->

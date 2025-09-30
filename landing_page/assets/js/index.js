@@ -91,47 +91,50 @@ radioBtnArr.forEach((radioBtn) => {
 
 // recommend-sec에 슬라이드 구현
 // new Swiper(슬라이드가 적용될 요소, 옵션 객체)
-const RecommendSecSwiper = new Swiper(".recommend-sec .swiper", {
+function initSwiper(arg) { // JS에서는 함수의 반환형을 명시 X
+    let swiperObj = new Swiper(`.recommend-sec ${arg} .swiper`, {
 
-    observer: true,
-    observeParents: true,
+        /* 한번에 보여줄 슬라이드 갯수를 지정
+           단, 이로 인해 슬라이드의 너비가 swiper에 의해 자동 조절될 수 있음
+           자동 조절이 싫으면 속성 값을 "auto"로 정하고, 슬라이드의 너비를 직접 지정 
+        */
+        slidesPerView: "auto",
 
-    /* 한번에 보여줄 슬라이드 갯수를 지정
-       단, 이로 인해 슬라이드의 너비가 swiper에 의해 자동 조절될 수 있음
-       자동 조절이 싫으면 속성 값을 "auto"로 정하고, 슬라이드의 너비를 직접 지정 
-    */
-    slidesPerView: "auto",
-
-    // 마지막 슬라이드에서 다시 첫 슬라이드로 넘어가게 안함 (1-2-3-1 X)
-    loop: false,
-    // navigation으로 좌우 화살표 버튼 영역을 지정하면 자동으로 화살표 버튼이 생성됨
-    navigation: {
-        nextEl: ".swiper-next-btn",
-        prevEl: ".swiper-pre-btn"
-    },
-    // pagination 속성으로 인디케이터 영역 지정 및 클릭 가능 여부를 설정
-    pagination: {
-        el: ".swiper-indicator",
-        clickable: true
-    },
-
-
-    // Swiper의 breakpoint
-    breakpoints: {
-        // 화면 너비가 1025px 이상일 때
-        1025: {
-            // 슬라이드 간의 간격 (단위는 별도로 지정하지 않지만 픽셀임)
-            spaceBetween: 26,
+        // 마지막 슬라이드에서 다시 첫 슬라이드로 넘어가게 안함 (1-2-3-1 X)
+        loop: false,
+        // navigation으로 좌우 화살표 버튼 영역을 지정하면 자동으로 화살표 버튼이 생성됨
+        navigation: {
+            nextEl: `.recommend-sec ${arg} .swiper-next-btn`,
+            prevEl: `.recommend-sec ${arg} .swiper-pre-btn`
         },
-        769: {
-            spaceBetween: 43
-
+        // pagination 속성으로 인디케이터 영역 지정 및 클릭 가능 여부를 설정
+        pagination: {
+            el: `.recommend-sec ${arg} .swiper-indicator`,
+            clickable: true
         },
-        320: {
-            spaceBetween: 40
+
+
+        // Swiper의 breakpoint
+        breakpoints: {
+            // 화면 너비가 1025px 이상일 때
+            1025: {
+                // 슬라이드 간의 간격 (단위는 별도로 지정하지 않지만 픽셀임)
+                spaceBetween: 26,
+            },
+            769: {
+                spaceBetween: 43
+
+            },
+            320: {
+                spaceBetween: 40
+            }
         }
-    }
-});
+    });
+
+    return swiperObj;
+}
+
+const recommendSecSwiperArr = [initSwiper(".swiper-wrap-01"), initSwiper(".swiper-wrap-02"), initSwiper(".swiper-wrap-03")];
 
 // 선택된 탭에 따라 보여지는 추천 상품이 달라짐
 const TabNodeList = document.querySelectorAll(".tab-container .tab");
@@ -139,12 +142,17 @@ const TabArr = Array.from(TabNodeList);
 const SwiperWrapNodeList = document.querySelectorAll(".swiper-wrap");
 
 TabArr.forEach((tab) => {
-    tab.addEventListener("click", function (event) {
+    tab.addEventListener("click", function () {
+        let index = TabArr.indexOf(this);
+
+        // swiper가 숨겨졌다가 다시 보이게 되거나, 슬라이드 갯수가 동적으로 바뀐 경우 크기 및 개수를 재계산을 하고, 갱신하게 하기 위함
+        recommendSecSwiperArr[index].update();
+
         TabArr.forEach((t) => { t.classList.remove("selected") });
         // this가 tab을 가리키기 위해선, 콜백 함수 선언 시 function을 사용해야 함
         this.classList.add("selected");
 
-        let index = TabArr.indexOf(this);
+
         SwiperWrapNodeList.forEach((swiperWrap) => {
             swiperWrap.classList.remove("selected");
         });
@@ -207,6 +215,7 @@ BenefitPrevBtn.disabled = true;
     
     동적 노드 리스트
     : getElementsBy*()가 반환하는 DOM과 실시간 연결된 노드 리스트로, DOM 요소가 변경되면 동적 노드 리스트는 자동 업데이트됨  */
+
 /* 노드 리스트로 만든 배열은 생성이 된 순간, 노드 리스트와는 독립적이므로 
    동적 노드 리스트로 생성된 배열은 DOM이 변경되더라도 업데이트되지 않음 */
 let benefitOriginArr = Array.from(benefitCardNodeList);
@@ -327,12 +336,14 @@ const PrivacyPopUpCloseBtn = document.querySelector(".privacy-popup-close-btn");
 PrivacyCheckDesc.addEventListener("click", () => {
     PopUpOverlay.style.display = "block";
     PrivacyPopUp.style.display = "block";
+    Body.style.overflow = "hidden";
 });
 
 // X 버튼 클릭 시 팝업창 퇴장
 PrivacyPopUpCloseBtn.addEventListener("click", () => {
     PrivacyPopUp.style.display = "none";
     PopUpOverlay.style.display = "none";
+    Body.style.overflow = "auto";
 });
 
 // 유효성 메시지 팝업 등장 및 퇴장
@@ -352,6 +363,7 @@ const InputInvalidPopup = document.querySelector(".input-invalid-popup");
 
 // 유효성 메시지 팝업 등장
 Form.addEventListener("submit", (event) => {
+    Body.style.overflow = "hidden";
     /* preventDefault() 
        : 해당 이벤트의 기본 동작을 막는 함수
          submit의 기본 동작은 1.유효성 검사 2.유효성 에러 메시지 3. 제출(페이지 새로고침)인데,
@@ -391,6 +403,7 @@ const InvalidPopupCloseBtn = document.querySelector(".invalid-popup-close-btn");
 InvalidPopupCloseBtn.addEventListener("click", () => {
     InputInvalidPopup.style.display = "none";
     PopUpOverlay.style.display = "none";
+    Body.style.overflow = "auto";
 });
 
 

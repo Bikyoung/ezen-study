@@ -347,6 +347,7 @@ header {
 
 .swiper-slide {
     width: fit-content;
+    height: fit-content;
 }
 
 .swiper-pagination-bullet {
@@ -357,11 +358,12 @@ header {
 
 .recommend-sec .swiper-wrap {
     margin-top: 3rem;
-    height: 575px;
+    height: 578px;
 }
 
 .recommend-sec .swiper {
     width: 100%;
+    height: fit-content;
     display: flex;
     justify-content: space-between;
 }
@@ -393,6 +395,18 @@ header {
        box-shadow: inset(선택) 그림자 x좌표 그림자 y좌표 흐림정도(blur) 크기(spread) 색상;
        내부 그림자에서만 inset 속성 값 사용 */
     box-shadow: inset 0 0 4px 1px rgba(255, 255, 255, 0.25);
+}
+
+.last-slide {
+    height: auto;
+}
+
+.last-card {
+    width: 280px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .recommend-sec .swiper-wrap.selected {
@@ -447,8 +461,13 @@ header {
     gap: calc((130px - (2rem * 4)) / 3);
 }
 
-/* iphone 16은 색상 원이 5개이므로 gap을 별도로 조절 */
-.card-4 .color-circle-container {
+/* 색상 원이 3개, 5개인 경우 gap을 별도로 조절 */
+.color-circle-container.color-3 {
+    width: fit-content;
+    gap: calc((90px - (2rem * 3)) / 2);
+}
+
+.color-circle-container.color-5 {
     width: fit-content;
     gap: calc((140px - (2rem * 5)) / 4);
 }
@@ -503,6 +522,7 @@ header {
 .after-cost {
     font-size: 1.8rem;
     font-weight: 500;
+    letter-spacing: 1px;
     margin-top: 0.6rem;
 }
 
@@ -510,7 +530,7 @@ header {
     font-size: 1.8rem;
     font-weight: 500;
     text-align: center;
-    padding: 1rem 2rem;
+    padding: 1.2rem 2.4rem;
     margin-top: 4rem;
     border-radius: 50px;
     border: 1px solid var(--light-gray-color);
