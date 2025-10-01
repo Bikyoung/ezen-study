@@ -94,6 +94,9 @@ radioBtnArr.forEach((radioBtn) => {
 function initSwiper(arg) { // JS에서는 함수의 반환형을 명시 X
     let swiperObj = new Swiper(`.recommend-sec ${arg} .swiper`, {
 
+        observer: true,
+        observeParents: true,
+
         /* 한번에 보여줄 슬라이드 갯수를 지정
            단, 이로 인해 슬라이드의 너비가 swiper에 의해 자동 조절될 수 있음
            자동 조절이 싫으면 속성 값을 "auto"로 정하고, 슬라이드의 너비를 직접 지정 
@@ -134,7 +137,7 @@ function initSwiper(arg) { // JS에서는 함수의 반환형을 명시 X
     return swiperObj;
 }
 
-const recommendSecSwiperArr = [initSwiper(".swiper-wrap-01"), initSwiper(".swiper-wrap-02"), initSwiper(".swiper-wrap-03")];
+const recommendSecSwiperArr = [initSwiper(".swiper-wrap-01"), initSwiper(".swiper-wrap-02")];
 
 // 선택된 탭에 따라 보여지는 추천 상품이 달라짐
 const TabNodeList = document.querySelectorAll(".tab-container .tab");
@@ -154,9 +157,14 @@ TabArr.forEach((tab) => {
 
 
         SwiperWrapNodeList.forEach((swiperWrap) => {
+            console.log("remove전");
             swiperWrap.classList.remove("selected");
+            console.log("remove 후");
         });
+
+        console.log("select 전");
         SwiperWrapNodeList[index].classList.add("selected");
+        console.log("select 후");
     });
 });
 

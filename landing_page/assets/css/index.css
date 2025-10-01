@@ -461,8 +461,14 @@ header {
     gap: calc((130px - (2rem * 4)) / 3);
 }
 
-/* 색상 원이 3개, 5개인 경우 gap을 별도로 조절 */
-.color-circle-container.color-3 {
+/* 색상 원이 1개, 2개, 3개, 5개인 경우 gap을 별도로 조절 */
+
+.color-circle-container.color-1 {
+    width: fit-content;
+}
+
+.color-circle-container.color-3,
+.color-circle-container.color-2 {
     width: fit-content;
     gap: calc((90px - (2rem * 3)) / 2);
 }
