@@ -125,7 +125,7 @@ function initSwiper(arg) { // JS에서는 함수의 반환형을 명시 X
                 spaceBetween: 26,
             },
             769: {
-                spaceBetween: 43
+                spaceBetween: 43,
 
             },
             320: {
