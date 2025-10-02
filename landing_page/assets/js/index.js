@@ -2,7 +2,7 @@ const Body = document.querySelector("body");
 const SlideMenuArea = document.querySelector(".slide-menu-area");
 const HamburgerBtn = document.querySelector(".hamburger-btn");
 
-// 햄버거 버튼 클릭 시, 슬라이드 메뉴가 등장
+// - 햄버거 버튼 클릭 시, 슬라이드 메뉴가 등장
 HamburgerBtn.addEventListener("click", () => {
     SlideMenuArea.style.zIndex = "100";
 
@@ -41,7 +41,7 @@ SlideMenuArea.addEventListener("click", (event) => {
 let colorCircleArr = document.querySelectorAll(".color-circle");
 let radioBtnArr = document.querySelectorAll(".radio-btn");
 
-/* 색상 버튼 원 선택 시, 카드 내 휴대폰 이미지 변경 
+/* - 색상 버튼 원 선택 시, 카드 내 휴대폰 이미지 변경 
    colorCircle에 적용할 eventListener를 반복문을 통해 한번에 생성 및 등록 */
 colorCircleArr.forEach((colorCircle) => {
     colorCircle.addEventListener("click", function () {
@@ -75,7 +75,7 @@ colorCircleArr.forEach((colorCircle) => {
     });
 });
 
-// 용량 버튼 클릭 시, 카드 내 가격 정보 변경
+// - 용량 버튼 클릭 시, 카드 내 가격 정보 변경
 radioBtnArr.forEach((radioBtn) => {
     radioBtn.addEventListener("click", function () {
         let cardElement = this.closest(".recommend-card");  // 현재 카드 선택 
@@ -89,7 +89,7 @@ radioBtnArr.forEach((radioBtn) => {
 });
 
 
-// recommend-sec에 슬라이드 구현
+// - recommend-sec에 슬라이드 구현
 // new Swiper(슬라이드가 적용될 요소, 옵션 객체)
 function initSwiper(arg) { // JS에서는 함수의 반환형을 명시 X
     let swiperObj = new Swiper(`.recommend-sec ${arg} .swiper`, {
@@ -139,7 +139,7 @@ function initSwiper(arg) { // JS에서는 함수의 반환형을 명시 X
 
 const recommendSecSwiperArr = [initSwiper(".swiper-wrap-01"), initSwiper(".swiper-wrap-02")];
 
-// 선택된 탭에 따라 보여지는 추천 상품이 달라짐
+// - 선택된 탭에 따라 보여지는 추천 상품이 달라짐
 const TabNodeList = document.querySelectorAll(".tab-container .tab");
 const TabArr = Array.from(TabNodeList);
 const SwiperWrapNodeList = document.querySelectorAll(".swiper-wrap");
@@ -170,7 +170,7 @@ TabArr.forEach((tab) => {
 
 
 // benefit-sec
-// 카드가 뷰포트에 진입할 시, 회전하며 등장
+// - 카드가 뷰포트에 진입할 시, 회전하며 등장
 let benefitFrontCard = document.querySelector(".front-card");
 let benefitCardNodeList = document.querySelectorAll(".benefit-card");
 
@@ -205,7 +205,7 @@ const ObserverObj = new IntersectionObserver((entries) => {
 ObserverObj.observe(benefitFrontCard);
 
 
-// 화살표 버튼 클릭 시, 카드가 회전하며 등장함 - gsap 사용
+// - 화살표 버튼 클릭 시, 카드가 회전하며 등장함 - gsap 사용
 const BenefitPrevBtn = document.querySelector(".benefit-prev-btn");
 const BenefitNextBtn = document.querySelector(".benefit-next-btn");
 let benefitIndex = document.querySelector(".benefit-index");
@@ -334,7 +334,7 @@ const ReviewSecSwiper = new Swiper(".review-sec .swiper", {
 
 
 // contact-sec
-// 개인정보 수집 및 이용 동의 팝업 등장 및 퇴장  
+// - 개인정보 수집 및 이용 동의 팝업 등장 및 퇴장  
 const PopUpOverlay = document.querySelector(".popup-overlay");
 const PrivacyCheckDesc = document.querySelector(".privacy-check-desc");
 const PrivacyPopUp = document.querySelector(".privacy-popup");
@@ -354,7 +354,7 @@ PrivacyPopUpCloseBtn.addEventListener("click", () => {
     Body.style.overflow = "auto";
 });
 
-// 유효성 메시지 팝업 등장 및 퇴장
+// - 유효성 메시지 팝업 등장 및 퇴장
 const Form = document.querySelector(".contact-form");
 const InputUserName = document.querySelector("#user-name");
 const InputPhoneNumber = document.querySelector("#phone-number");
@@ -413,6 +413,156 @@ InvalidPopupCloseBtn.addEventListener("click", () => {
     PopUpOverlay.style.display = "none";
     Body.style.overflow = "auto";
 });
+
+
+// - 캔버스를 활용하여 섹션 배경에 반짝임 기능 구현
+const canvasNodeList = document.querySelectorAll(".canvas");
+canvasNodeList.forEach((canvas) => {
+
+    /* canvas 객체의 getContext()
+       : 매개변수에 전달된 문자열에 따라 그에 맞는 렌더링 컨텍스트(그림 도구 모음) 객체를 반환하는 함수
+       
+       즉, 2D 도형을 그릴 수 있는 도구들을 ctx에 할당 */
+    const ctx = canvas.getContext("2d");
+    const canvasParent = canvas.parentElement;
+
+    /* clientWidth와 clientHeight는 스크롤 바 및 border를 포함하지 않는 크기
+    
+        width와 height는 캔버스의 내부 해상도를 설정하는 JS 속성이며, style.width와 style.height는 캔버스의 크기를 설정하는 CSS 속성임
+        이 둘이 다를 경우, 그림이 흐릿하거나 왜곡될 수 있어 전부 다 지정하는 것을 권장하며, JS 속성을 먼저 그 뒤에 CSS 속성을 지정해야 함
+        style 속성 값은 단위를 포함한 문자열이어야 하는데 clientWidth나 clientHeight의 속성 값은 숫자이므로 "px"를 덧붙임 */
+    canvas.width = canvasParent.clientWidth;
+    canvas.height = canvasParent.clientHeight;
+    canvas.style.width = canvasParent.clientWidth + "px";
+    canvas.style.height = canvasParent.clientHeight + "px";
+
+    // 원 객체를 생성하는 클래스
+    class Circle {
+
+        // JS에서는 클래스 필드를 미리 선언하지 않아도, 생성자 및 메서드 내에서 this 키워드를 통해 명시하면 필드가 동적으로 추가됨
+        constructor(xRatio, yRatio) {
+            // 원의 중심 좌표 (캔버스 내부 좌표를 기준으로 함)
+
+            this.xRatio = xRatio;
+            this.yRatio = yRatio;
+            this.radius = 2;
+            this.color = "#FC8A46";
+            // Math.random() : 0 이상 1 미만의 부동 소수점 난수를 랜덤으로 반환하는 함수
+            this.alpha = Math.random(); // 원의 초기 투명도 설정
+            this.alphaDirection = Math.random() < 0.5 ? 1 : -1; // 투명도의 변화 방향을 설정 : 1이면 투명도 증가, -1이면 투명도 감소
+            this.speed = Math.random() * 0.01 + 0.005;  // 투명도의 변화량을 설정 : 0.0001은 변화가 거의 없고, 0.01은 변화가 너무 크기 때문에 중간 범위로 설정
+
+
+        }
+
+        get x() {
+            return this.xRatio * canvas.width;
+        }
+
+        get y() {
+            return this.yRatio * canvas.height;
+        }
+
+
+
+        // 원의 투명도를 재계산하는 함수
+        update() {
+            // 투명도의 누적 = 투명도의 변화 방향 * 변화량
+            this.alpha += this.alphaDirection * this.speed;
+
+            // 투명도의 범위는 0 ~ 1 이므로, 이에 맞춰 투명도 및 변화 방향을 재설정
+            if (this.alpha >= 1) {
+                this.alpha = 1;
+                this.alphaDirection = -1;
+            } else if (this.alpha <= 0) {
+                this.alpha = 0;
+                this.alphaDirection = 1;
+            }
+        }
+
+        // 원을 그리는 함수
+        draw() {
+            /* ctx객체.beginPath() : 이전에 ctx가 그리던 도형과 새로운 도형이 이어지는 것을 방지하기 위해, 이전에 그리던 도형 경로와 분리하여 새 도형 경로를 시작함 */
+            ctx.beginPath();
+
+            /* ctx는 globalAlpha라는 전역 투명도 필드를 갖기 때문에 이전 도형의 투명도를 지우고, 현재 원 객체의 투명도로 재할당 */
+            ctx.globalAlpha = this.alpha;
+
+
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = "#FC8A46";
+
+            /* ctx객체.arc(x 좌표, y좌표, 반지름, 시작 각도, 끝 각도) 
+               : 해당 ctx로 그릴 원 또는 호의 경로를 정의하는 함수로, 경로만 정의할 뿐 실제로 그리지는 않음 */
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);  // 2 파이 = 360도
+
+            ctx.fillStyle = this.color;
+            ctx.fill(); // 설정값들을 이용하여 도형을 실제로 그림
+
+            /* globalAlpha는 전역 변수이므로 이후에 다른 ctx 객체로 원 객체가 아닌 다른 도형을 그릴 때, 해당 도형 투명도에 영향을 주지 않기 위해 1로 설정 */
+            ctx.globalAlpha = 1;
+        }
+    }
+
+    const offset = 75;  // 오차 범위
+    const rows = 4;
+    const cols = 4;
+    const gapX = canvas.width / cols;
+    const gapY = canvas.height / rows;
+
+
+    let circleArr = []; // 원 객체 배열
+
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+            // let x = (j * gapX) + (gapX / 2) + ((Math.random() - 0.5) * offset);
+            // let y = (i * gapY) + (gapY / 2) + ((Math.random() - 0.5) * offset);
+            // let xRatio = x / canvas.width;
+            // let yRatio = y / canvas.height;
+
+            let x = (j + Math.random()) * gapX;
+            let y = (i + Math.random()) * gapY;
+            let xRatio = x / canvas.width;
+            let yRatio = y / canvas.height;
+            circleArr.push(new Circle(xRatio, yRatio));
+
+        }
+    }
+
+    function canvasCircleAnimate() {
+
+        /* ctx 객체.clearRect(시작 x좌표, 시작 y좌표, 가로 길이, 세로 길이) 
+        : 캔버스의 특정 영역을 지우는 함수로, 캔버스는 한 번 그림을 그리면 그게 고정되어 도형이 계속 그 위로 쌓임. 
+          하지만 이 캔버스에서는 그려진 원의 투명도가 계속 바뀌어야 하므로, 그려진 원의 정보를 가지고 계속해서 새로운 투명도의 원을 다시 그려야 함
+          따라서 원의 투명도가 바뀔 때마다 캔버스 전체 영역을 계속 지우는 작업이 필요함 */
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        circleArr.forEach((circle) => {
+            circle.update();
+            circle.draw();
+        });
+
+        /* requestAnimationFrame() 
+           : 우리도 모르게 컴퓨터는 계속해서 새로고침을 자동으로 실행함
+             이 때 새로고침 하는 순간과 애니메이션이 그려지는 시점이 다르면 문제가 발생하므로, 
+             이를 막기 위해 새로고침 전에 실행할 애니메이션 콜백을 등록하는 함수 
+             사실 새로 고침 전에 update()만 실행해도 되지만, 캔버스는 update()와 draw()를 독립적으로 실행하기 어려워서 모두 다 새로고침 전에 실행함 */
+        // 콜백을 등록할 때는 함수를 실행하는 게 아니라 함수 참조만 하는 거니까 함수 호출문을 작성하는 게 아니라 함수명 또는 함수 정의문을 명시해야 함
+        requestAnimationFrame(canvasCircleAnimate);
+    }
+
+    canvasCircleAnimate();
+
+    // 반응형 대비
+    window.addEventListener("resize", () => {
+        canvas.width = canvasParent.clientWidth;
+        canvas.height = canvasParent.clientHeight;
+        canvas.style.width = canvasParent.clientWidth + "px";
+        canvas.style.height = canvasParent.clientHeight + "px";
+    });
+});
+
+
 
 
 
