@@ -1,7 +1,7 @@
 //  ──────────────── canvas ────────────────
 const circleCanvases = document.querySelectorAll(".circle-canvas");
 const meteorCanvases = document.querySelectorAll(".meteor-canvas");
-let angle = [];
+let angle = [6, 6];
 
 // 브라우저 창의 해상도가 변경될 시 canvas의 내부 해상도와 스타일 크기를 재설정
 resize();
@@ -32,16 +32,16 @@ function resize() {
         meteorCanvas.style.height = `${parentHeight}px`;
     });
 
-    if (window.innerWidth >= 1024) {
-        angle[0] = 3;
-        angle[1] = 6;
-    } else if (window.innerWidth >= 768) {
-        angle[0] = 4;
-        angle[1] = 6;
-    } else if (window.innerWidth < 768) {
-        angle[0] = 6;
-        angle[1] = 9;
-    }
+    // if (window.innerWidth >= 1024) {
+    //     angle[0] = 3;
+    //     angle[1] = 6;
+    // } else if (window.innerWidth >= 768) {
+    //     angle[0] = 4;
+    //     angle[1] = 6;
+    // } else if (window.innerWidth < 768) {
+    //     angle[0] = 9;
+    //     angle[1] = 9;
+    // }
 }
 
 class Circle {
@@ -130,7 +130,6 @@ class Meteor {
         const speed = 0.008;        // 비율 기준 속도
         this.vxRatio = -Math.cos(angle) * speed;
         this.vyRatio = Math.sin(angle) * speed;
-
         this.alpha = 1.0;
         this.color = "#FC8A46";
         // 별의 생명주기
