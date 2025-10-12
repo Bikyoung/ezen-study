@@ -1,0 +1,1606 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Pretendard-Bold'),
+        url("../font/Pretendard-Bold.ttf") format('truetype'),
+        url("../font/Pretendard-Bold.woff2") format('woff2') url("../font/Pretendard-Bold.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Pretendard-SemiBold'),
+        url("../font/Pretendard-SemiBold.ttf") format('truetype'),
+        url("../font/Pretendard-SemiBold.woff2") format('woff2'),
+        url("../font/Pretendard-SemiBold.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 500;
+    src: local('Pretendard-Medium'),
+        url("../font/Pretendard-Medium.ttf") format('truetype'),
+        url("../font/Pretendard-Medium.woff2") format("woff2"),
+        url("../font/Pretendard-Medium.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Pretendard-Regular'),
+        url("../font/Pretendard-Regular.ttf") format('truetype'),
+        url("../font/Pretendard-Regular.woff2") format('woff2'),
+        url("../font/Pretendard-Regular.woff") format('woff');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
+
+/* ──────────────── common ──────────────── */
+:root {
+    /* ──── color ──── */
+    --white-color: #ffffff;
+    --black-color: #121212;
+    --primary-color: #FC8A46;
+    --light-gray-color: #E0E0E0;
+    --dark-gray-color: #989898;
+    --yellow-gradient-color: linear-gradient(to bottom, #5E5E5E, #59543A);
+
+    /* ──── spacing ──── */
+    --space-xxs: 0.6rem;
+    --space-xs: 0.8rem;
+    --space-sm: 1.5rem;
+    --space-md: 3rem;
+    --space-lg: 6rem;
+    --space-xl: 12rem;
+    --space-card-gap: 2.5rem;
+    --space-padding-horizontal: 8rem;
+    --space-padding-vertical: 12rem;
+    --space-header: 8rem;
+
+    /* ──── font-size ──── */
+    --font-size-h2-hero: 4.8rem;
+    --font-size-h2: 4.5rem;
+    --font-size-h3: 3rem;
+    --font-size-h4: 2.4rem;
+    --font-size-card-tit: 2.4rem;
+    --font-size-body-xl: 2rem;
+    --font-size-body-lg: 1.8rem;
+    --font-size-body-md: 1.6rem;
+    --font-size-body-sm: 1.4rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 1rem을 10px로 설정 */
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: var(--black-color);
+    font-family: "Pretendard";
+}
+
+img {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: var(--white-color);
+    display: inline-block;
+}
+
+button {
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+}
+
+/* 최소 타겟 사이즈 확보 */
+a,
+button {
+    min-width: 4.4rem;
+    min-height: 4.4rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: var(--space-padding-vertical) var(--space-padding-horizontal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.orange-txt {
+    color: var(--primary-color);
+}
+
+.no-pc {
+    display: none;
+}
+
+.only-mob {
+    display: none;
+}
+
+.cta {
+    padding: 0.6em 1.4em;
+}
+
+.sub-cta {
+    font-size: var(--font-size-body-md);
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem 3rem;
+}
+
+.sub-cta::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    border: 1px solid var(--dark-gray-color);
+    border-radius: 50px;
+    transform: scale(0.9);
+    transition: all 0.3s ease-in-out;
+}
+
+.image-box img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.sec-tit {
+    font-size: var(--font-size-h2);
+    font-weight: 700;
+    margin-bottom: var(--space-lg);
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-card-gap);
+    border-radius: 1rem;
+    padding: 3rem 2rem;
+}
+
+.card-tit {
+    font-size: var(--font-size-card-tit);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.yellow-gradient-bg {
+    background: var(--yellow-gradient-color);
+    border: 0.5px solid var(--dark-gray-color);
+}
+
+.small-desc {
+    color: var(--dark-gray-color);
+    font-size: var(--font-size-body-sm);
+    text-align: center;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    margin-top: var(--space-xl);
+}
+
+canvas {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.circle-canvas {
+    background-color: transparent;
+}
+
+.meteor-canvas {
+    z-index: -2;
+}
+
+/* header가 fixed라서 각 섹션으로 이동시 헤더가 섹션의 윗부분을 가리고 도착하는 점을 보완 */
+section {
+    scroll-margin-top: var(--space-header);
+    /* 헤더 높이만큼 보정 */
+}
+
+.small-mob {
+    display: none;
+}
+
+/* header */
+header {
+    width: 100%;
+    height: var(--space-header);
+    position: fixed;
+    top: 0;
+    z-index: 200;
+    background-color: rgba(18, 18, 18, 0.8);
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--space-padding-horizontal);
+}
+
+
+.header-container a {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-family: "sora";
+    font-weight: 800;
+    font-size: var(--font-size-h3);
+}
+
+.menu-list {
+    display: flex;
+    gap: 4rem;
+}
+
+.menu-list a,
+.slide-menu-header .menu-list a {
+    font-size: var(--font-size-body-lg);
+    color: var(--white-color);
+}
+
+.canvas-parent-sec {
+    position: relative;
+}
+
+
+/* slide-menu-area */
+.slide-menu-area {
+    /* fixed와 absolute는 문서의 흐름에서 완전히 빠져나와 공간을 차지하지 않음*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(240, 240, 240);
+    transform: translateX(100%);
+    transition: all 0.3s ease-in-out;
+}
+
+.slide-container {
+    padding: 0 var(--space-padding-horizontal);
+}
+
+.slide-menu-header {
+    width: 100%;
+    height: var(--space-header);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--gray-color);
+    margin-bottom: 2.8rem;
+}
+
+.slide-menu-header a,
+.slide-menu-header button {
+    display: flex;
+    align-items: center;
+}
+
+.slide-menu-area nav {
+    width: 100%;
+}
+
+.slide-menu-area .menu-list {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.slide-menu-area .menu-list a {
+    color: var(--black-color);
+}
+
+.slide-menu-close-btn {
+    width: 4.4rem;
+    height: 4.4rem;
+    display: flex;
+    justify-content: end;
+}
+
+.slide-menu-close-btn img {
+    width: 30px;
+    height: 30px;
+}
+
+.slide-menu-area .logo a {
+    color: var(--black-color);
+}
+
+.logo-gradient {
+    background: linear-gradient(to bottom, var(--primary-color), #ffe279);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* ──────────────── hero-sec ──────────────── */
+.hero-sec {
+    color: var(--white-color);
+}
+
+.hero-sec {
+    padding-top: var(--space-header);
+}
+
+.hero-container {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* canvas로 그린 원이 요소 틈에 보이지 않도록 배경 설정 */
+.hero-content-box,
+.hero-image-box {
+    background-color: var(--black-color);
+}
+
+.hero-main-tit {
+    font-size: var(--font-size-h2-hero);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+}
+
+.hero-main-tit .orange-txt {
+    font-size: 6rem;
+    font-weight: 700;
+}
+
+.hero-sub-tit {
+    font-size: var(--font-size-h3);
+    font-weight: 400;
+    color: var(--light-gray-color);
+    margin: var(--space-md) 0 var(--space-xl);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+}
+
+/* https://clamp.font-size.app/?config=eyJyb290IjoiMTYiLCJtaW5XaWR0aCI6IjEwMjVweCIsIm1heFdpZHRoIjoiMTkyMHB4IiwibWluRm9udFNpemUiOiIzNTBweCIsIm1heEZvbnRTaXplIjoiNDAwcHgifQ%3D%3D 활용 */
+.hero-image-box-lg {
+    width: clamp(32rem, 22.8571rem + 8.9286vw, 40rem);
+}
+
+.hero-cta {
+    font-size: var(--font-size-h4);
+    font-weight: 700;
+    background-color: #FF5F00;
+    transition: all 0.3s ease-in-out;
+    border-radius: 50px;
+}
+
+.hero-cta:hover {
+    filter: brightness(110%);
+    transform: scale(1.05);
+}
+
+/* ──────────────── recommend-sec ──────────────── */
+.tab-btn-box {
+    display: flex;
+    margin-bottom: var(--space-md);
+}
+
+.tab-btn button {
+    position: relative;
+    font-size: var(--font-size-h3);
+    color: var(--dark-gray-color);
+    padding: 0 var(--space-lg);
+    line-height: 1.1;
+}
+
+.tab-btn:first-child button::after {
+    content: "";
+    background-color: var(--dark-gray-color);
+    /* 의사 요소는 기본적으로 inline 요소라 width/height 적용 안 됨 */
+    display: inline-block;
+    width: 0.2rem;
+    height: var(--font-size-h3);
+    /* 의사 요소는 본 요소의 자식처럼 동작 */
+    position: absolute;
+    right: 0;
+    transform: translateX(-50%);
+}
+
+.tab-btn.selected button {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.tab-content-box {
+    width: 100%;
+}
+
+.tab-content.selected {
+    display: block;
+}
+
+.tab-content:not(.selected) {
+    display: none;
+}
+
+.tab-panel {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    min-width: 4.4rem;
+    min-height: 4.4rem;
+    position: static;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+    font-size: var(--font-size-h4);
+    color: var(--white-color);
+}
+
+.swiper-pagination-bullet {
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: var(--light-gray-color);
+}
+
+.swiper-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+    position: static;
+    margin-top: 1rem;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--white-color);
+}
+
+.recommend-card {
+    color: var(--white-color);
+}
+
+.recommend-card.last-card {
+    height: auto;
+    justify-content: center;
+}
+
+.phone-image {
+    width: 20rem;
+}
+
+.recommend-sec .phone-name {
+    padding-top: 1rem;
+}
+
+.phone-option-box {
+    width: 100%;
+    min-width: 22rem;
+}
+
+.phone-option-box input[type="radio"] {
+    display: none;
+}
+
+.phone-option-box label {
+    display: inline-block;
+    cursor: pointer;
+    /* 최소 타겟 사이즈 확보 */
+    min-width: 3.2rem;
+    min-height: 3.2rem;
+}
+
+.phone-option {
+    width: 100%;
+    height: 4.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.option-name {
+    height: fit-content;
+    font-size: var(--font-size-body-xl);
+    color: var(--dark-gray-color);
+}
+
+.color-list,
+.storage-list {
+    display: flex;
+}
+
+.color label {
+    position: relative;
+}
+
+.color label::after {
+    content: "";
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    /* currentColor: 현 요소의 color 속성 값을 가져옴, color는 상속됨 */
+    background-color: currentColor;
+    border-radius: 50px;
+    box-shadow: inset 0 0 0 0.1rem var(--dark-gray-color);
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.color.selected label::after {
+    box-shadow: inset 0 0 0 0.25rem var(--white-color), inset 0 0 0 0.35rem var(--dark-gray-color);
+}
+
+.storage-option {
+    position: relative;
+}
+
+.storage-list {
+    position: absolute;
+    top: 50%;
+    right: -0.7em;
+    transform: translateY(-50%);
+}
+
+.storage label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--font-size-body-sm);
+    line-height: 1.4;
+    padding: 0.6em 1.4em;
+    position: relative;
+}
+
+
+/* 타겟 사이즈는 유지한 채 시각적 테두리만 작게 보이도록 의사 요소를 사용함 */
+.storage label::after {
+    content: "";
+    display: block;
+    box-shadow: inset 0 0 0 0.1rem var(--dark-gray-color);
+    border-radius: 50px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: scale(0.85);
+}
+
+.storage.selected label::after {
+    box-shadow: inset 0 0 0 0.2rem var(--white-color);
+}
+
+.before-cost {
+    height: fit-content;
+    margin-bottom: var(--space-xxs);
+    font-size: var(--font-size-body-sm);
+    color: var(--dark-gray-color);
+    text-align: right;
+    text-decoration-line: line-through;
+    text-decoration-color: var(--primary-color);
+}
+
+.after-cost {
+    font-size: var(--font-size-body-lg);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+}
+
+.recommend-card .cta:hover::after {
+    border-color: var(--black-color);
+    background-color: var(--black-color);
+}
+
+/* ──────────────── benefit-sec ──────────────── */
+.benefit-idx-box {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--font-size-h3);
+    margin-bottom: var(--space-md);
+}
+
+.benefit-idx-box button:disabled {
+    opacity: 0.3;
+}
+
+.benefit-card-container {
+    width: 100%;
+    height: 680px;
+    position: relative;
+}
+
+.benefit-card {
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 6rem 0;
+    color: #5D4037;
+    will-change: backdrop-filter;
+    transition: transform 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+}
+
+.benefit-card:not(.front-card) {
+    backdrop-filter: blur(10px);
+    transition: transform 0.35s ease-in-out;
+}
+
+.benefit-card.card-2 {
+    background-color: rgba(250, 215, 160, 0.3);
+    z-index: 9;
+}
+
+.benefit-card.card-3 {
+    background-color: rgba(249, 161, 78, 0.3);
+    z-index: 8;
+}
+
+.benefit-card.card-4 {
+    background-color: rgba(252, 138, 70, 0.3);
+    z-index: 7;
+}
+
+.benefit-card.card-5 {
+    background-color: rgba(209, 111, 42, 0.3);
+    z-index: 6;
+}
+
+.benefit-card.card-6 {
+    background-color: rgba(168, 90, 29, 0.3);
+    z-index: 5;
+}
+
+/* 뒤의 카드가 front-card가 될 시, 기존 속성에 덮어쓰기 되어 적용되어야 하므로 하단에 작성 */
+.benefit-card.front-card {
+    background-color: #FFF3E0;
+    box-shadow: 8px 12px 24px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    backface-visibility: hidden;
+    backdrop-filter: blur(0px);
+    will-change: transform;
+}
+
+.benefit-title {
+    font-size: var(--font-size-card-tit);
+    font-weight: 700;
+}
+
+.benefit-sub-title {
+    font-size: var(--font-size-body-lg);
+    font-weight: 500;
+    margin-top: var(--space-xxs);
+}
+
+.benefit-icon {
+    display: block;
+    height: 17rem;
+    margin: 4rem 0;
+}
+
+.benefit-desc {
+    font-size: var(--font-size-body-md);
+    line-height: 1.4;
+    letter-spacing: 0.03rem;
+    text-align: center;
+}
+
+.benefit-sec .cta {
+    font-size: var(--font-size-body-md);
+    font-weight: 500;
+    color: var(--white-color);
+    padding: 1.5rem 3rem;
+    border-radius: 50px;
+    background-color: #000;
+    margin-top: 4rem;
+}
+
+.benefit-sec .cta:hover {
+    background-color: rgb(98, 71, 51);
+}
+
+
+/* ──────────────── review-sec ──────────────── */
+.reviewSwiper {
+    width: 100%;
+}
+
+.review {
+    width: 27.5rem;
+    padding: 4rem 3rem;
+    position: relative;
+    background-color: #FFF9EF;
+}
+
+.quote-image {
+    width: 3rem;
+    position: absolute;
+    top: 2.5rem;
+    left: 1.5rem;
+}
+
+.review-txt {
+    height: 9rem;
+    color: #565656;
+    font-size: var(--font-size-body-md);
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+}
+
+.stars-image {
+    height: 1.5rem;
+}
+
+.user-name {
+    text-align: center;
+    font-size: var(--font-size-body-lg);
+}
+
+.review-sec .phone-name {
+    font-size: var(--font-size-body-sm);
+    color: var(--dark-gray-color);
+    margin-top: var(--space-xs);
+}
+
+/* ──────────────── process-sec ──────────────── */
+.process-list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* 줄바꿈 허용 */
+    flex-wrap: wrap;
+}
+
+.process {
+    width: 22rem;
+    gap: 4rem;
+}
+
+.process-tit {
+    color: var(--dark-gray-color);
+}
+
+.process-icon {
+    height: 8rem;
+}
+
+.process-desc {
+    font-size: var(--font-size-body-md);
+    color: var(--white-color);
+    text-align: center;
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+}
+
+/* contact-sec */
+.contact-form {
+    width: 80%;
+    position: relative;
+    gap: 0;
+    padding: 4rem 3rem;
+}
+
+.contact-robot {
+    width: 100px;
+    display: block;
+    position: absolute;
+    top: -100px;
+    right: 0;
+}
+
+.contact-form input,
+.contact-form textarea {
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 0;
+    font-size: var(--font-size-body-md);
+}
+
+.label-match {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    font-size: var(--font-size-body-lg);
+    color: #adadad;
+    margin-bottom: 1rem;
+}
+
+.content-input::placeholder,
+.input-area::placeholder {
+    font-size: var(--font-size-body-md);
+    font-family: "pretendard";
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    /* 기본 파란 아웃라인 제거 */
+    box-shadow: inset 0 0 0 0.15rem var(--primary-color);
+    /* 원하는 포커스 테두리 색상으로 변경 */
+}
+
+.input-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.input-grid input {
+    height: 60px;
+}
+
+.content-container {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.content-input {
+    width: 100%;
+    height: 300px;
+    font-family: "pretendard";
+}
+
+.privacy-check-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: var(--space-xxs) 0 var(--space-lg);
+}
+
+/* 수직으로 가운데 정렬하였지만, 여전히 텍스트가 아래로 내려가보이는 문제 해결 */
+.privacy-check-group {
+    line-height: 1;
+}
+
+/* checkbox를 숨기고, label을 통해 커스터마이징 */
+.privacy-check {
+    display: none;
+}
+
+.privacy-check-box label {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-body-sm);
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.custom-privacy-check {
+    width: 27px;
+    opacity: 0.3;
+}
+
+.privacy-check:checked+label * {
+    opacity: 1;
+    filter: brightness(2);
+    color: var(--white-color);
+}
+
+.privacy-check-desc {
+    background-color: transparent;
+    border: 0;
+    color: var(--dark-gray-color);
+    font-size: var(--font-size-body-sm);
+    letter-spacing: 0.03rem;
+    text-decoration: underline;
+    /* 밑줄과 텍스트 사이의 간격 조절 */
+    text-underline-offset: 0.5rem;
+    transition: color 0.2s ease-in-out;
+}
+
+.privacy-check-desc:hover {
+    color: var(--white-color);
+}
+
+.form-btn {
+    width: 100%;
+    height: 60px;
+    border-radius: 1rem;
+    border: 0;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-size: var(--font-size-body-md);
+    font-weight: 600;
+}
+
+.form-btn:hover {
+    filter: brightness(110%);
+}
+
+/* footer */
+footer {
+    font-size: var(--font-size-body-sm);
+    color: #b3b3b3;
+    background-color: #3a3a3a;
+    letter-spacing: 0.03rem;
+    line-height: 1.4rem;
+}
+
+.footer-container {
+    padding: calc(var(--space-padding-vertical) / 2) var(--space-padding-horizontal);
+    align-items: start;
+}
+
+.company-info-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.company-info-2 {
+    margin: 3rem 0;
+}
+
+.copyright {
+    font-weight: 300;
+}
+
+.association {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.association img {
+    height: 30px;
+}
+
+/* width: fit-content; height: fit-content;를 줘도 min-width/min-height가 우선 적용됨.
+   따라서 min-width와 min-height 속성을 무효화해야함 */
+.footer-container button {
+    color: var(--light-gray-color);
+    font-size: var(--font-size-body-sm);
+    min-width: unset;
+    min-height: unset;
+    width: fit-content;
+    height: fit-content;
+}
+
+.footer-container button:hover {
+    color: var(--primary-color);
+}
+
+/* popup */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 100;
+    display: none;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    z-index: 999;
+    display: none;
+}
+
+
+/* 개인정보 수집 및 이용 동의 팝업 */
+.privacy-popup {
+    width: 90rem;
+}
+
+.popup-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 3rem 2rem;
+    font-size: var(--font-size-h4);
+    font-weight: 500;
+    border-radius: 10px 10px 0 0;
+    background-color: var(--white-color);
+    color: var(--black-color);
+}
+
+.popup-close-btn {
+    width: 4.4rem;
+    height: 4.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.popup-close-btn img {
+    width: 100%;
+}
+
+.use-popup {
+    height: 80%;
+    overflow-x: hidden;
+    /* 가로 스크롤 막기 */
+    overflow-y: auto;
+    /* 세로 스크롤 허용 */
+}
+
+.popup-content {
+    color: #808080;
+    font-size: var(--font-size-body-md);
+    line-height: 1.4;
+    letter-spacing: 0.03rem;
+    padding: 3rem;
+    border-radius: 0 0 10px 10px;
+    background-color: rgb(240, 240, 240);
+}
+
+.popup-content-2 {
+    margin-top: 1.5rem;
+}
+
+/* 유효성 메시지 커스터마이징 */
+.input-invalid-popup {
+    width: 50rem;
+    padding: 3rem;
+    background-color: rgb(240, 239, 239);
+    color: var(--black-color);
+    font-size: var(--font-size-body-md);
+    line-height: 1.4;
+    letter-spacing: 0.03rem;
+    text-align: center;
+    /* \n을 줄바꿈으로 인식하며, 연속된 공백은 하나로 줄이고 자동 줄바꿈도 허용함 */
+    white-space: pre-line;
+}
+
+.invalid-popup-close-btn {
+    font-size: var(--font-size-body-sm);
+    ;
+    color: var(--white-color);
+    margin-top: 3rem;
+    padding: 1rem 6rem;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 10px;
+}
+
+
+
+/* ──────────────── break point : 1439px ──────────────── */
+@media (max-width: 1439px) {
+
+    /* ──────────────── process-sec ──────────────── */
+    /* flex-wrap: wrap으로 설정한 후 Flex Container의 너비를 한 번에 줄이고
+       왼쪽 카드는 margin-left: auto, 오른쪽 카드는 margin-right: auto로 지정하여 중앙 정렬 */
+    .process-list {
+        width: 70rem;
+    }
+
+    .process:nth-child(4) {
+        margin: 2rem 1rem 0 auto;
+    }
+
+    /* 수평 방향의 margin에서는 margin-collapse가 적용 X */
+    .process:nth-child(5) {
+        margin: 2rem auto 0 1rem;
+    }
+}
+
+/* ──────────────── break point : 1023px ──────────────── */
+@media (max-width: 1023px) {
+
+    /* ──────────────── common ──────────────── */
+    :root {
+        /* ──── spacing ──── */
+        /* 8px */
+        --space-sm: 0.8rem;
+        /* 16px */
+        --space-md: 1.6rem;
+        /* 32px */
+        --space-lg: 3.2rem;
+        /* 64px */
+        --space-xl: 6.4rem;
+        /* 80px */
+        --space-xxl: 8rem;
+        /* 32px */
+        --space-padding-horizontal: 3.2rem;
+        /* 64px */
+        --space-padding-vertical: 6.4rem;
+        --space-header: 7rem;
+
+        /* ──── font-size ──── */
+        --font-size-h2-hero: 4rem;
+        --font-size-h2: 3.6rem;
+        --font-size-h3: 2.4rem;
+        --font-size-h4: 2rem;
+        --font-size-card-tit: 2.2rem;
+        --font-size-body-xl: 2rem;
+        --font-size-body-lg: 1.8rem;
+        --font-size-body-md: 1.6rem;
+        --font-size-body-sm: 1.4rem;
+    }
+
+    .container {
+        max-width: 960px;
+    }
+
+    .only-pc {
+        display: none;
+    }
+
+    .no-pc {
+        display: block;
+    }
+
+    /* header */
+
+    .menu-list {
+        gap: 3rem;
+    }
+
+    /* ──────────────── hero-sec ──────────────── */
+    .hero-container {
+        justify-content: center;
+    }
+
+    .hero-content-box {
+        text-align: center;
+    }
+
+    .hero-main-tit .orange-txt {
+        font-size: 5.2rem;
+    }
+
+    .hero-sub-tit {
+        margin: var(--space-lg) 0 var(--space-xxl);
+        line-height: 1.3;
+    }
+
+    .hero-image-box-sm {
+        width: 25rem;
+        margin: 0 auto var(--space-xxl);
+        /* 이미지가 이미 정중앙에 위치하나 시각적 중앙 맞춤을 위해 30px 좌측 이동 */
+        transform: translateX(-30px);
+    }
+
+    /* -bebefit-sec */
+    .benefit-card-container {
+        height: 64rem;
+    }
+
+    .benefit-card {
+        width: 360px;
+        padding: 5rem 0;
+    }
+
+
+    .benefit-icon {
+        height: 16rem;
+    }
+
+    .benefit-idx-box .image-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .benefit-idx-box img {
+        width: 80%
+    }
+
+    /* ──────────────── recommend-sec ──────────────── */
+    .phone-image {
+        width: 18rem;
+    }
+
+    /* ──────────────── contact-sec ──────────────── */
+    .privacy-popup {
+        width: 80rem;
+    }
+
+    .privacy-popup-close-btn img {
+        width: 80%;
+    }
+
+    .contact-form {
+        width: 90%;
+        padding: 3rem;
+    }
+
+    .contact-robot {
+        width: 70px;
+        top: -70px;
+    }
+
+    .privacy-check-group {
+        margin-bottom: 4rem;
+    }
+
+}
+
+/* ──────────────── break point : 767px ────────────────*/
+@media (max-width: 767px) {
+
+    /* ──────────────── common ──────────────── */
+    :root {
+        /* ──── spacing ──── */
+        /* 14px */
+        --space-md: 1.4rem;
+        /* 28px */
+        --space-lg: 2.8rem;
+        /* 56px */
+        --space-xl: 5.6rem;
+        /* 16px */
+        --space-padding-horizontal: 1.6rem;
+        /* 56px */
+        --space-padding-vertical: 5.6rem;
+        --space-header: 6rem;
+
+        /* ──── font-size ──── */
+        --font-size-h2-hero: 3rem;
+        --font-size-h2: 3rem;
+        --font-size-h3: 2rem;
+        --font-size-h4: 1.8rem;
+        --font-size-card-tit: 1.8rem;
+        --font-size-body-xl: 1.8rem;
+        --font-size-body-lg: 1.6rem;
+        --font-size-body-md: 1.4rem;
+        --font-size-body-sm: 1.3rem;
+        --font-size-body-xs: 1.2rem;
+    }
+
+    .container {
+        max-width: 720px;
+    }
+
+    .card-tit {
+        letter-spacing: 0.04em;
+    }
+
+    .small-desc {
+        font-size: var(--font-size-body-xs);
+    }
+
+    .no-mob {
+        display: none;
+    }
+
+    .only-mob {
+        display: block;
+    }
+
+    /* ──────────────── hero-sec ──────────────── */
+    .hero-main-tit {
+        line-height: 1.2;
+    }
+
+    .hero-main-tit .orange-txt {
+        font-size: 4.2rem;
+    }
+
+    .hero-sub-tit {
+        margin: var(--space-lg) 0 var(--space-xl);
+    }
+
+    .hero-image-box-sm {
+        width: 20rem;
+        margin: 0 auto var(--space-xl);
+        transform: translateX(-20px);
+    }
+
+    .hero-cta {
+        line-height: 1.3;
+    }
+
+    /* ──────────────── recommend-sec ──────────────── */
+    .phone-option-box {
+        min-width: 20rem;
+    }
+
+    .phone-option {
+        height: 4.2rem;
+    }
+
+    .color label::after {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+
+    .storage label,
+    .before-cost {
+        line-height: 1.3;
+    }
+
+
+    /* benefit-sec */
+    .benefit-card-container {
+        height: 52rem;
+        overflow: hidden;
+    }
+
+    .benefit-card {
+        width: 30rem;
+        padding: 4rem 0;
+    }
+
+
+    .benefit-icon {
+        height: 12rem;
+        margin: 3rem 0;
+    }
+
+    .benefit-idx-box .image-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .benefit-idx-box img {
+        width: 70%
+    }
+
+    .benefit-sec .cta {
+        margin-top: 3rem;
+    }
+
+
+    /* ──────────────── review-sec ──────────────── */
+    .review-txt {
+        height: 7.5rem;
+    }
+
+    /* ──────────────── process-sec ──────────────── */
+    .process-list {
+        width: 40rem;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .process {
+        width: 100%;
+        position: relative;
+        /* process-tit, process-desc를 오른쪽으로 위치시킴 */
+        align-items: end;
+        gap: 2rem;
+    }
+
+    .process:nth-child(4),
+    .process:nth-child(5) {
+        margin: 0;
+    }
+
+    .process-icon {
+        width: 20%;
+        height: auto;
+        position: absolute;
+        left: 12%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .process-tit,
+    .process-desc {
+        /* process-icon의 좌우 여백을 같게 하기 위해 12%를 추가로 뺌 */
+        width: calc(100% - (20% + 12% + 12%));
+        text-align: left;
+    }
+
+    /* ──────────────── contact-sec ──────────────── */
+    .privacy-popup {
+        width: 80%;
+    }
+
+    .privacy-popup-close-btn img {
+        width: 70%;
+    }
+
+    /* contact-sec */
+    .contact-form {
+        padding: 4rem;
+    }
+
+    .contact-robot {
+        width: 55px;
+        top: -55px;
+    }
+
+    .input-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
+    }
+
+    .input-grid input {
+        height: 50px;
+    }
+
+    .privacy-check-group {
+        margin-bottom: 2.8rem;
+    }
+
+    .privacy-check-box label {
+        font-size: 1.4rem;
+    }
+
+    .privacy-check-desc {
+        text-underline-offset: 0.3rem;
+    }
+
+    .form-btn {
+        height: 50px;
+    }
+
+    .input-invalid-popup {
+        width: 45rem;
+    }
+}
+
+/* ──────────────── break point : 479px ────────────────*/
+@media (max-width: 479px) {
+
+    /* ──────────────── common ──────────────── */
+    :root {
+        /* ──── spacing ──── */
+        /* 4px */
+        --space-xs: 0.4rem;
+        /* 8px */
+        --space-sm: 0.8rem;
+        /* 28px */
+        --space-lg-extra: 2rem;
+        /* 16px */
+        --space-padding-horizontal: 1.6rem;
+        /* 56px */
+        --space-padding-vertical: 5.6rem;
+        --space-header: 5rem;
+
+        /* ──── font-size ──── */
+        --font-size-h2-hero: 2.8rem;
+        --font-size-h2: 2.8rem;
+        --font-size-h3: 1.8rem;
+        --font-size-h4: 1.6rem;
+        --font-size-card-tit: 1.8rem;
+    }
+
+    .container {
+        max-width: 440px;
+    }
+
+    .only-mob {
+        display: block;
+    }
+
+
+    .small-mob {
+        display: inline-block;
+    }
+
+    /* ──────────────── hero-sec ──────────────── */
+    .hero-main-tit .orange-txt {
+        font-size: 4rem;
+    }
+
+    .hero-cta {
+        padding: 0.75em 1.5em;
+    }
+
+    .tab-btn button {
+        padding: 0 var(--space-lg-extra);
+    }
+
+    /* ──────────────── recommend-sec ──────────────── */
+    .phone-image {
+        width: 15rem;
+    }
+
+    .after-cost {
+        font-size: var(--font-size-body-xl);
+    }
+
+
+    /* benefit-sec */
+    .benefit-idx-box img {
+        width: 60%;
+    }
+
+    .benefit-card-container {
+        height: 50rem;
+        overflow: hidden;
+    }
+
+    .benefit-card {
+        width: 28rem;
+        padding: 4rem 0;
+    }
+
+
+    .benefit-icon {
+        height: 10rem;
+        margin: 3rem 0;
+    }
+
+    .benefit-idx-box .image-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .benefit-sec .cta {
+        margin-top: 3rem;
+    }
+
+    /* ──────────────── process-sec ──────────────── */
+    .process-list {
+        width: 100%;
+    }
+
+    .process {
+        gap: 1rem;
+    }
+
+    .process-icon {
+        width: 7rem;
+        left: 8%;
+    }
+
+    .process-tit,
+    .process-desc {
+        width: calc(100% - (20% + 8% + 8%));
+        text-align: left;
+    }
+
+    /* ──────────────── contact-sec ──────────────── */
+    .privacy-popup-close-btn img {
+        width: 50%;
+    }
+
+    .contact-form {
+        width: 100%;
+        padding: 3rem;
+    }
+
+    .input-invalid-popup {
+        width: 80%;
+    }
+}
