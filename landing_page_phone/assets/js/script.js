@@ -38,11 +38,12 @@ function resize() {
     } else if (window.innerWidth >= 768) {
         angle[0] = 4;
         angle[1] = 6;
-    } else {
-        angle[0] = 9;
+    } else if (window.innerWidth < 768) {
+        angle[0] = 6;
         angle[1] = 9;
     }
 }
+
 class Circle {
     constructor(xRatio, yRatio) {
         this.xRatio = xRatio;
