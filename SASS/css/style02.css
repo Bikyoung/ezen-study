@@ -1,0 +1,48 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  padding: 20px;
+  background-color: lightyellow;
+}
+.header:hover {
+  background-color: pink;
+}
+.header__gnb {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+.header__gnb a {
+  text-decoration: none;
+}
+.header__gnb a:hover {
+  color: blue;
+}
+.header__gnb--active {
+  color: orange;
+}
+.__gnb {
+  border: 1px solid black;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* BEM 방식
+   block : 독립적인 UI 구성 단위 (컴포넌트)
+          ex) card, header, button
+   element : block 내부의 구성요소
+             block 없이는 의미 없음
+             ex) button__icon, header__menu__item
+    modifier : 블록이나 요소의 상태/버전
+               ex) button--large, card__title--highlighted
+*/

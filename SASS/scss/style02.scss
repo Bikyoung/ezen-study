@@ -1,0 +1,61 @@
+// nesting
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    width: 100%;
+    padding: 20px;
+    background-color: lightyellow;
+
+    &:hover {
+        background-color: pink;
+    }
+
+    // 자식 요소만 선택하는 방법: > 사용
+    // &__gnb는 .header__gnb를 의미
+    &__gnb {
+        list-style-type: none;
+        display: flex;
+        gap: 20px;
+
+        a {
+            text-decoration: none;
+
+            // &는 this의 의미
+            &:hover {
+                color: blue;
+            }
+        }
+
+        &--active {
+            color: orange;
+        }
+    }
+
+    // @at-root : 모든 중첩을 탈출
+    @at-root .__gnb {
+        border: 1px solid black;
+    }
+}
+
+// 속성 중첩: css 속성명 중 앞단어가 같은 것들을 중첩하여 사용 가능
+.title {
+    font: {
+        size: 32px;
+        weight: normal;
+        style: italic;
+    }
+}
+
+/* BEM 방식
+   block : 독립적인 UI 구성 단위 (컴포넌트)
+          ex) card, header, button
+   element : block 내부의 구성요소
+             block 없이는 의미 없음
+             ex) button__icon, header__menu__item
+    modifier : 블록이나 요소의 상태/버전
+               ex) button--large, card__title--highlighted
+*/

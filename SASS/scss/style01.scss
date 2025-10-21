@@ -1,0 +1,72 @@
+// 주석 : CSS에서는 출력이 안 되는 주석
+/* 주석 : CSS에서는 출력 되는 주석 */
+
+// 전역 변수 선언
+$mainColor: blue;
+$bigFontSize: 32px;
+$baseFontSize: 18px;
+$boxWidth: 600px;
+
+h2 {
+    // !global를 통해 지역 변수를 전역 변수로 변환 가능
+    $titleColor: pink !global;
+
+    color: $titleColor;
+    font-size: $bigFontSize;
+
+}
+
+div {
+    width: $boxWidth;
+    background-color: $titleColor;
+}
+
+p {
+    font-size: $baseFontSize;
+    // color: $titleColor;
+}
+
+// list 유형
+$colors: red, green, blue;
+
+// nth-of-type에서 앞에는 무조건 태그 선택자여야 함.
+li:nth-of-type(1) {
+    color: nth($colors, 1);
+}
+
+li:nth-of-type(2) {
+    color: nth($colors, 2);
+}
+
+li:nth-of-type(3) {
+    color: nth($colors, 3);
+}
+
+/* map-get($map: 사용할 map을 지정, $key: 해당 map에서 사용할 값에 매칭되는 key)
+   사용법 : css 속성명 : map-get(); */
+
+$weight: (
+    "regular": 300,
+    "medium": 500,
+    "bold": 800
+);
+
+h3:nth-of-type(1) {
+    font-weight: map-get($map: $weight, $key: "regular");
+}
+
+h3:nth-of-type(2) {
+    font-weight: map-get($map: $weight,
+            $key: "medium");
+}
+
+h3:nth-of-type(2) {
+    font-weight: map-get($map: $weight,
+            $key: "medium");
+}
+
+h3:nth-of-type(3) {
+    font-weight: map-get($map: $weight,
+            $key: "bold"
+        )
+}

@@ -1,0 +1,6 @@
+@charset "UTF-8";
+/* import 방법
+    1. @import "파일 경로";
+       만일 확장자를 명시하지 않으면, scss 확장자를 의미함
+    2. @import url("파일 경로");
+*/

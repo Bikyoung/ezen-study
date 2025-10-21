@@ -483,7 +483,7 @@ let reviewSwiper = new Swiper(".reviewSwiper", {
     slidesPerView: "auto",
     spaceBetween: 20,
     autoplay: {
-        delay: 2000,
+        delay: 1800,
         disableOnInteraction: false,
     },
     loop: true,

@@ -1,0 +1,45 @@
+@charset "UTF-8";
+/* 주석 : CSS에서는 출력 되는 주석 */
+h2 {
+  color: pink;
+  font-size: 32px;
+}
+
+div {
+  width: 600px;
+  background-color: pink;
+}
+
+p {
+  font-size: 18px;
+}
+
+li:nth-of-type(1) {
+  color: red;
+}
+
+li:nth-of-type(2) {
+  color: green;
+}
+
+li:nth-of-type(3) {
+  color: blue;
+}
+
+/* map-get($map: 사용할 map을 지정, $key: 해당 map에서 사용할 값에 매칭되는 key)
+   사용법 : css 속성명 : map-get(); */
+h3:nth-of-type(1) {
+  font-weight: 300;
+}
+
+h3:nth-of-type(2) {
+  font-weight: 500;
+}
+
+h3:nth-of-type(2) {
+  font-weight: 500;
+}
+
+h3:nth-of-type(3) {
+  font-weight: 800;
+}
