@@ -1,0 +1,80 @@
+@mixin btn {
+    padding: 12px 30px;
+    border: none;
+    background-color: lightcoral;
+    border-radius: 10px;
+    color: white;
+}
+
+@mixin postionCenter {
+    margin: 0 auto;
+}
+
+// 중첩 @mixin
+@mixin btnCenter {
+    @include btn;
+    @include postionCenter;
+}
+
+/* 매개변수를 사용하는 @mixin
+   : 반드시 소괄호를 명시해서 호출해야 함 */
+// @mixin button($width, $bgColor, $color) {
+//     width: $width;
+//     background-color: $bgColor;
+//     color: $color;
+//     padding: 12px 30px;
+//     border: none;
+//     font-size: 18px;
+// }
+
+// 매개변수에 기본값을 설정하는 방법
+@mixin button($width: 120px, $bgColor: green, $color: white) {
+    width: $width;
+    background-color: $bgColor;
+    color: $color;
+    padding: 12px 30px;
+    border: none;
+    font-size: 18px;
+}
+
+button:nth-of-type(1) {
+    @include btn;
+}
+
+.btn02 {
+    @include btn;
+    background-color: aquamarine;
+}
+
+.btn03 {
+    @include btn;
+    background-color: bisque;
+    color: #333;
+}
+
+a {
+    display: block;
+    width: 100px;
+}
+
+.link1 {
+    @include btn;
+}
+
+.link2 {
+    @include btnCenter;
+}
+
+.btn04 {
+    @include button(100px, yellow, black);
+}
+
+.btn05 {
+    @include button(100px, blue);
+}
+
+/* 매개변수를 사용하는 @mixin에 인수를 할당할 때 컴파일러는 인수의 자료형이 아니라 
+   매개변수에 순서에 기반하여 인수를 연결하므로 내가 중간에 매개변수에만 특정 인수를 전달하고 나머지는 기본값을 사용하고 싶을 때 매개변수를 함께 명시하여 인수를 전달해야 함 */
+.btn06 {
+    @include button(100px, $color: #333);
+}

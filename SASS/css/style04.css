@@ -1,0 +1,80 @@
+@charset "UTF-8";
+/* 매개변수를 사용하는 @mixin
+   : 반드시 소괄호를 명시해서 호출해야 함 */
+button:nth-of-type(1) {
+  padding: 12px 30px;
+  border: none;
+  background-color: lightcoral;
+  border-radius: 10px;
+  color: white;
+}
+
+.btn02 {
+  padding: 12px 30px;
+  border: none;
+  background-color: lightcoral;
+  border-radius: 10px;
+  color: white;
+  background-color: aquamarine;
+}
+
+.btn03 {
+  padding: 12px 30px;
+  border: none;
+  background-color: lightcoral;
+  border-radius: 10px;
+  color: white;
+  background-color: bisque;
+  color: #333;
+}
+
+a {
+  display: block;
+  width: 100px;
+}
+
+.link1 {
+  padding: 12px 30px;
+  border: none;
+  background-color: lightcoral;
+  border-radius: 10px;
+  color: white;
+}
+
+.link2 {
+  padding: 12px 30px;
+  border: none;
+  background-color: lightcoral;
+  border-radius: 10px;
+  color: white;
+  margin: 0 auto;
+}
+
+.btn04 {
+  width: 100px;
+  background-color: yellow;
+  color: black;
+  padding: 12px 30px;
+  border: none;
+  font-size: 18px;
+}
+
+.btn05 {
+  width: 100px;
+  background-color: blue;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  font-size: 18px;
+}
+
+/* 매개변수를 사용하는 @mixin에 인수를 할당할 때 컴파일러는 인수의 자료형이 아니라 
+   매개변수에 순서에 기반하여 인수를 연결하므로 내가 중간에 매개변수에만 특정 인수를 전달하고 나머지는 기본값을 사용하고 싶을 때 매개변수를 함께 명시하여 인수를 전달해야 함 */
+.btn06 {
+  width: 100px;
+  background-color: green;
+  color: #333;
+  padding: 12px 30px;
+  border: none;
+  font-size: 18px;
+}

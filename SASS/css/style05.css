@@ -1,0 +1,18 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.btn, .box {
+  width: 100px;
+  padding: 10px 30px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  border-radius: 30px;
+}
+
+/* @extend는 아예 다른 선택자의 스타일을 상속받으므로 매개변수를 지원하지 않고, 따라서 유연하지 않음
+실무에서는 @extend보다 @mixin을 더 많이 사용함 */

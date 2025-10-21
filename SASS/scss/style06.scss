@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// 변수 선언
+$maxWidth: 1200px;
+
+// 함수 선언
+@function cols($num: 1, $col: 12) {
+    @return $maxWidth * ($num / $col);
+}
+
+.container {
+    width: 100%;
+    max-width: $maxWidth;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+.box01 {
+    width: cols();
+    height: 100px;
+    background-color: aquamarine;
+}
+
+.box02 {
+    width: cols(4);
+    height: 100px;
+    background-color: pink;
+}
+
+.box03 {
+    width: cols(8, 12);
+    height: 100px;
+    background-color: green;
+}
+
+// 내장 함수: lighten(), darken()
+$mainColor: rgb(118, 118, 255);
+
+button {
+    border: none;
+    padding: 10px 30px;
+    background-color: $mainColor;
+    border-radius: 5px;
+}
+
+// lighten(색상, 정도)
+.btn01 {
+    background-color: lighten($mainColor, 10%);
+}
+
+// darken(색상, 정도)
+.btn03 {
+    background-color: darken($mainColor, 10%);
+}
+
+@function myLighten($num) {
+    @return 0.1 * $num;
+}
+
+.btn04 {
+    opacity: myLighten(3);
+}
