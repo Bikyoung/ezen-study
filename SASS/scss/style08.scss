@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+$colors: (
+    red,
+    orange,
+    yellow,
+    green,
+    blue
+);
+
+.box-wrap {
+    .box {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+
+
+        /* 1부터 $colors의 길이만큼 변수 $i에 할당하는 반복문
+           for $i from 1 through 5 : 1부터 5까지 반복
+           cf) for $i form 1 to 5 : 1부터 5 직전 (=4까지) 반복 */
+        @for $i from 1 through length($colors) {
+
+            // scss에 변수 값을 선택자 이름이나 속성명에 문자열처럼 사용할 때는 #{변수명}으로 사용
+            &-0#{$i} {
+                // nth(속성값 배열, 인덱스);
+                background-color: nth($colors, $i);
+            }
+        }
+    }
+}

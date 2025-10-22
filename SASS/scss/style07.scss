@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// 변수 선언
+$num1: 15;
+$num2: 12;
+$number1: 8;
+$number2: 18;
+$number3: 27;
+
+
+// if문으로 조건식, 참 실행문, 거짓 실행문을 한 번에 명시할 때는 @없이 사용
+.title01::before {
+    content: if($num1 < 10, "0" + $num1, "" + $num1);
+}
+
+.title02::before {
+    content: if($num2 < 10, "0" + $num2, "" + $num2);
+}
+
+// if문
+.list01::before {
+    @if($number1 < 10) {
+        content: "0" + $number1 + "번째 입니다.";
+    }
+}
+
+// if ~ else문
+.list02::before {
+    @if($number2 < 10) {
+        content: "0" + $number2 + "번째 입니다.";
+    }
+
+    @else {
+        content: "" + $number2 + "번째 입니다.";
+    }
+}
+
+// if ~ else if문
+.list03::before {
+    @if($number3 < 10) {
+        content: "0" + $number3 + "번째 입니다.";
+    }
+
+    @else if($number3 < 20) {
+        content: $number3 + "번째 입니다.";
+    }
+
+    @else {
+        content: "20번까지 가능합니다.";
+    }
+}

@@ -1,0 +1,26 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.title01::before {
+  content: "15";
+}
+
+.title02::before {
+  content: "12";
+}
+
+.list01::before {
+  content: "08번째 입니다.";
+}
+
+.list02::before {
+  content: "18번째 입니다.";
+}
+
+.list03::before {
+  content: "20번까지 가능합니다.";
+}
