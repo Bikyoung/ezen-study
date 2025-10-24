@@ -5,7 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NETFLIX</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .swiper {
+            /* width: 100%;
+            height: 100%; */
+        }
+
+        .swiper-slide {
+            /* height: 300px; */
+            /* text-align: center;
+            font-size: 18px;
+            background: #444; */
+            /* display: flex; */
+            /* justify-content: center;
+            align-items: center; */
+        }
+
+        .swiper-slide img {
+            /* display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; */
+        }
+    </style>
 </head>
 
 <body>
@@ -74,8 +98,73 @@
                 <h2 class="title">
                     지금 뜨는 콘텐츠
                 </h2>
-                <div>
-                    <!-- 스와이프 영역 -->
+                <div class="rank__card-wrap">
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide rank__swiper-slide">
+                                <a href="#" class="rank__card">
+                                    <img src="./images/rank1.webp" alt="카드 이미지">
+                                    <h3 data-content="1">1</h3>
+                                </a>
+                            </div>
+                            <div class="swiper-slide rank__swiper-slide">
+                                <a href="#" class="rank__card">
+                                    <img src="./images/rank2.webp" alt="카드 이미지">
+                                    <h3 data-content="2">2</h3>
+                                </a>
+                            </div>
+                            <div class="swiper-slide rank__swiper-slide">
+                                <a href="#" class="rank__card">
+                                    <img src="./images/rank3.webp" alt="카드 이미지">
+                                    <h3 data-content="3">3</h3>
+                                </a>
+                            </div>
+                            <div class="swiper-slide rank__swiper-slide">
+                                <a href="#" class="rank__card">
+                                    <img src="./images/rank4.webp" alt="카드 이미지">
+                                    <h3 data-content="4">4</h3>
+                                </a>
+                            </div>
+                            <div class="swiper-slide rank__swiper-slide">
+                                <a href="#" class="rank__card">
+                                    <img src="./images/rank5.webp" alt="카드 이미지">
+                                    <h3 data-content="5">5</h3>
+                                </a>
+                            </div>
+                            <div class="swiper-slide rank__swiper-slide">
+                                <a href="#" class="rank__card">
+                                    <img src="./images/rank6.webp" alt="카드 이미지">
+                                    <h3 data-content="6">6</h3>
+                                </a>
+                            </div>
+                            <div class="swiper-slide rank__swiper-slide">
+                                <a href="#" class="rank__card">
+                                    <img src="./images/rank7.webp" alt="카드 이미지">
+                                    <h3 data-content="7">7</h3>
+                                </a>
+                            </div>
+                            <div class="swiper-slide rank__swiper-slide">
+                                <a href="#" class="rank__card">
+                                    <img src="./images/rank8.webp" alt="카드 이미지">
+                                    <h3 data-content="8">8</h3>
+                                </a>
+                            </div>
+                            <div class="swiper-slide rank__swiper-slide">
+                                <a href="#" class="rank__card">
+                                    <img src="./images/rank9.webp" alt="카드 이미지">
+                                    <h3 data-content="9">9</h3>
+                                </a>
+                            </div>
+                            <div class="swiper-slide rank__swiper-slide">
+                                <a href="#" class="rank__card">
+                                    <img src="./images/rank10.webp" alt="카드 이미지">
+                                    <h3 data-content="10">10</h3>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="swiper-button-next rank__button-next"></div>
+                        <div class="swiper-button-prev rank__button-prev"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -213,6 +302,32 @@
         </section>
     </main>
 
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".rank .mySwiper", {
+            slidesPerView: 1.5,
+            spaceBetween: 15,
+            navigation: {
+                nextEl: ".rank__button-next",
+                prevEl: ".rank__button-prev",
+            },
+            breakpoints: {
+                480: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 3.5,
+                    spaceBetween: 30,
+                },
+                1024: {
+                    slidesPerView: 4.5,
+                    spaceBetween: 40,
+                }
+            },
+        });
+    </script>
 </body>
 
 </html>

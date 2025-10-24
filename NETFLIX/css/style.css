@@ -244,6 +244,33 @@ body {
   margin-top: 0.25rem;
 }
 
+.rank__card {
+  display: block;
+  position: relative;
+}
+.rank__card img {
+  width: 100%;
+  border-radius: 1rem;
+}
+.rank__card h3 {
+  position: absolute;
+  left: -0.9375rem;
+  bottom: 0.625rem;
+  font-size: 6.25rem;
+  -webkit-text-stroke: 0.25rem rgb(255, 255, 255);
+  text-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.5);
+}
+.rank__card h3::before {
+  content: attr(data-content);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #000;
+  -webkit-text-fill-color: rgb(0, 0, 0);
+  -webkit-text-stroke: 0;
+  text-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.5);
+}
+
 .banner .container {
   display: flex;
   justify-content: center;

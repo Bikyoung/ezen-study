@@ -117,6 +117,38 @@ body {
     }
 }
 
+.rank {
+    &__card {
+        display: block;
+        position: relative;
+
+        img {
+            width: 100%;
+            border-radius: 1rem;
+        }
+
+        h3 {
+            position: absolute;
+            left: rem(-15);
+            bottom: rem(10);
+            font-size: rem(100);
+            -webkit-text-stroke: 0.25rem rgb(255, 255, 255);
+            text-shadow: 0 0 1.5rem rgb(0, 0, 0, 0.5);
+
+            &::before {
+                content: attr(data-content);
+                position: absolute;
+                left: 0;
+                top: 0;
+                color: $blackColor;
+                -webkit-text-fill-color: rgb(0, 0, 0);
+                -webkit-text-stroke: 0;
+                text-shadow: 0 0 1.5rem rgb(0, 0, 0, 0.5);
+            }
+        }
+    }
+}
+
 .banner {
     .container {
         @include flex($gap: rem(15));
