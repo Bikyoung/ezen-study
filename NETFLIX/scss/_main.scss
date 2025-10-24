@@ -1,0 +1,357 @@
+body {
+    font-family: "Noto sans KR", sans-serif;
+    background-color: $blackColor;
+    color: $whiteColor;
+}
+
+// header
+.header {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    &__logo a {
+        display: block;
+
+        img {
+            width: 100%;
+            max-width: rem(150);
+        }
+    }
+
+    // nesting으로 header 내부 container만을 가리킴
+    .container {
+        // display: flex;
+        // justify-content: space-between;
+        // align-items: center;
+        @include flex(space-between, center);
+    }
+
+    &__right {
+        @include flex($gap: rem(12));
+
+        select {
+            @include formBox(select, sm, rem(4) rem(10));
+
+            option {
+                color: $blackColor;
+            }
+        }
+    }
+}
+
+.visual {
+    width: 100%;
+    min-height: rem(996);
+    background-image: url("../images/visual-img.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+
+    @include flex(center, center);
+
+    &::before {
+        display: block;
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+        background-image: linear-gradient(360deg, rgba(0, 0, 0, 0.9000) 0.000%, rgba(0, 0, 0, 0.8965) 8.500%, rgba(0, 0, 0, 0.8861) 17.00%, rgba(0, 0, 0, 0.8688) 25.50%, rgba(0, 0, 0, 0.8444) 34.00%, rgba(0, 0, 0, 0.8132) 42.50%, rgba(0, 0, 0, 0.7750) 51.00%, rgba(0, 0, 0, 0.7368) 59.50%, rgba(0, 0, 0, 0.7056) 68.00%, rgba(0, 0, 0, 0.6813) 76.50%, rgba(0, 0, 0, 0.6639) 85.00%, rgba(0, 0, 0, 0.6535) 93.50%, rgba(0, 0, 0, 0.6500) 102.0%);
+    }
+
+    &__container {
+        position: relative;
+        text-align: center;
+        width: 100%;
+        max-width: 41.5rem;
+        margin: 0 auto;
+    }
+
+    &__title {
+        @include defineFont(64, 700);
+    }
+
+    &__desc {
+        @include defineFont(20, 500);
+        margin: 2rem 0;
+    }
+
+    &__fieldBox {
+        @include flex(center, center, rem(8));
+        margin-top: rem(16);
+
+        input {
+            @include formBox(input, lg, rem(10) rem(16));
+            flex-grow: 1;
+            font-size: 1rem;
+        }
+    }
+}
+
+.curve-wrap {
+    width: 100%;
+    height: rem(100);
+    background: linear-gradient(to right, rgba(33, 13, 22, 1) 16%, rgba(184, 40, 105, 1), rgba(229, 9, 20, 1), rgba(184, 40, 105, 1), rgba(33, 13, 22, 1) 84%);
+    border-top-left-radius: 50% 100%;
+    border-top-right-radius: 50% 100%;
+    position: relative;
+    margin-top: rem(-100);
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        width: 120%;
+        height: calc(100% - 0.25rem);
+        position: absolute;
+        left: -10%;
+        background: radial-gradient(50% 500% at 50% -420%, rgba(64, 97, 231, 0.4) 80%, rgba(0, 0, 0, 0.1) 100%), black;
+        border-top-left-radius: 50% 100%;
+        border-top-right-radius: 50% 100%;
+        margin-top: 0.25rem;
+    }
+}
+
+.banner {
+    .container {
+        @include flex($gap: rem(15));
+    }
+
+    &__img {
+        width: rem(80);
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__text {
+        @include flex(space-between, center);
+        flex: 1;
+        background: linear-gradient(91deg, #482566 0%, #161d52 99.51%);
+        border-radius: 1rem;
+        padding: rem(10) rem(40);
+
+        a {
+            @extend .btn--sm;
+            background-color: rgba(128, 128, 128, 0.4);
+            @include flex(center, center);
+        }
+    }
+
+    &__title {
+        @include defineFont(20, 700);
+    }
+}
+
+.benefit {
+    &__list {
+        @include flex($gap: 1rem);
+        margin-top: 1rem;
+        /* word-break : 긴 단어가 줄 끝에 걸릴 때 어디서 줄바꿈을 허용할지를 정하는 속성
+        keep-all : 단어 단위로만 줄을 바꾸는 것으로 한국어 웹사이트에서는 거의 keep-all을 사용 */
+        word-break: keep-all;
+    }
+
+    &__item {
+        background: linear-gradient(149deg, #192247 0%, #210E17 96.86%);
+        border-radius: 1rem;
+        padding: rem(32) rem(24) rem(128);
+        flex: 1;
+        position: relative;
+
+        h3 {
+            @include defineFont(24, 600);
+            margin-bottom: rem(24);
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        img {
+            position: absolute;
+            bottom: rem(20);
+            right: rem(20);
+        }
+    }
+
+}
+
+.faq {
+    &__list {
+        margin-top: 1rem;
+
+        li {
+            @include defineFont(24);
+            margin-bottom: 0.5rem;
+        }
+
+        summary {
+            margin-bottom: 0.0625rem;
+            position: relative;
+
+            &:hover {
+                background-color: lighten($color: #2d2d2d, $amount: 10%);
+            }
+
+            &::after {
+                display: block;
+                content: '+';
+                position: absolute;
+                right: rem(24);
+                top: 50%;
+                transform: translateY(-50%);
+                transition: transform 0.3s ease-in-out;
+
+                @include defineFont(48, 200);
+            }
+        }
+
+        summary,
+        .answer {
+            padding: rem(24);
+            background-color: rgb(45, 45, 45);
+        }
+
+        details[open] {
+            summary::after {
+                // 이미 위에서 transform 속성이 적용이 되었는데 다시 rotate()만 적용하면 translate가 적용되지 않으니까 함께 명시
+                transform: translateY(-50%) rotate(45deg);
+            }
+        }
+
+    }
+}
+
+@include media($pc) {
+    .visual {
+        min-height: rem(760);
+
+        &__container {
+            max-width: 31.75rem;
+        }
+
+        &__title {
+            @include defineFont(40, 900);
+
+            br {
+                display: none;
+            }
+        }
+
+        &__desc {
+            @include defineFont(16, 500);
+            margin: 1rem 0;
+        }
+    }
+
+    .benefit {
+        &__list {
+            flex-wrap: wrap;
+        }
+
+        &__item {
+            flex-basis: calc((100% - 1rem) / 2);
+            padding-bottom: rem(96);
+
+            h3 {
+                @include defineFont(20, 600);
+                margin-bottom: rem(12);
+            }
+        }
+    }
+}
+
+// max-width: 960px일 때
+@include media($laptop) {
+    .visual {
+        min-height: rem(664);
+
+        &__container {
+            max-width: 27rem;
+        }
+
+        &__title {
+            @include defineFont(32, 900);
+        }
+    }
+
+    .benefit {
+        &__item {
+            flex-basis: 100%;
+            padding: rem(24) rem(16) rem(96);
+
+            h3 {
+                @include defineFont(20, 600);
+                margin-bottom: rem(12);
+            }
+        }
+    }
+
+    .faq {
+        li {
+            @include defineFont(18);
+        }
+
+        summary {
+            &::after {
+                @include defineFont(32, 200);
+            }
+        }
+    }
+}
+
+
+
+@include media($tablet) {
+    .visual {
+        &__container {
+            max-width: 100%;
+            padding-left: rem(24);
+            padding-right: rem(24);
+        }
+
+        &__fieldBox {
+            flex-wrap: wrap;
+
+            input {
+                @include formBox(input, md, rem(8) rem(16));
+                flex-basis: 100%;
+            }
+        }
+    }
+
+    .banner {
+        &__text {
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1rem;
+        }
+    }
+}
+
+@include media($mobile) {
+    .banner {
+        .container {
+            flex-wrap: wrap;
+            @include flex($justifyContent: start);
+        }
+
+        &__img {
+            position: relative;
+            z-index: 2;
+        }
+
+        // 여기서 nesting이 아니라 container 바깥에 명시하는 이유는 &가 this라는 의미라서 .container__text라는 요소를 가리키므로 스타일이 적용되지 않음
+        &__text {
+            flex-basis: 100%;
+            margin-top: rem(-40);
+        }
+    }
+}

@@ -1,0 +1,481 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+/* 각기 다른 scss에서 정의한 함수나 변수를 서로 다른 scss에서 사용할 수 있는 것처럼 보이지만  
+   사실은 그게 아니라 최종적으로 하나의 css 파일로 컴파일될 때 컴파일러가 모든 scss 파일 내 변수나 함수를 참조하고 병합하여 사용하는 것임 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+input,
+select,
+button {
+  font-family: "inherit";
+  color: inherit;
+}
+
+fieldset {
+  border: none;
+}
+
+summary {
+  list-style-type: none;
+  cursor: pointer;
+}
+
+/* @mixin과 @function의 차이
+   : @mixin은 스타일 블록을 재사용하기 위한 목적으로 호출할 때는 @include 믹스인명을 사용
+     @function은 값의 반환이 필요할 때 사용하며 호출 시에는 함수명만 사용*/
+/* 여기서 두번째 매개변수에 sm이라는 기본값 자체가 무엇을 의미하는지 scss는 알 수 없지만, 
+   이 sm이라는 기본값을 height: map-get()이 사용하면서 map-get()으로 $formBox라는 변수를 가리키고, 
+   그 $formBox 내부 sm이라는 key에 해당하는 value를 $size 변수에 기본값으로 사용한다는 것을 컴파일 시에 css가 참조하고 병합하면서 알 수 있음 */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.btn--sm, .banner__text a {
+  /* rem(4) rem(16)는 @mixin formBox()에서 padding 속성 값으로 사용하므로 두 개를 연달아 하나의 매개변수로 사용함 */
+  height: 32px;
+  padding: 0.25rem 1rem;
+  border-radius: 0.25rem;
+  background-color: rgb(229, 9, 20);
+  color: #fff;
+  font-size: 0.875rem;
+}
+.btn--lg {
+  height: 56px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  background-color: rgb(229, 9, 20);
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.title {
+  /* $type에 직접 폰트 사이즈를 인수로 할당할 수도 있고, 아니면 $font 변수에서 정의된 key로 할당할 수도 있음 */
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+.mb-4 {
+  margin-bottom: 4rem;
+}
+
+@media (max-width: 1280px) {
+  /* @content: mixin 내에서 자식 내용(= 해당 mixin을 include하는 쪽에서 명시한 블록 안의 내용)을 받아오는 자리 표시자 */
+  .btn--lg {
+    font-size: 1.125rem;
+  }
+  .title {
+    /* $type에 직접 폰트 사이즈를 인수로 할당할 수도 있고, 아니면 $font 변수에서 정의된 key로 할당할 수도 있음 */
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+}
+@media (max-width: 768px) {
+  /* @content: mixin 내에서 자식 내용(= 해당 mixin을 include하는 쪽에서 명시한 블록 안의 내용)을 받아오는 자리 표시자 */
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .btn--lg {
+    height: 48px;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    background-color: rgb(229, 9, 20);
+    color: #fff;
+  }
+  .title {
+    /* $type에 직접 폰트 사이즈를 인수로 할당할 수도 있고, 아니면 $font 변수에서 정의된 key로 할당할 수도 있음 */
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+  .mb-4 {
+    margin-bottom: 3.5rem;
+  }
+}
+body {
+  font-family: "Noto sans KR", sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+.header {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+.header__logo a {
+  display: block;
+}
+.header__logo a img {
+  width: 100%;
+  max-width: 9.375rem;
+}
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__right {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.75rem;
+}
+.header__right select {
+  height: 32px;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  border: 1px solid rgba(128, 128, 128, 0.7);
+}
+.header__right select option {
+  color: #000;
+}
+
+.visual {
+  width: 100%;
+  min-height: 62.25rem;
+  background-image: url("../images/visual-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.visual::before {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(360deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.8965) 8.5%, rgba(0, 0, 0, 0.8861) 17%, rgba(0, 0, 0, 0.8688) 25.5%, rgba(0, 0, 0, 0.8444) 34%, rgba(0, 0, 0, 0.8132) 42.5%, rgba(0, 0, 0, 0.775) 51%, rgba(0, 0, 0, 0.7368) 59.5%, rgba(0, 0, 0, 0.7056) 68%, rgba(0, 0, 0, 0.6813) 76.5%, rgba(0, 0, 0, 0.6639) 85%, rgba(0, 0, 0, 0.6535) 93.5%, rgba(0, 0, 0, 0.65) 102%);
+}
+.visual__container {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  max-width: 41.5rem;
+  margin: 0 auto;
+}
+.visual__title {
+  /* $type에 직접 폰트 사이즈를 인수로 할당할 수도 있고, 아니면 $font 변수에서 정의된 key로 할당할 수도 있음 */
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+.visual__desc {
+  /* $type에 직접 폰트 사이즈를 인수로 할당할 수도 있고, 아니면 $font 변수에서 정의된 key로 할당할 수도 있음 */
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0;
+  margin: 2rem 0;
+}
+.visual__fieldBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.visual__fieldBox input {
+  height: 56px;
+  padding: 0.625rem 1rem;
+  border-radius: 0.25rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(128, 128, 128, 0.7);
+  flex-grow: 1;
+  font-size: 1rem;
+}
+
+.curve-wrap {
+  width: 100%;
+  height: 6.25rem;
+  background: linear-gradient(to right, rgb(33, 13, 22) 16%, rgb(184, 40, 105), rgb(229, 9, 20), rgb(184, 40, 105), rgb(33, 13, 22) 84%);
+  border-top-left-radius: 50% 100%;
+  border-top-right-radius: 50% 100%;
+  position: relative;
+  margin-top: -6.25rem;
+  overflow: hidden;
+}
+.curve-wrap::before {
+  content: "";
+  width: 120%;
+  height: calc(100% - 0.25rem);
+  position: absolute;
+  left: -10%;
+  background: radial-gradient(50% 500% at 50% -420%, rgba(64, 97, 231, 0.4) 80%, rgba(0, 0, 0, 0.1) 100%), black;
+  border-top-left-radius: 50% 100%;
+  border-top-right-radius: 50% 100%;
+  margin-top: 0.25rem;
+}
+
+.banner .container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.9375rem;
+}
+.banner__img {
+  width: 5rem;
+}
+.banner__img img {
+  width: 100%;
+}
+.banner__text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  background: linear-gradient(91deg, #482566 0%, #161d52 99.51%);
+  border-radius: 1rem;
+  padding: 0.625rem 2.5rem;
+}
+.banner__text a {
+  background-color: rgba(128, 128, 128, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner__title {
+  /* $type에 직접 폰트 사이즈를 인수로 할당할 수도 있고, 아니면 $font 변수에서 정의된 key로 할당할 수도 있음 */
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+.benefit__list {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1rem;
+  margin-top: 1rem;
+  /* word-break : 긴 단어가 줄 끝에 걸릴 때 어디서 줄바꿈을 허용할지를 정하는 속성
+  keep-all : 단어 단위로만 줄을 바꾸는 것으로 한국어 웹사이트에서는 거의 keep-all을 사용 */
+  word-break: keep-all;
+}
+.benefit__item {
+  background: linear-gradient(149deg, #192247 0%, #210E17 96.86%);
+  border-radius: 1rem;
+  padding: 2rem 1.5rem 8rem;
+  flex: 1;
+  position: relative;
+}
+.benefit__item h3 {
+  /* $type에 직접 폰트 사이즈를 인수로 할당할 수도 있고, 아니면 $font 변수에서 정의된 key로 할당할 수도 있음 */
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0;
+  margin-bottom: 1.5rem;
+}
+.benefit__item p {
+  color: rgba(255, 255, 255, 0.7);
+}
+.benefit__item img {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
+}
+
+.faq__list {
+  margin-top: 1rem;
+}
+.faq__list li {
+  /* $type에 직접 폰트 사이즈를 인수로 할당할 수도 있고, 아니면 $font 변수에서 정의된 key로 할당할 수도 있음 */
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0;
+  margin-bottom: 0.5rem;
+}
+.faq__list summary {
+  margin-bottom: 0.0625rem;
+  position: relative;
+}
+.faq__list summary:hover {
+  background-color: rgb(70.5, 70.5, 70.5);
+}
+.faq__list summary::after {
+  display: block;
+  content: "+";
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease-in-out;
+  /* $type에 직접 폰트 사이즈를 인수로 할당할 수도 있고, 아니면 $font 변수에서 정의된 key로 할당할 수도 있음 */
+  font-size: 3rem;
+  font-weight: 200;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+.faq__list summary,
+.faq__list .answer {
+  padding: 1.5rem;
+  background-color: rgb(45, 45, 45);
+}
+.faq__list details[open] summary::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+@media (max-width: 1280px) {
+  /* @content: mixin 내에서 자식 내용(= 해당 mixin을 include하는 쪽에서 명시한 블록 안의 내용)을 받아오는 자리 표시자 */
+  .visual {
+    min-height: 47.5rem;
+  }
+  .visual__container {
+    max-width: 31.75rem;
+  }
+  .visual__title {
+    /* $type에 직접 폰트 사이즈를 인수로 할당할 수도 있고, 아니면 $font 변수에서 정의된 key로 할당할 수도 있음 */
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+  .visual__title br {
+    display: none;
+  }
+  .visual__desc {
+    /* $type에 직접 폰트 사이즈를 인수로 할당할 수도 있고, 아니면 $font 변수에서 정의된 key로 할당할 수도 있음 */
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0;
+    margin: 1rem 0;
+  }
+  .benefit__list {
+    flex-wrap: wrap;
+  }
+  .benefit__item {
+    flex-basis: calc((100% - 1rem) / 2);
+    padding-bottom: 6rem;
+  }
+  .benefit__item h3 {
+    /* $type에 직접 폰트 사이즈를 인수로 할당할 수도 있고, 아니면 $font 변수에서 정의된 key로 할당할 수도 있음 */
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0;
+    margin-bottom: 0.75rem;
+  }
+}
+@media (max-width: 960px) {
+  /* @content: mixin 내에서 자식 내용(= 해당 mixin을 include하는 쪽에서 명시한 블록 안의 내용)을 받아오는 자리 표시자 */
+  .visual {
+    min-height: 41.5rem;
+  }
+  .visual__container {
+    max-width: 27rem;
+  }
+  .visual__title {
+    /* $type에 직접 폰트 사이즈를 인수로 할당할 수도 있고, 아니면 $font 변수에서 정의된 key로 할당할 수도 있음 */
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+  .benefit__item {
+    flex-basis: 100%;
+    padding: 1.5rem 1rem 6rem;
+  }
+  .benefit__item h3 {
+    /* $type에 직접 폰트 사이즈를 인수로 할당할 수도 있고, 아니면 $font 변수에서 정의된 key로 할당할 수도 있음 */
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0;
+    margin-bottom: 0.75rem;
+  }
+  .faq li {
+    /* $type에 직접 폰트 사이즈를 인수로 할당할 수도 있고, 아니면 $font 변수에서 정의된 key로 할당할 수도 있음 */
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+  .faq summary::after {
+    /* $type에 직접 폰트 사이즈를 인수로 할당할 수도 있고, 아니면 $font 변수에서 정의된 key로 할당할 수도 있음 */
+    font-size: 2rem;
+    font-weight: 200;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+}
+@media (max-width: 768px) {
+  /* @content: mixin 내에서 자식 내용(= 해당 mixin을 include하는 쪽에서 명시한 블록 안의 내용)을 받아오는 자리 표시자 */
+  .visual__container {
+    max-width: 100%;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .visual__fieldBox {
+    flex-wrap: wrap;
+  }
+  .visual__fieldBox input {
+    height: 48px;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(128, 128, 128, 0.7);
+    flex-basis: 100%;
+  }
+  .banner__text {
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  /* @content: mixin 내에서 자식 내용(= 해당 mixin을 include하는 쪽에서 명시한 블록 안의 내용)을 받아오는 자리 표시자 */
+  .banner .container {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: start;
+    align-items: stretch;
+  }
+  .banner__img {
+    position: relative;
+    z-index: 2;
+  }
+  .banner__text {
+    flex-basis: 100%;
+    margin-top: -2.5rem;
+  }
+}

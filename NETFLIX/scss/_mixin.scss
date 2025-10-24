@@ -1,0 +1,71 @@
+/* @mixin과 @function의 차이
+   : @mixin은 스타일 블록을 재사용하기 위한 목적으로 호출할 때는 @include 믹스인명을 사용
+     @function은 값의 반환이 필요할 때 사용하며 호출 시에는 함수명만 사용*/
+
+
+// px 단위를 rem 단위로 변환하는 함수
+@function rem($size) {
+    $size: calc($size / 16);
+    @return #{$size}rem;
+}
+
+// flex 관련 스타일 속성을 지정하는 mixin
+@mixin flex($justifyContent: center, $alignItems: stretch, $gap: null) {
+    display: flex;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+    gap: $gap;
+}
+
+// form field 
+/* 여기서 두번째 매개변수에 sm이라는 기본값 자체가 무엇을 의미하는지 scss는 알 수 없지만, 
+   이 sm이라는 기본값을 height: map-get()이 사용하면서 map-get()으로 $formBox라는 변수를 가리키고, 
+   그 $formBox 내부 sm이라는 key에 해당하는 value를 $size 변수에 기본값으로 사용한다는 것을 컴파일 시에 css가 참조하고 병합하면서 알 수 있음 */
+@mixin formBox($type: null, $size: sm, $pd: 0) {
+    // $type: button, select, input
+    height: map-get($formBox, $size);
+    padding: $pd;
+    border-radius: rem(4);
+
+    @if($type ==btn) {
+        background-color: $primaryColor;
+        color: $whiteColor;
+    }
+
+    @else if ($type ==select) {
+        background-color: transparent;
+        border: 1px solid $lineColor;
+    }
+
+    @else if($type ==input) {
+        background-color: rgba($color: $blackColor, $alpha: 0.5);
+        border: 1px solid $lineColor;
+    }
+}
+
+// font-size
+@mixin defineFont($type: null, $weight: 400, $lineHeight: 1.3, $letterSpacing: 0) {
+
+    $size: null;
+
+    /* $type에 직접 폰트 사이즈를 인수로 할당할 수도 있고, 아니면 $font 변수에서 정의된 key로 할당할 수도 있음 */
+    // @if(meta.type-of($type)==string) {
+    //     $size: map-get($font, lg);
+    // }
+
+    // @else {
+    //     $size: $type;
+    // }
+
+    font-size: rem($type);
+    font-weight: $weight;
+    line-height: $lineHeight;
+    letter-spacing: $letterSpacing;
+}
+
+@mixin media($breakpoint) {
+    @media(max-width: $breakpoint) {
+        /* @content: mixin 내에서 자식 내용(= 해당 mixin을 include하는 쪽에서 명시한 블록 안의 내용)을 받아오는 자리 표시자 */
+        @content;
+    }
+}

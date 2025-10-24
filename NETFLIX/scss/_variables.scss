@@ -1,0 +1,28 @@
+// 변수만 담는 파일
+
+// color 변수
+$primaryColor: rgb(229, 9, 20);
+$whiteColor: #fff;
+$blackColor: #000;
+$lineColor: rgba(128, 128, 128, 0.7);
+
+// font-size 변수
+// $font: (
+//     lg: 64px,
+//     md: 24px,
+//     sm: 20px
+// );
+
+// 높이 변수
+$formBox: (
+    lg: 56px,
+    md: 48px,
+    sm: 32px
+);
+
+// breakpoint
+$pc: 1280px;
+$laptop: 960px;
+$tablet: 768px;
+$mobile: 480px;
+// $mobile-sm: 390px;

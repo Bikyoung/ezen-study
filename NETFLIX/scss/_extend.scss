@@ -1,0 +1,59 @@
+.container {
+    width: 100%;
+    max-width: $pc;
+    margin: 0 auto;
+    padding-left: rem(32);
+    padding-right: rem(32);
+}
+
+.btn {
+    &--sm {
+        /* rem(4) rem(16)는 @mixin formBox()에서 padding 속성 값으로 사용하므로 두 개를 연달아 하나의 매개변수로 사용함 */
+        @include formBox(btn, sm, rem(4) rem(16));
+        font-size: rem(14);
+    }
+
+    &--lg {
+        @include formBox(btn, lg, rem(12) rem(24));
+        font-size: rem(24);
+    }
+}
+
+.title {
+    @include defineFont(32, 700);
+}
+
+.mb-4 {
+    margin-bottom: 4rem;
+}
+
+@include media($pc) {
+    .btn {
+        &--lg {
+            font-size: rem(18);
+        }
+    }
+
+    .title {
+        @include defineFont(24, 700);
+    }
+}
+
+@include media($tablet) {
+    .container {
+        padding-left: rem(24);
+        padding-right: rem(24);
+    }
+
+    .btn--lg {
+        @include formBox(btn, md, rem(8) rem(16));
+    }
+
+    .title {
+        @include defineFont(18, 700);
+    }
+
+    .mb-4 {
+        margin-bottom: rem(56);
+    }
+}
