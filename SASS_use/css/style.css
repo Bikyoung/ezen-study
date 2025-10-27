@@ -1,0 +1,10 @@
+@charset "UTF-8";
+/* @use "var2" as *; 이 경우는 그냥 별칭 혹은 파일명을 생락하고, var2에 정의된 변수를 사용할 수 있음
+   단, *은 오로지 하나의 scss 파일에서만 붙일 수 있음 */
+h2 {
+  color: orange;
+}
+
+p {
+  color: green;
+}

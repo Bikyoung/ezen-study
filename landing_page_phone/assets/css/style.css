@@ -164,6 +164,11 @@ button {
     transition: all 0.3s ease-in-out;
 }
 
+.image-box {
+    width: 100%;
+    object-fit: cover;
+}
+
 .image-box img {
     width: 100%;
     object-fit: cover;

@@ -1,0 +1,13 @@
+@use "variables1" as var;
+@use "var2";
+
+/* @use "var2" as *; 이 경우는 그냥 별칭 혹은 파일명을 생락하고, var2에 정의된 변수를 사용할 수 있음
+   단, *은 오로지 하나의 scss 파일에서만 붙일 수 있음 */
+// 별칭을 사용하는 경우
+h2 {
+    color: var.$primary;
+}
+
+p {
+    color: var2.$primary;
+}
