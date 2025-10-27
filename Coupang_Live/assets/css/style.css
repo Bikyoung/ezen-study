@@ -1,0 +1,45 @@
+/* common 영역 */
+html {
+    font-size: 62.5%;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.block__container--media {
+    max-width: 144rem;
+}
+
+/* header 영역 */
+.navbar__logo {
+    width: 25rem;
+}
+
+/* ──────────────── break point: 1023px ──────────────── */
+@media(max-width: 1023px) {
+
+    /* ──────────────── common ──────────────── */
+    .block__container--media {
+        max-width: 96rem;
+    }
+}
+
+/* ──────────────── break point: 767px ──────────────── */
+@media(max-width: 767px) {
+
+    /* ──────────────── common ──────────────── */
+    .block__container--media {
+        max-width: 72rem;
+    }
+}
+
+/* ──────────────── break point: 479px ──────────────── */
+@media(max-width: 479px) {
+
+    /* ──────────────── common ──────────────── */
+    .block__container--media {
+        max-width: 44rem;
+    }
+}
