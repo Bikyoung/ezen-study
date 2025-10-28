@@ -1,0 +1,22 @@
+// _varaibles.scss 변수 선언용 파일
+
+// color
+$primary-color: #0044CC;
+$navy-color: #081335;
+$white-color: #ffffff;
+
+// container
+$container-width: 100%;
+
+$container-breakpoints: (
+    desktop: 1023px,
+    tablet: 767px,
+    mobile: 479px
+);
+
+$container-max-width: (
+    pc: 144rem,
+    desktop: 96rem,
+    tablet: 72rem,
+    mobile: 44rem
+);
