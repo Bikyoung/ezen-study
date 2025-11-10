@@ -1,6 +1,55 @@
 /* common 영역 */
+@charset "utf-8";
+
+@font-face {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Pretendard-Bold'),
+        url("../font/Pretendard-Bold.ttf") format('truetype'),
+        url("../font/Pretendard-Bold.woff2") format('woff2') url("../font/Pretendard-Bold.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Pretendard-SemiBold'),
+        url("../font/Pretendard-SemiBold.ttf") format('truetype'),
+        url("../font/Pretendard-SemiBold.woff2") format('woff2'),
+        url("../font/Pretendard-SemiBold.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 500;
+    src: local('Pretendard-Medium'),
+        url("../font/Pretendard-Medium.ttf") format('truetype'),
+        url("../font/Pretendard-Medium.woff2") format("woff2"),
+        url("../font/Pretendard-Medium.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Pretendard-Regular'),
+        url("../font/Pretendard-Regular.ttf") format('truetype'),
+        url("../font/Pretendard-Regular.woff2") format('woff2'),
+        url("../font/Pretendard-Regular.woff") format('woff');
+}
+
+:root {
+    --primary-color: #0044CC;
+}
+
 html {
     font-size: 62.5%;
+}
+
+body {
+    font-family: 'Pretendard';
 }
 
 img {
@@ -15,6 +64,15 @@ img {
 /* header 영역 */
 .navbar__logo {
     width: 25rem;
+}
+
+/* hero 영역 */
+.hero__image {
+    width: 49.5rem;
+}
+
+.hero__title--highlight {
+    color: var(--primary-color);
 }
 
 /* ──────────────── break point: 1023px ──────────────── */
