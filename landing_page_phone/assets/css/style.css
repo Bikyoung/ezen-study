@@ -734,7 +734,7 @@ header {
     margin-top: var(--space-xxs);
 }
 
-.benefit-icon {
+img.benefit-icon {
     display: block;
     height: 17rem;
     margin: 4rem 0;
@@ -1239,7 +1239,7 @@ footer {
     }
 
 
-    .benefit-icon {
+    img.benefit-icon {
         height: 16rem;
     }
 
@@ -1394,7 +1394,7 @@ footer {
     }
 
 
-    .benefit-icon {
+    img.benefit-icon {
         height: 12rem;
         margin: 3rem 0;
     }
@@ -1582,7 +1582,8 @@ footer {
     }
 
 
-    .benefit-icon {
+    /* 워드 프레스의 이미지 크기 리사이징을 막기 위해서 우선 순위가 더 높은 구체적인 선택자를 사용 */
+    img.benefit-icon {
         height: 10rem;
         margin: 3rem 0;
     }

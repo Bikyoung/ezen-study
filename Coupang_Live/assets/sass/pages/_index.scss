@@ -1,0 +1,57 @@
+@use "../abstracts/_bundle.scss" as abs;
+
+.index-page {
+    color: map-get(abs.$color, white-color);
+}
+
+// hero 영역
+.hero {
+
+    background-color: map-get(abs.$color, navy-color);
+
+    &__container {
+        @include abs.heroContainerPadding();
+    }
+    
+    &__title {
+        @include abs.mainFontH1();
+        font-weight: 400;
+
+        &--primary {
+            font-weight: 700;
+            color: map-get(abs.$color, orange-color);
+        }
+    } 
+}
+
+.cta-group {
+
+    margin-top: 6rem;
+    display: flex;
+    gap: 6rem;
+
+    @media (max-width: map-get(abs.$breakpoints, lg)) {
+        margin-top: 5rem;
+        gap: 5rem;
+    }
+
+    @media (max-width: map-get(abs.$breakpoints, md)) {
+        margin-top: 4rem;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    @media (max-width: map-get(abs.$breakpoints, sm)) {
+        margin-top: 3rem;
+        gap: 1.5rem;
+    }
+
+    &__seller {
+        background-color: map-get(abs.$color, orange-color);
+        color: map-get(abs.$color, white-color);
+    }
+
+    &__creator {
+        color: map-get(abs.$color, orange-color);
+        box-shadow: inset 0 0 0 0.2rem map-get(abs.$color, orange-color);
+    }
+}
