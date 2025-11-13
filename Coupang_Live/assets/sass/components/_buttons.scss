@@ -1,9 +1,0 @@
-@use "../abstracts/bundle.scss" as abs;
-
-.btn {
-    border-radius: 5rem;
-}
-
-.cta {
-    @include abs.cta();    
-}
