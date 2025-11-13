@@ -1,0 +1,5 @@
+@use "../abstracts/_bundle.scss" as abs;
+
+.only-mob {
+    @include abs.showDisplayAttribute("mobile");
+}
